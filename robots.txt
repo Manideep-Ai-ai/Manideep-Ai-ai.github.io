@@ -2,3 +2,9 @@ User-agent: *
 Allow: /
 
 Sitemap: https://manideepreddy.website/sitemap.xml
+Sitemap: https://manideepreddy.website/01-blue-illustrated/sitemap.xml
+Sitemap: https://manideepreddy.website/02-hindu-mythology/sitemap.xml
+Sitemap: https://manideepreddy.website/03-indian-genz/sitemap.xml
+Sitemap: https://manideepreddy.website/04-cobalt-scroll/sitemap.xml
+Sitemap: https://manideepreddy.website/05-story-torn-ink/sitemap.xml
+Sitemap: https://manideepreddy.website/06-lost-digital-civilization/sitemap.xml
