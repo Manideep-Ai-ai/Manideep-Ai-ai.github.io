@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manideep Reddy — Software Engineer · Six Portfolios</title>
-<meta name="description" content="Rekha V Manideep Reddy, software engineer in Hyderabad (backend, data and AI/ML) who also designs the product. Six portfolios, six styles, one résumé.">
+<title>Manideep Reddy — Software Engineer · Projects &amp; Seven Portfolios</title>
+<meta name="description" content="Rekha V Manideep Reddy, software engineer in Hyderabad (backend, data and AI/ML) who also designs the product. The projects he built, and seven portfolios that show how he designs.">
 <link rel="canonical" href="https://manideepreddy.website/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#14110f">
@@ -12,8 +12,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Manideep Reddy — Six Portfolios">
-<meta property="og:description" content="Software engineer (backend, data, AI/ML) who also designs the product. Six portfolios, six styles.">
+<meta property="og:title" content="Manideep Reddy — Projects &amp; Seven Portfolios">
+<meta property="og:description" content="Software engineer (backend, data, AI/ML) who also designs the product. What he builds, and seven portfolios that show how he designs.">
 <meta property="og:url" content="https://manideepreddy.website/">
 <meta property="og:image" content="https://manideepreddy.website/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,9 +24,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Six Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
+ {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Projects & Seven Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
  {"@type":"Person","@id":"https://manideepreddy.website/#me","name":"Rekha V Manideep Reddy","alternateName":"Manideep Reddy","jobTitle":"Software Engineer (Backend, Data & AI/ML)","worksFor":{"@type":"Organization","name":"Delta Cubes Pvt. Ltd."},"alumniOf":{"@type":"CollegeOrUniversity","name":"Bharath Institute of Higher Education and Research"},"address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressCountry":"IN"},"email":"mailto:manideepreddyrekha@gmail.com","url":"https://manideepreddy.website/","sameAs":["https://github.com/Manideep-Ai-ai","https://linkedin.com/in/rekha-v-manideep-reddy-024976297"]},
  {"@type":"ItemList","name":"Portfolios","itemListElement":[
+  {"@type":"ListItem","position":0,"url":"https://manideepreddy.lovable.app/","name":"The First One (built with Lovable)"},
   {"@type":"ListItem","position":1,"url":"https://manideepreddy.website/01-blue-illustrated/","name":"Blue Illustrated"},
   {"@type":"ListItem","position":2,"url":"https://manideepreddy.website/02-hindu-mythology/","name":"Hindu Mythology"},
   {"@type":"ListItem","position":3,"url":"https://manideepreddy.website/03-indian-genz/","name":"Indian GenZ"},
@@ -58,7 +59,7 @@ a { color: inherit; }
 .intro p { margin: clamp(20px, 3vw, 34px) 0 0; max-width: 34ch; font: 400 clamp(19px, 2.1vw, 27px)/1.35 var(--serif); }
 .intro .facts { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 28px; font: 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 
-.rooms { list-style: none; margin: 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: clamp(16px, 2.4vw, 32px); }
+.rooms { list-style: none; margin: 0; padding: 0 var(--gutter); gap: clamp(16px, 2.4vw, 32px); }
 .room a { display: block; text-decoration: none; }
 .room figure { margin: 0; position: relative; aspect-ratio: 1200 / 630; overflow: hidden; border-radius: 6px; background: var(--c); }
 .room img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .8, .2, 1), filter .5s; filter: saturate(.92); }
@@ -83,7 +84,39 @@ a { color: inherit; }
 .reach small { display: block; margin-top: clamp(48px, 7vw, 96px); font: 12px/1.5 var(--mono); color: rgba(243,237,227,.55); letter-spacing: .05em; }
 .reach h2 { overflow-wrap: anywhere; }
 
-@media (prefers-reduced-motion: reduce) { .room img, .room .arrow { transition: none; } }
+.sec { display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 8px 20px; padding: 0 var(--gutter); margin: clamp(56px, 9vw, 120px) 0 clamp(20px, 3vw, 36px); }
+.sec .n { font: 12px/1 var(--mono); color: var(--accent); letter-spacing: .08em; padding-bottom: .55em; }
+.sec h2 { margin: 0; font: 400 clamp(34px, 5.4vw, 76px)/.95 var(--serif); letter-spacing: -.02em; }
+.sec p { grid-column: 2; margin: 0; color: var(--muted); max-width: 44ch; }
+.sec .ctrl { grid-column: 3; grid-row: 1 / span 2; display: flex; align-items: center; gap: 10px; font: 12px/1 var(--mono); letter-spacing: .06em; }
+.ctrl button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); font: 18px/1 var(--sans); cursor: pointer; transition: background .2s, color .2s, opacity .2s; }
+.ctrl button:hover, .ctrl button:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+.ctrl button:disabled { opacity: .3; pointer-events: none; }
+.ctrl .count { min-width: 7ch; text-align: center; }
+
+.projects { list-style: none; margin: 0; padding: 0 var(--gutter); }
+.projects li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); }
+.projects li:last-child { border-bottom: 1px solid var(--line); }
+.projects h3 { margin: 0; font: 400 clamp(21px, 2.1vw, 27px)/1.15 var(--serif); }
+.projects p { margin: 0; color: var(--muted); max-width: 62ch; }
+.projects a { font: 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; text-underline-offset: 4px; }
+.projects a:hover, .projects a:focus-visible { color: var(--accent); }
+.wins { list-style: none; margin: clamp(24px, 3vw, 40px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px clamp(16px, 2.4vw, 32px); }
+.wins li { font-size: 14px; color: var(--muted); }
+.wins b { display: block; font: 400 clamp(34px, 4vw, 52px)/1 var(--serif); color: var(--ink); margin-bottom: 6px; }
+
+.rooms { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(84vw, 540px); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); padding-bottom: 14px; scrollbar-width: none; }
+.rooms::-webkit-scrollbar { display: none; }
+.room { scroll-snap-align: start; }
+.room .tag { position: absolute; bottom: 12px; right: 12px; padding: 7px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+@media (max-width: 720px) {
+  .sec { grid-template-columns: auto 1fr; }
+  .sec .ctrl { grid-column: 1 / -1; grid-row: auto; margin-top: 10px; }
+  .projects li { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) { .room img, .room .arrow { transition: none; } .rooms { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -95,11 +128,32 @@ a { color: inherit; }
 <main>
   <section class="intro">
     <h1>Rekha V<br>Manideep <em>Reddy</em></h1>
-    <p>Software engineer for backend, data and AI, who also designs the product. Six portfolios, six ways of telling it.</p>
+    <p>Software engineer for backend, data and AI, and I design what people see and touch. Below is both: the systems I have built, and seven portfolios that show how I design.</p>
     <div class="facts"><span>Delta Cubes · since Apr 2025</span><span>Python · FastAPI · React · PostgreSQL · AWS · LLMs</span></div>
   </section>
 
-  <ol class="rooms">
+  <section class="work" aria-labelledby="work-h">
+    <header class="sec"><span class="n">01</span><h2 id="work-h">What I build</h2><p>Backend, data and AI: the systems underneath.</p></header>
+    <ol class="projects">
+    <li><h3>SignAI</h3><p>Production recruitment platform with LLM-powered candidate matching. React, Node.js, PostgreSQL, AWS.</p><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a></li>
+    <li><h3>Jhanko</h3><p>REST API layer in Python and FastAPI for a geolocation marketplace, with real-time geospatial search.</p><span></span></li>
+    <li><h3>Artemis Job Agent</h3><p>Open-source AI agent that finds matching jobs, finds the hiring contact and drafts the email.</p><span></span></li>
+    <li><h3>Speech Emotion Recognition</h3><p>CNN and LSTM model that reads emotion and gender from short audio clips. TensorFlow, FastAPI.</p><span></span></li>
+    <li><h3>Rosso Corsa</h3><p>Racing-red desktop theme for Omarchy Linux.</p><a href="https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ol>
+    <ul class="wins"><li><b>40%</b>faster dashboards, from PostgreSQL indexing</li><li><b>50%</b>quicker candidate screening with AI résumé parsing</li><li><b>30%</b>faster API responses in a geolocation marketplace</li><li><b>100%</b>of deployments automated with GitHub Actions</li></ul>
+  </section>
+
+  <section class="design" aria-labelledby="design-h">
+    <header class="sec"><span class="n">02</span><h2 id="design-h">How I design</h2><p>Seven portfolios by one person, each a different front end for the same story.</p>
+      <div class="ctrl"><button type="button" class="prev" aria-label="Previous portfolio" aria-controls="rooms">←</button><span class="count" aria-live="polite">01 / 07</span><button type="button" class="next" aria-label="Next portfolio" aria-controls="rooms">→</button></div>
+    </header>
+  <ol class="rooms" id="rooms">
+    <li class="room" style="--c:#ff5a1f"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">
+      <figure><img src="assets/00.jpg" alt="Pixel-type hero reading Manideep Reddy, AI/ML Engineer Portfolio, beside an orange line illustration of an engineer at a laptop" width="900" height="473"><span class="tag">Built with Lovable</span></figure>
+      <div class="meta"><span class="n">00</span><h2>The First One</h2><span class="arrow" aria-hidden="true">↗</span></div>
+      <p><span class="dot"></span>Where it started. Made with an AI app builder and kept exactly as it was.</p>
+    </a></li>
     <li class="room" style="--c:#1E62B5"><a href="01-blue-illustrated/">
       <figure><img src="assets/01.jpg" alt="Blue ink illustration of a coastal city, from the Blue Illustrated portfolio" width="900" height="473"></figure>
       <div class="meta"><span class="n">01</span><h2>Blue Illustrated</h2><span class="arrow" aria-hidden="true">↗</span></div>
@@ -131,6 +185,7 @@ a { color: inherit; }
       <p><span class="dot"></span>A drivable retro road trip. Every stop on the highway is a chapter.</p>
     </a></li>
   </ol>
+  </section>
 
   <section class="reach" aria-labelledby="reach-h">
     <h2 id="reach-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com">Say hello.</a></h2>
@@ -144,6 +199,24 @@ a { color: inherit; }
     <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India</small>
   </section>
 </main>
+<script>
+(() => {
+  const track = document.getElementById('rooms'), cards = [...track.children];
+  const prev = document.querySelector('.ctrl .prev'), next = document.querySelector('.ctrl .next'), count = document.querySelector('.ctrl .count');
+  const pad = n => String(n).padStart(2, '0');
+  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+  const index = () => Math.round(track.scrollLeft / step());
+  const sync = () => {
+    const i = Math.min(index(), cards.length - 1), end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    count.textContent = `${pad((end ? cards.length : i + 1))} / ${pad(cards.length)}`;
+    prev.disabled = track.scrollLeft <= 4; next.disabled = end;
+  };
+  const go = d => track.scrollBy({ left: d * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  prev.onclick = () => go(-1); next.onclick = () => go(1);
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+  addEventListener('resize', sync); sync();
+})();
+</script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
