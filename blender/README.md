@@ -1,43 +1,54 @@
 # Footer portal: source and render settings
 
-`portal.blend` is an original scene built entirely by `build_portal.py`. Witch.blend by @kanhaiya3d was used only as a mood reference; no geometry, materials or textures were taken from it.
+The footer video is the **creator's portal with a spirit rising out of it**:
 
-## Scene
+- **Pedestal and vortex:** from `Witch.blend` by @kanhaiya3d, used with the site owner's go-ahead. The file came without its figure (`Girl_Base` is an empty) and without a camera.
+- **Figure:** `GEO-body_female_stylized` from Blender Studio's [Human Base Meshes v1.4.1](https://www.blender.org/download/demo/asset-bundles/), CC0.
+- **Everything else** (figure material, smoothing, lights, camera, compositor, loop) is added by `build_witch_portal.py`.
 
-| Object | What it is |
+`portal_witch.blend` packs the creator's textures, so it stays on this machine (see `.gitignore`) and is not published with the site. Rebuild it from `Witch.blend` with the script.
+
+An earlier, fully original version (`portal.blend`, built by `build_portal.py`) is kept for reference; it is not used on the site.
+
+## What the script adds
+
+| Part | Detail |
 |---|---|
-| `Pedestal` | Four stepped cylinders with a bevel modifier and a procedural stone material (Noise × Voronoi edge cracks, bump). |
-| `Runes` | Flat strokes on the top face: three rings, 22 invented glyphs, a seven-point star (one point per portfolio). Emission strength = steady breathing glow + a bright band where `length(xy) < threshold` minus `length(xy) < threshold − 0.16`, so the ignition ring sweeps out from the centre twice per loop. |
-| `VortexOuter`, `VortexInner` | Open funnels twisted with Simple Deform (140°, −90°). Material: spiral strands `sin(arms·angle + rise·2π·z − phase)` raised to the 7th power, multiplied by 4D Noise, faded at the base and top, through a red-orange ramp, as Emission added to Transparent (blended). |
-| `Spark.00`–`Spark.41` | Small emissive icospheres on rising helical paths. |
-| `PortalGlow`, `Key`, `Rim` | Orange point light at the portal plus warm key and cool rim area lights. |
-| `PortalCam` | 38 mm at (0, −4.9, 1.5), tracking (0, 0, 0.9). |
+| Figure | Scaled to 0.62 m, under the creator's `Girl_Base` marker, legs sunk into the vortex, turned three-quarters away. Head smoothed (40-iteration Smooth on a weighted `head` group) and voxel-remeshed (6 mm) so eye sockets and the mouth cavity don't show through. |
+| Spirit material | Layer Weight rim (blend 0.55, power 2.2) × looping 4D noise flicker; back faces masked (Cycles ignores backface culling); alpha fades by object-space height (hips → shoulders) with a 2.2 power curve; Emission through an ember ramp, mixed with Transparent, plus a soft additive glow. |
+| Motion | Hover `0.025·sin(2πT)`, turn `π + 0.32 + 0.05·sin(2πT + 1.2)`, head tipped back slightly. `T = (frame − 160) / 150`, so the figure repeats every 150 frames. |
+| World | The creator's world still lights the scene; camera rays see the footer's ink `#14110f` (Light Path → Is Camera Ray). |
+| Lights | `PortalGlow` point light in the vortex (2.2 W, flickering), warm `RimLight` behind, faint cool `FillLight`. |
+| Camera | `FooterCam`, 40 mm at (0, −2.05, 0.62), aimed at (0, 0, 0.42). |
 
-## Seamless loop
+## Summoning intro + seamless loop
 
-Every animated value is a driver on `frame`, with `T = (frame − 1) / 150`. Shader values are drivers on scene custom properties (`ignite`, `breath`, `phase`, `loop_cos`, `loop_sin`), which the materials read through View Layer Attribute nodes. Driving node sockets directly made EEVEE recompile every material on every frame (about 18 s a frame, against 10 s now).
+The clip is one file: the creator's **summoning** (frames 40–184: the vortex reveals and spins up, the spirit rises on the creator's 49–139 ease) followed by a **150-frame loop**. The page plays it once and, on `ended`, jumps to `data-loop-from="4.8333"` (145 frames ÷ 30 fps), where a keyframe is forced.
 
-- 4D Noise: `W = seed + 0.7·sin(2πT)` and the vector offset `z = 0.7·cos(2πT)`, so the noise moves around a circle and frame 151 matches frame 1.
-- Strand phase: `2π·3·T` (three whole cycles).
-- Rune threshold: `0.98·fract(2T) − 0.05` (the ring is off the disc at both ends).
-- Sparks: height `fract(n·T + offset)` with a whole number `n`, scale `sin(π·height)`, so each spark is invisible when it wraps.
+The creator's vortex noise is driven by `frame × 0.005` and never repeats. Frames 160–334 are rendered and `crossfade_loop.py` eases the last 25 into the first 25, giving 150 frames whose first frame is frame 185 and whose last blends into frame 184. So intro → loop and loop → loop are both continuous. The figure's hover period is exactly 150 frames, so it doesn't ghost in the blend.
 
 ## Render
 
-- Blender 5.2.0 LTS, EEVEE, 1280×720, frames 1–150 at 30 fps (5 s), 12 TAA samples.
-- Color management: Standard view, no look. The world is the hub's ink `#14110f` (linear 0.0070, 0.0056, 0.0048), so the background matches the footer.
-- Compositor: Glare, Bloom, threshold 0.9, strength 0.55, size 0.6.
+- Blender 5.2.0 LTS, **Cycles** (the creator's vortex uses true displacement, which EEVEE can't render), GPU Metal, 1280×720 at 30 fps.
+- Lowered from the file's 250 samples / 1080×1920 to 32 adaptive samples + denoising, 4 light bounces, 8 transparent bounces (~6–8 s a frame). Standard view transform.
+- Compositor: Glare, Bloom, threshold 0.85, strength 0.6, size 0.65.
 
 ```sh
 B=/Applications/Blender.app/Contents/MacOS/Blender
-$B -b -y --factory-startup --python build_portal.py -- "$PWD/portal.blend"
-$B -b -y portal.blend -o /tmp/portal/f_#### -F PNG -s 1 -e 151 -a   # frame 151 only checks the seam against frame 1
+$B -b ../../../Witch.blend --python build_witch_portal.py -- /path/to/human_base_meshes_bundle.blend "$PWD/portal_witch.blend"
+$B -b portal_witch.blend -o /tmp/portal/f_#### -F PNG -s 40 -e 334 -a
+python3 -I crossfade_loop.py /tmp/portal 160 /tmp/portal-loop
+# one sequence: intro frames 40-184, then the loop
+mkdir -p /tmp/portal-seq; i=0
+for f in $(seq 40 184); do ln -sf /tmp/portal/f_$(printf %04d $f).png /tmp/portal-seq/s_$(printf %04d $i).png; i=$((i+1)); done
+for f in $(seq 0 149); do ln -sf /tmp/portal-loop/l_$(printf %04d $f).png /tmp/portal-seq/s_$(printf %04d $i).png; i=$((i+1)); done
 ```
 
 ## Encode
 
 ```sh
-ffmpeg -framerate 30 -i /tmp/portal/f_%04d.png -frames:v 150 -c:v libvpx-vp9 -b:v 0 -crf 30 -row-mt 1 -deadline good -cpu-used 2 -pix_fmt yuv420p -an ../assets/portal.webm
-ffmpeg -framerate 30 -i /tmp/portal/f_%04d.png -frames:v 150 -c:v libx264 -crf 19 -preset slow -pix_fmt yuv420p -movflags +faststart -an ../assets/portal.mp4
-ffmpeg -i /tmp/portal/f_0060.png -q:v 4 ../assets/portal-poster.jpg
+K="expr:eq(n,0)+eq(n,145)"
+ffmpeg -framerate 30 -i /tmp/portal-seq/s_%04d.png -c:v libvpx-vp9 -b:v 0 -crf 32 -row-mt 1 -deadline good -cpu-used 2 -force_key_frames "$K" -pix_fmt yuv420p -an ../assets/portal.webm
+ffmpeg -framerate 30 -i /tmp/portal-seq/s_%04d.png -c:v libx264 -crf 21 -preset slow -force_key_frames "$K" -pix_fmt yuv420p -movflags +faststart -an ../assets/portal.mp4
+ffmpeg -i /tmp/portal-loop/l_0040.png -q:v 4 ../assets/portal-poster.jpg
 ```

@@ -271,7 +271,7 @@ img { max-width: 100%; }
     </ul>
   </div>
   <div class="portal">
-    <video muted loop playsinline preload="none" poster="assets/portal-poster.jpg" width="1280" height="720" aria-label="A summoning portal: runes ignite on a stone pedestal and a red-orange vortex swirls up">
+    <video muted playsinline preload="none" data-loop-from="4.8333" poster="assets/portal-poster.jpg" width="1280" height="720" aria-label="A glowing spirit rising out of a fiery portal on a dark stepped pedestal">
       <source src="assets/portal.webm" type="video/webm">
       <source src="assets/portal.mp4" type="video/mp4">
     </video>
@@ -288,7 +288,9 @@ img { max-width: 100%; }
     if (inView && !still.matches) video.play().catch(() => {});
     else video.pause();
   };
-  new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { rootMargin: '200px' }).observe(video);
+  // The summoning plays once, then the clip loops from where the spirit has fully risen.
+  video.addEventListener('ended', () => { video.currentTime = +video.dataset.loopFrom; sync(); });
+  new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0.35 }).observe(video);
   still.addEventListener('change', sync);
 })();
 </script>
