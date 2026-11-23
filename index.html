@@ -154,9 +154,9 @@ img { max-width: 100%; }
 @media (max-width: 860px) {
   .card { min-height: 0; }
   .side { display: none; }
-  .stage { padding-block: clamp(56px, 14vw, 90px) 24px; }
+  .stage { padding-block: clamp(48px, 12vw, 80px); }   /* symmetric, so the oval stays centred on the name */
   .title { font-size: 17.5vw; }
-  .title .b { padding-left: .4em; }
+  .title .b { padding-left: .4em; margin-top: calc(var(--ov) * 1.25 - .42em); }
   .stage { --ov: 46vw; }
   .note { display: none; }
   .h1 { left: 96px; top: -28px; width: 30vw; }
@@ -173,6 +173,13 @@ img { max-width: 100%; }
   .col:first-child .tile:first-child img { aspect-ratio: 1; }
   .reach { grid-template-columns: 1fr; }
   .portal { order: -1; margin: -8px -16px 8px; }
+}
+
+@media (max-width: 600px) {
+  /* phones: one big tile per row, full width */
+  .gallery { grid-template-columns: 1fr; gap: 14px; }
+  .col:first-child .tile:first-child img { aspect-ratio: 4 / 5; }
+  .tile { border-radius: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
