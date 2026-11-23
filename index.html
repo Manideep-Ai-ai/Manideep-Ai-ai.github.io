@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manideep Reddy — Software Engineer · Projects &amp; Seven Portfolios</title>
-<meta name="description" content="Rekha V Manideep Reddy, software engineer in Hyderabad (backend, data and AI/ML) who also designs the product. The projects he built, and seven portfolios that show how he designs.">
+<meta name="description" content="Rekha V Manideep Reddy, software engineer in Hyderabad (backend, data and AI/ML) who also designs the product. The projects they built, and seven portfolios that show how they design.">
 <link rel="canonical" href="https://manideepreddy.website/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#14110f">
+<meta name="theme-color" content="#2b0e07">
 <meta name="google-site-verification" content="m2O4qw0X8zVqYNmW8pkkxi6tC5DzLjY4w1-_Ut66JIA">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Manideep Reddy — Projects &amp; Seven Portfolios">
-<meta property="og:description" content="Software engineer (backend, data, AI/ML) who also designs the product. What he builds, and seven portfolios that show how he designs.">
+<meta property="og:description" content="Software engineer (backend, data, AI/ML) who also designs the product. What they build, and seven portfolios that show how they design.">
 <meta property="og:url" content="https://manideepreddy.website/">
 <meta property="og:image" content="https://manideepreddy.website/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +23,8 @@
 <link rel="me" href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/me.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Projects & Seven Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
@@ -39,101 +42,180 @@
 <style>
 :root {
   --paper: #f3ede3; --ink: #14110f; --muted: #6d655c; --line: rgba(20,17,15,.14); --accent: #c8402c;
-  --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', ui-monospace, monospace; --sans: 'Inter', system-ui, sans-serif;
+  --red: #c8401a; --wine: #2b0e07;
+  --display: 'Playfair Display', Georgia, serif; --text: 'Cormorant Garamond', Garamond, Georgia, serif; --script: 'Great Vibes', 'Snell Roundhand', cursive; --gold: #b8862b;
   --gutter: clamp(16px, 4vw, 56px);
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 500 19px/1.5 var(--text); overflow-x: clip; }
 a { color: inherit; }
+img { max-width: 100%; }
 ::selection { background: var(--ink); color: var(--paper); }
 
-.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px var(--gutter); font: 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+/* ---------- hall: the hero ---------- */
+.hall { overflow: clip; background: var(--wine); padding: clamp(28px, 6vw, 88px) clamp(16px, 5vw, 80px) clamp(40px, 7vw, 110px); }
+.card { position: relative; max-width: 1360px; margin: 0 auto; background: var(--paper); min-height: min(86svh, 900px); display: grid; grid-template-rows: auto 1fr auto; box-shadow: 0 40px 90px -30px rgba(0,0,0,.6); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px clamp(150px, 14vw, 210px) 22px clamp(18px, 3vw, 36px); font: 600 14px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; position: relative; z-index: 3; }
 .top a { text-decoration: none; }
+.top .mark { display: block; width: clamp(60px, 6vw, 84px); transition: rotate .6s cubic-bezier(.2,.8,.2,1); }
+.top .mark img { display: block; width: 100%; height: auto; }
+.top .mark:hover, .top .mark:focus-visible { rotate: -8deg; outline: none; }
 .top .cv { padding: 10px 16px; border: 1px solid var(--ink); border-radius: 999px; transition: background .2s, color .2s; }
 .top .cv:hover, .top .cv:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
 
-.intro { padding: clamp(40px, 9vw, 120px) var(--gutter) clamp(32px, 6vw, 72px); max-width: 1400px; }
-.intro h1 { margin: 0; font: 400 clamp(46px, 9.5vw, 148px)/.92 var(--serif); letter-spacing: -.03em; }
-.intro h1 em { font-style: italic; color: var(--accent); }
-.intro p { margin: clamp(20px, 3vw, 34px) 0 0; max-width: 34ch; font: 400 clamp(19px, 2.1vw, 27px)/1.35 var(--serif); }
-.intro .facts { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 28px; font: 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.stage { --ov: clamp(200px, 19vw, 290px); position: relative; display: grid; place-items: center; padding: clamp(8px, 2vw, 24px) clamp(12px, 3vw, 40px); background: radial-gradient(closest-side at 50% 50%, rgba(200,64,26,.16), transparent 70%); }
+.title { position: relative; z-index: 2; margin: 0; text-align: center; color: var(--red); font: italic 900 clamp(64px, 11.5vw, 178px)/.86 var(--display); letter-spacing: -.02em; paint-order: stroke fill; -webkit-text-stroke: clamp(4px, .5vw, 8px) var(--paper); }
+.title span { display: block; }
+.title .b { margin-top: calc(var(--ov) * 1.25 - .62em); padding-left: 1.2em; }
+.oval { position: absolute; z-index: 3; left: 50%; top: 50%; width: var(--ov); translate: -50% -50%; rotate: -3deg; }
+.side { position: absolute; z-index: 3; top: 0; font: 600 13px/1.45 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.side.l { left: clamp(18px, 4vw, 64px); }
+.side.r { right: clamp(18px, 4vw, 64px); text-align: right; top: auto; bottom: 6%; }
 
-.rooms { list-style: none; margin: 0; padding: 0 var(--gutter); gap: clamp(16px, 2.4vw, 32px); }
-.room a { display: block; text-decoration: none; }
-.room figure { margin: 0; position: relative; aspect-ratio: 1200 / 630; overflow: hidden; border-radius: 6px; background: var(--c); }
-.room img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .8, .2, 1), filter .5s; filter: saturate(.92); }
-.room figure::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--line); pointer-events: none; }
-.room a:hover img, .room a:focus-visible img { transform: scale(1.045); filter: saturate(1.05); }
-.room a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-radius: 8px; }
-.room .meta { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 14px; padding: 16px 2px 0; border-top: 0; }
-.room .n { font: 12px/1 var(--mono); color: var(--muted); }
-.room h2 { margin: 0; font: 400 clamp(22px, 2.2vw, 28px)/1.1 var(--serif); }
-.room .arrow { font: 18px/1 var(--sans); transition: transform .3s; }
-.room a:hover .arrow, .room a:focus-visible .arrow { transform: translate(4px, -4px); }
-.room p { margin: 8px 0 0; padding-left: calc(2ch + 14px); color: var(--muted); font-size: 15px; max-width: 46ch; }
-.room .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px var(--line); margin-right: 8px; vertical-align: 1px; }
+.lede { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.panel { display: grid; grid-template-columns: auto 1fr; gap: 18px 22px; align-items: center; width: min(100%, 520px); padding: 22px 26px; background: var(--red); color: var(--paper); text-decoration: none; }
+.panel h2 { margin: 0; font: 700 clamp(30px, 3.2vw, 44px)/.95 var(--display); }
+.panel h2 em { display: block; padding-left: .9em; font: 400 1.5em/1 var(--script); color: #ffe3a3; }
+.panel p { grid-column: 1 / -1; margin: 0; font: 600 13px/1.55 var(--text); letter-spacing: .05em; text-transform: uppercase; max-width: 52ch; }
+.panel .gilt { width: clamp(92px, 9vw, 128px); }
+.intro { margin: 0 clamp(200px, 23vw, 330px) 0 0; padding: 0 0 30px; max-width: 30ch; text-align: right; font: italic 500 clamp(22px, 2vw, 28px)/1.25 var(--text); }
 
-.reach { margin-top: clamp(64px, 10vw, 140px); padding: clamp(40px, 7vw, 88px) var(--gutter) 28px; background: var(--ink); color: var(--paper); }
-.reach h2 { margin: 0; font: 400 clamp(36px, 6.5vw, 96px)/.95 var(--serif); letter-spacing: -.02em; }
-.reach h2 a { text-decoration: none; border-bottom: 2px solid var(--accent); }
-.reach h2 a:hover, .reach h2 a:focus-visible { color: #f0b9a8; outline: none; }
-.reach ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 0; padding: 0; }
-.reach li a { display: inline-block; padding: 12px 18px; border: 1px solid rgba(243,237,227,.35); border-radius: 999px; text-decoration: none; font: 13px/1 var(--mono); letter-spacing: .05em; transition: background .2s, color .2s, border-color .2s; }
-.reach li a:hover, .reach li a:focus-visible { background: var(--paper); color: var(--ink); border-color: var(--paper); outline: none; }
-.reach small { display: block; margin-top: clamp(48px, 7vw, 96px); font: 12px/1.5 var(--mono); color: rgba(243,237,227,.55); letter-spacing: .05em; }
-.reach h2 { overflow-wrap: anywhere; }
+/* gilded frames: layered gold bands, a bead molding and carved light */
+.gilt { --b: clamp(9px, 1.1vw, 15px); position: relative; display: block; padding: var(--b); background:
+    radial-gradient(120% 90% at 25% 15%, rgba(255,244,200,.85), transparent 45%),
+    conic-gradient(from 200deg, #5e3409, #f4d987, #9c6419, #fff0b6, #7a4710, #e7bd5e, #a56a1a, #5e3409);
+  box-shadow: inset 0 0 0 1px #3d2104, inset 0 2px 1px rgba(255,248,214,.9), inset 0 -3px 2px rgba(60,30,0,.7), 0 28px 50px -18px rgba(25,4,0,.7), 0 6px 14px rgba(25,4,0,.35); }
+.gilt::before { content: ""; position: absolute; inset: calc(var(--b) * .3); border: 3px dotted rgba(255,242,190,.95); border-radius: inherit; filter: drop-shadow(0 1px 0 rgba(70,35,0,.8)); pointer-events: none; }
+.gilt::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: repeating-conic-gradient(from 0deg, rgba(70,35,0,.22) 0 3deg, transparent 3deg 7deg); mix-blend-mode: multiply; pointer-events: none; }
+.gilt img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: var(--ar, 4 / 3); object-fit: cover; border-radius: inherit; box-shadow: 0 0 0 2px #3d2104, 0 0 0 4px #f1d184; }
+.oval.gilt { position: absolute; border-radius: 50%; --ar: 4 / 5; --b: clamp(12px, 1.6vw, 22px); }
+.oval img { object-position: 50% 45%; }
+.note { position: absolute; z-index: 3; margin: 0; font: 400 clamp(26px, 2.6vw, 40px)/1 var(--script); color: var(--ink); white-space: nowrap; }
+.note svg { display: block; width: 1.9em; height: auto; margin-top: .1em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.note.l { top: 50%; right: calc(50% + var(--ov) * .62); rotate: -6deg; }
+.note.l svg { margin-left: auto; }
+.note.r { top: 58%; left: calc(50% + var(--ov) * .62); rotate: 5deg; }
+.note.r svg { scale: -1 1; }
 
-.sec { display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 8px 20px; padding: 0 var(--gutter); margin: clamp(56px, 9vw, 120px) 0 clamp(20px, 3vw, 36px); }
-.sec .n { font: 12px/1 var(--mono); color: var(--accent); letter-spacing: .08em; padding-bottom: .55em; }
-.sec h2 { margin: 0; font: 400 clamp(34px, 5.4vw, 76px)/.95 var(--serif); letter-spacing: -.02em; }
+.hang { position: absolute; z-index: 4; text-decoration: none; transition: translate .5s cubic-bezier(.2,.8,.2,1); }
+.hang:hover, .hang:focus-visible { translate: 0 -6px; outline: none; }
+.hang:focus-visible .gilt { outline: 2px solid var(--ink); outline-offset: 6px; }
+.hang .gilt { animation: sway 9s ease-in-out infinite alternate; }
+.h1 { top: clamp(-48px, -3.5vw, -24px); left: clamp(150px, 17vw, 270px); width: clamp(120px, 15vw, 210px); --tilt: -3deg; }
+.h2 { top: clamp(-36px, -2.5vw, -18px); right: clamp(-30px, -2vw, -10px); width: clamp(110px, 12vw, 170px); --tilt: 4deg; }
+.h3 { bottom: clamp(-52px, -4vw, -26px); right: clamp(-40px, -2.6vw, -14px); width: clamp(150px, 19vw, 270px); --tilt: -2deg; }
+.h2 .gilt { --ar: 4 / 5; }
+.h2 .gilt { animation-delay: -3s; }
+@keyframes sway { from { rotate: var(--tilt, 0deg); } to { rotate: calc(var(--tilt, 0deg) * -.4); } }
+.hang .gilt { rotate: var(--tilt); }
+
+/* ---------- sections ---------- */
+.sec { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 8px 20px; padding: 0 var(--gutter); margin: clamp(56px, 9vw, 120px) 0 clamp(20px, 3vw, 36px); }
+.sec .n { font: 600 14px/1 var(--text); color: var(--accent); letter-spacing: .08em; padding-bottom: .7em; }
+.sec h2 { margin: 0; font: 700 clamp(40px, 6.4vw, 92px)/.92 var(--display); letter-spacing: -.02em; }
+.sec h2 em { font: 400 1.18em/1 var(--script); color: var(--accent); padding-left: .06em; }
 .sec p { grid-column: 2; margin: 0; color: var(--muted); max-width: 44ch; }
-.sec .ctrl { grid-column: 3; grid-row: 1 / span 2; display: flex; align-items: center; gap: 10px; font: 12px/1 var(--mono); letter-spacing: .06em; }
-.ctrl button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); font: 18px/1 var(--sans); cursor: pointer; transition: background .2s, color .2s, opacity .2s; }
-.ctrl button:hover, .ctrl button:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
-.ctrl button:disabled { opacity: .3; pointer-events: none; }
-.ctrl .count { min-width: 7ch; text-align: center; }
 
 .projects { list-style: none; margin: 0; padding: 0 var(--gutter); }
 .projects li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); }
 .projects li:last-child { border-bottom: 1px solid var(--line); }
-.projects h3 { margin: 0; font: 400 clamp(21px, 2.1vw, 27px)/1.15 var(--serif); }
+.projects h3 { margin: 0; font: 400 clamp(24px, 2.4vw, 31px)/1.1 var(--display); }
 .projects p { margin: 0; color: var(--muted); max-width: 62ch; }
-.projects a { font: 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; text-underline-offset: 4px; }
+.projects a { font: 600 14px/1 var(--text); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; text-underline-offset: 4px; }
 .projects a:hover, .projects a:focus-visible { color: var(--accent); }
 .wins { list-style: none; margin: clamp(24px, 3vw, 40px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px clamp(16px, 2.4vw, 32px); }
 .wins li { font-size: 14px; color: var(--muted); }
-.wins b { display: block; font: 400 clamp(34px, 4vw, 52px)/1 var(--serif); color: var(--ink); margin-bottom: 6px; }
+.wins b { display: block; font: 400 clamp(40px, 4.6vw, 60px)/1 var(--display); color: var(--ink); margin-bottom: 6px; }
 
-.rooms { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(84vw, 540px); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); padding-bottom: 14px; scrollbar-width: none; }
-.rooms::-webkit-scrollbar { display: none; }
-.room { scroll-snap-align: start; }
-.room .tag { position: absolute; bottom: 12px; right: 12px; padding: 7px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+/* ---------- gallery: outer columns scroll past a still middle ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); padding: 0 var(--gutter); align-items: start; }
+.col { display: grid; gap: clamp(8px, 1vw, 14px); }
+.col.mid { position: sticky; top: 0; height: 100vh; height: 100svh; grid-template-rows: repeat(3, minmax(0, 1fr)); padding: clamp(8px, 1vw, 14px) 0; }
+.tile { position: relative; display: block; overflow: hidden; border-radius: 6px; background: var(--ink); }
+.tile img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s; filter: saturate(.94); }
+.mid .tile img { aspect-ratio: auto; }
+.tile:hover img, .tile:focus-visible img { transform: scale(1.05); filter: saturate(1.06); }
+.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.tile .tag { position: absolute; z-index: 1; bottom: 10px; right: 10px; padding: 7px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 600 13px/1 var(--text); letter-spacing: .06em; text-transform: uppercase; }
 
-@media (max-width: 720px) {
-  .sec { grid-template-columns: auto 1fr; }
-  .sec .ctrl { grid-column: 1 / -1; grid-row: auto; margin-top: 10px; }
+/* ---------- reach: footer with the portal ---------- */
+.reach { margin-top: clamp(64px, 10vw, 140px); padding: clamp(40px, 6vw, 80px) var(--gutter) 28px; background: var(--ink); color: var(--paper); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 clamp(16px, 4vw, 56px); align-items: center; }
+.reach h2 { margin: 0; font: 700 clamp(44px, 7vw, 108px)/.92 var(--display); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.reach h2 a { text-decoration: none; font: 400 1.2em/1.1 var(--script); color: #e9b85c; border-bottom: 0; }
+.reach h2 a:hover, .reach h2 a:focus-visible { color: var(--paper); outline: none; }
+.reach ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 0; padding: 0; }
+.reach li a { display: inline-block; padding: 12px 18px; border: 1px solid rgba(243,237,227,.35); border-radius: 999px; text-decoration: none; font: 600 15px/1 var(--text); letter-spacing: .05em; transition: background .2s, color .2s, border-color .2s; }
+.reach li a:hover, .reach li a:focus-visible { background: var(--paper); color: var(--ink); border-color: var(--paper); outline: none; }
+.portal { position: relative; aspect-ratio: 16 / 9; -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 52%, transparent 78%); mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 52%, transparent 78%); }
+.portal video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reach small { grid-column: 1 / -1; display: block; margin-top: clamp(32px, 5vw, 64px); font: 500 14px/1.5 var(--text); color: rgba(243,237,227,.55); letter-spacing: .05em; }
+
+@media (max-width: 860px) {
+  .card { min-height: 0; }
+  .side { display: none; }
+  .stage { padding-block: clamp(56px, 14vw, 90px) 24px; }
+  .title { font-size: 17.5vw; }
+  .title .b { padding-left: .4em; }
+  .stage { --ov: 46vw; }
+  .note { display: none; }
+  .h1 { left: 96px; top: -28px; width: 30vw; }
+  .h2, .h3 { display: none; }
+  .top { padding-right: 18px; }
+  .lede { flex-direction: column; align-items: stretch; }
+  .panel { width: 100%; }
+  .intro { text-align: left; margin: 0; padding: 20px 18px 24px; }
   .projects li { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .col, .col.mid { display: contents; }
+  .mid .tile img { aspect-ratio: 4 / 5; }
+  .col:first-child .tile:first-child { grid-column: 1 / -1; }   /* 13 tiles: one wide tile keeps the pairs even */
+  .col:first-child .tile:first-child img { aspect-ratio: 1; }
+  .reach { grid-template-columns: 1fr; }
+  .portal { order: -1; margin: -8px -16px 8px; }
 }
 
-@media (prefers-reduced-motion: reduce) { .room img, .room .arrow { transition: none; } .rooms { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  .hang .gilt { animation: none; }
+  .hang, .tile img { transition: none; }
+}
 </style>
 </head>
 <body>
-<header class="top">
-  <a href="./" aria-label="Manideep Reddy, home">M. Reddy · Hyderabad</a>
-  <a class="cv" href="resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+<header class="hall">
+  <div class="card">
+    <nav class="top" aria-label="Site">
+      <a href="./" class="mark" aria-label="Manideep Reddy, home"><img src="assets/logo.png" alt="" width="360" height="361"></a>
+      <a class="cv" href="resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+    </nav>
+
+    <div class="stage">
+      <p class="side l">Backend · Data · AI<br>Hyderabad</p>
+      <p class="side r">Engineer<br>since 2025</p>
+      <h1 class="title" aria-label="Manideep Reddy"><span class="a">Manideep</span><span class="b">Reddy</span></h1>
+      <figure class="oval gilt" style="margin:0"><img src="assets/me.jpg" alt="Portrait of Manideep Reddy in profile against a burnt-orange wall covered in handwritten notes" width="640" height="800" fetchpriority="high"></figure>
+      <p class="note l" aria-hidden="true">backend by day<svg viewBox="0 0 60 30"><path d="M4 6c14 2 30 6 46 18m0 0-9-1m9 1-2-9"/></svg></p>
+      <p class="note r" aria-hidden="true">design by night<svg viewBox="0 0 60 30"><path d="M4 6c14 2 30 6 46 18m0 0-9-1m9 1-2-9"/></svg></p>
+    </div>
+
+    <div class="lede">
+      <a class="panel" href="#design">
+        <span class="gilt" style="--ar:1"><img src="assets/g/00a.jpg" alt="" width="640" height="800" loading="lazy"></span>
+        <h2>Seven <em>rooms</em></h2>
+        <p>One engineer, seven front ends for the same story. It began with a first portfolio made in Lovable, and each one after it was drawn by hand.</p>
+      </a>
+      <p class="intro">I build backends, data pipelines and AI, and I design what people see and touch.</p>
+    </div>
+
+    <a class="hang h1" href="04-cobalt-scroll/" aria-label="Cobalt Scroll portfolio"><span class="gilt"><img src="assets/04.jpg" alt="Cobalt blue hand-lettered Welcome, from the Cobalt Scroll portfolio" width="900" height="473"></span></a>
+    <a class="hang h2" href="02-hindu-mythology/" aria-label="Hindu Mythology portfolio"><span class="gilt"><img src="assets/02.jpg" alt="A temple gopuram under a red eclipse, from the Hindu Mythology portfolio" width="900" height="473"></span></a>
+    <a class="hang h3" href="06-lost-digital-civilization/" aria-label="Route 25 driving game portfolio"><span class="gilt"><img src="assets/06.jpg" alt="Pixel-art street with the title The Portfolio, from the Route 25 driving game" width="900" height="473"></span></a>
+  </div>
 </header>
 
 <main>
-  <section class="intro">
-    <h1>Rekha V<br>Manideep <em>Reddy</em></h1>
-    <p>Software engineer for backend, data and AI, and I design what people see and touch. Below is both: the systems I have built, and seven portfolios that show how I design.</p>
-    <div class="facts"><span>Delta Cubes · since Apr 2025</span><span>Python · FastAPI · React · PostgreSQL · AWS · LLMs</span></div>
-  </section>
-
   <section class="work" aria-labelledby="work-h">
-    <header class="sec"><span class="n">01</span><h2 id="work-h">What I build</h2><p>Backend, data and AI: the systems underneath.</p></header>
+    <header class="sec"><span class="n">01</span><h2 id="work-h">What I <em>build</em></h2><p>Backend, data and AI: the systems underneath.</p></header>
     <ol class="projects">
     <li><h3>SignAI</h3><p>Production recruitment platform with LLM-powered candidate matching. React, Node.js, PostgreSQL, AWS.</p><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a></li>
     <li><h3>Jhanko</h3><p>REST API layer in Python and FastAPI for a geolocation marketplace, with real-time geospatial search.</p><span></span></li>
@@ -144,50 +226,34 @@ a { color: inherit; }
     <ul class="wins"><li><b>40%</b>faster dashboards, from PostgreSQL indexing</li><li><b>50%</b>quicker candidate screening with AI résumé parsing</li><li><b>30%</b>faster API responses in a geolocation marketplace</li><li><b>100%</b>of deployments automated with GitHub Actions</li></ul>
   </section>
 
-  <section class="design" aria-labelledby="design-h">
-    <header class="sec"><span class="n">02</span><h2 id="design-h">How I design</h2><p>Seven portfolios by one person, each a different front end for the same story.</p>
-      <div class="ctrl"><button type="button" class="prev" aria-label="Previous portfolio" aria-controls="rooms">←</button><span class="count" aria-live="polite">01 / 07</span><button type="button" class="next" aria-label="Next portfolio" aria-controls="rooms">→</button></div>
-    </header>
-  <ol class="rooms" id="rooms">
-    <li class="room" style="--c:#ff5a1f"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">
-      <figure><img src="assets/00.jpg" alt="Pixel-type hero reading Manideep Reddy, AI/ML Engineer Portfolio, beside an orange line illustration of an engineer at a laptop" width="900" height="473"><span class="tag">Built with Lovable</span></figure>
-      <div class="meta"><span class="n">00</span><h2>The First One</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>Where it started. Made with an AI app builder and kept exactly as it was.</p>
-    </a></li>
-    <li class="room" style="--c:#1E62B5"><a href="01-blue-illustrated/">
-      <figure><img src="assets/01.jpg" alt="Blue ink illustration of a coastal city, from the Blue Illustrated portfolio" width="900" height="473"></figure>
-      <div class="meta"><span class="n">01</span><h2>Blue Illustrated</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>Engraved-ink skies and fourteen case studies, from AI agents to client sites.</p>
-    </a></li>
-    <li class="room" style="--c:#D7263D"><a href="02-hindu-mythology/">
-      <figure><img src="assets/02.jpg" alt="A temple gopuram under a red eclipse, from the Hindu Mythology portfolio" width="900" height="473"></figure>
-      <div class="meta"><span class="n">02</span><h2>Hindu Mythology</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>Temple doors that open onto the work, closed by a many-armed dancer.</p>
-    </a></li>
-    <li class="room" style="--c:#0E4A32"><a href="03-indian-genz/">
-      <figure><img src="assets/03.jpg" alt="Collage of Indian street posters around the headline Websites that bring you clients" width="900" height="473"></figure>
-      <div class="meta"><span class="n">03</span><h2>Indian GenZ</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>A loud collage for Indian businesses: sites, apps and AI, priced in rupees.</p>
-    </a></li>
-    <li class="room" style="--c:#1643AD"><a href="04-cobalt-scroll/">
-      <figure><img src="assets/04.jpg" alt="Cobalt blue hand-lettered Welcome, from the Cobalt Scroll portfolio" width="900" height="473"></figure>
-      <div class="meta"><span class="n">04</span><h2>Cobalt Scroll</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>One long cobalt scroll, chapter by chapter, from home to contact.</p>
-    </a></li>
-    <li class="room" style="--c:#B8322A"><a href="05-story-torn-ink/">
-      <figure><img src="assets/05.jpg" alt="Torn paper over a black ink dragon, from the Torn Ink portfolio" width="900" height="473"></figure>
-      <div class="meta"><span class="n">05</span><h2>Torn Ink</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>Specification in, shipped product out, told across torn pages and ink.</p>
-    </a></li>
-    <li class="room" style="--c:#16204a"><a href="06-lost-digital-civilization/">
-      <figure><img src="assets/06.jpg" alt="Pixel-art street with the title The Portfolio, from the Route 25 driving game" width="900" height="473"></figure>
-      <div class="meta"><span class="n">06</span><h2>Route 25</h2><span class="arrow" aria-hidden="true">↗</span></div>
-      <p><span class="dot"></span>A drivable retro road trip. Every stop on the highway is a chapter.</p>
-    </a></li>
-  </ol>
+  <section class="design" id="design" aria-labelledby="design-h">
+    <header class="sec"><span class="n">02</span><h2 id="design-h">How I <em>design</em></h2><p>Seven portfolios by one person, each a different front end for the same story.</p></header>
+    <div class="gallery">
+      <div class="col">
+        <a class="tile" href="01-blue-illustrated/" aria-label="Blue Illustrated portfolio"><img src="assets/g/01a.jpg" alt="Blue engraved-ink illustration of a woman in the sky above the name Manideep" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener" aria-label="The First One, built with Lovable"><img src="assets/g/00a.jpg" alt="Pixel-type headline Manideep Reddy, AI/ML Engineer Portfolio, on white" width="640" height="800" loading="lazy"><span class="tag">Built with Lovable</span></a>
+        <a class="tile" href="04-cobalt-scroll/" aria-label="Cobalt Scroll portfolio"><img src="assets/g/04b.jpg" alt="Cobalt print of a rider on horseback beside the word Home" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="05-story-torn-ink/" aria-label="Torn Ink portfolio"><img src="assets/g/05b.jpg" alt="Torn paper revealing a silver ink dragon on black" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="03-indian-genz/" aria-label="Indian GenZ portfolio"><img src="assets/g/03b.jpg" alt="Green poster with the headline What I can build for you and a red card" width="640" height="800" loading="lazy"></a>
+      </div>
+      <div class="col mid">
+        <a class="tile" href="02-hindu-mythology/" aria-label="Hindu Mythology portfolio"><img src="assets/g/02a.jpg" alt="Dark carved texture with the name Manideep in large white type" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="03-indian-genz/" aria-label="Indian GenZ portfolio"><img src="assets/g/03a.jpg" alt="Collage headline Websites that bring you clients, under the word Namaste" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="06-lost-digital-civilization/" aria-label="Route 25 driving game portfolio"><img src="assets/g/06a.jpg" alt="Pixel-art city street under the title Manideep, The Portfolio" width="640" height="800" loading="lazy"></a>
+      </div>
+      <div class="col">
+        <a class="tile" href="04-cobalt-scroll/" aria-label="Cobalt Scroll portfolio"><img src="assets/g/04a.jpg" alt="Blue engraving of an ornate sword hilt" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="01-blue-illustrated/" aria-label="Blue Illustrated portfolio"><img src="assets/g/01b.jpg" alt="Pale blue project cards for SignAI with technology tags" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="05-story-torn-ink/" aria-label="Torn Ink portfolio"><img src="assets/g/05a.jpg" alt="A grey ink dragon coiling across a black page" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="02-hindu-mythology/" aria-label="Hindu Mythology portfolio"><img src="assets/g/02b.jpg" alt="Black page with the line Software engineer building backend systems, data pipelines and AI features" width="640" height="800" loading="lazy"></a>
+        <a class="tile" href="06-lost-digital-civilization/" aria-label="Route 25 driving game portfolio"><img src="assets/g/06b.jpg" alt="Low-poly desert garage with a red muscle car and a car picker" width="640" height="800" loading="lazy"></a>
+      </div>
+    </div>
   </section>
+</main>
 
-  <section class="reach" aria-labelledby="reach-h">
+<footer class="reach" aria-labelledby="reach-h">
+  <div>
     <h2 id="reach-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com">Say hello.</a></h2>
     <ul>
       <li><a href="mailto:manideepreddyrekha@gmail.com">Email</a></li>
@@ -196,25 +262,27 @@ a { color: inherit; }
       <li><a href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297" target="_blank" rel="noopener me">LinkedIn</a></li>
       <li><a href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
     </ul>
-    <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India</small>
-  </section>
-</main>
+  </div>
+  <div class="portal">
+    <video muted loop playsinline preload="none" poster="assets/portal-poster.jpg" width="1280" height="720" aria-label="A summoning portal: runes ignite on a stone pedestal and a red-orange vortex swirls up">
+      <source src="assets/portal.webm" type="video/webm">
+      <source src="assets/portal.mp4" type="video/mp4">
+    </video>
+  </div>
+  <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India</small>
+</footer>
 <script>
 (() => {
-  const track = document.getElementById('rooms'), cards = [...track.children];
-  const prev = document.querySelector('.ctrl .prev'), next = document.querySelector('.ctrl .next'), count = document.querySelector('.ctrl .count');
-  const pad = n => String(n).padStart(2, '0');
-  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
-  const index = () => Math.round(track.scrollLeft / step());
+  // ponytail: no autoplay attribute, so reduced-motion viewers only ever see the poster.
+  const video = document.querySelector('.portal video');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let inView = false;
   const sync = () => {
-    const i = Math.min(index(), cards.length - 1), end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-    count.textContent = `${pad((end ? cards.length : i + 1))} / ${pad(cards.length)}`;
-    prev.disabled = track.scrollLeft <= 4; next.disabled = end;
+    if (inView && !still.matches) video.play().catch(() => {});
+    else video.pause();
   };
-  const go = d => track.scrollBy({ left: d * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  prev.onclick = () => go(-1); next.onclick = () => go(1);
-  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
-  addEventListener('resize', sync); sync();
+  new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { rootMargin: '200px' }).observe(video);
+  still.addEventListener('change', sync);
 })();
 </script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
