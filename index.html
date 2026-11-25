@@ -21,10 +21,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="me" href="https://github.com/Manideep-Ai-ai">
 <link rel="me" href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/me.jpg">
+<link rel="preload" as="font" type="font/woff" href="assets/fonts/kalam.woff" crossorigin>
+<link rel="preload" as="font" type="font/woff" href="assets/fonts/barlow.woff" crossorigin>
+<link rel="stylesheet" href="assets/intro/intro.css">
+<script type="module" src="assets/intro/intro.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Projects & Seven Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
@@ -41,206 +41,159 @@
 </script>
 <style>
 :root {
-  --paper: #f3ede3; --ink: #14110f; --muted: #6d655c; --line: rgba(20,17,15,.14); --accent: #c8402c;
-  --red: #c8401a; --wine: #2b0e07;
-  --display: 'Playfair Display', Georgia, serif; --text: 'Cormorant Garamond', Garamond, Georgia, serif; --script: 'Great Vibes', 'Snell Roundhand', cursive; --gold: #b8862b;
+  /* Sketchbook Studio, Red Ink: the page continues the desk drawing it opens with */
+  --paper: #faf9f6; --ink: #221c1a; --muted: #766354; --line: #d9cdbc; --pencil: #51473f; --desk: #e9e1d3;
+  --accent: #e6332d; --deep: #a32723; --ext: #2a1f1b;
+  --display: Bowlby, 'Arial Black', sans-serif; --text: Barlow, Arial, sans-serif; --script: Kalam, 'Comic Sans MS', cursive;
   --gutter: clamp(16px, 4vw, 56px);
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 500 19px/1.5 var(--text); overflow-x: clip; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--text); overflow-x: clip; }
 a { color: inherit; }
 img { max-width: 100%; }
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--accent); color: var(--paper); }
 
-/* ---------- hall: the hero ---------- */
-.hall { overflow: clip; background: var(--wine); padding: clamp(28px, 6vw, 88px) clamp(16px, 5vw, 80px) clamp(40px, 7vw, 110px); }
-.card { position: relative; max-width: 1360px; margin: 0 auto; background: var(--paper); min-height: min(86svh, 900px); display: grid; grid-template-rows: auto 1fr auto; box-shadow: 0 40px 90px -30px rgba(0,0,0,.6); }
-.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px clamp(150px, 14vw, 210px) 22px clamp(18px, 3vw, 36px); font: 600 14px/1 var(--text); letter-spacing: .08em; text-transform: uppercase; position: relative; z-index: 3; }
-.top a { text-decoration: none; }
-.top .mark { display: block; width: clamp(60px, 6vw, 84px); transition: rotate .6s cubic-bezier(.2,.8,.2,1); }
-.top .mark img { display: block; width: 100%; height: auto; }
-.top .mark:hover, .top .mark:focus-visible { rotate: -8deg; outline: none; }
-.top .cv { padding: 10px 16px; border: 1px solid var(--ink); border-radius: 999px; transition: background .2s, color .2s; }
-.top .cv:hover, .top .cv:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+.nojs { padding: 48px var(--gutter); text-align: center; }
+.nojs h1 { margin: 12px 0 8px; font: 400 clamp(44px, 8vw, 96px)/1 var(--display); color: var(--accent); }
 
-.stage { --ov: clamp(200px, 19vw, 290px); position: relative; display: grid; place-items: center; padding: clamp(8px, 2vw, 24px) clamp(12px, 3vw, 40px); background: radial-gradient(closest-side at 50% 50%, rgba(200,64,26,.16), transparent 70%); }
-.title { position: relative; z-index: 2; margin: 0; text-align: center; color: var(--red); font: italic 900 clamp(64px, 11.5vw, 178px)/.86 var(--display); letter-spacing: -.02em; paint-order: stroke fill; -webkit-text-stroke: clamp(4px, .5vw, 8px) var(--paper); }
-.title span { display: block; }
-.title .b { margin-top: calc(var(--ov) * 1.25 - .62em); padding-left: 1.2em; }
-.oval { position: absolute; z-index: 3; left: 50%; top: 50%; width: var(--ov); translate: -50% -50%; rotate: -3deg; }
-.side { position: absolute; z-index: 3; top: 0; font: 600 13px/1.45 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
-.side.l { left: clamp(18px, 4vw, 64px); }
-.side.r { right: clamp(18px, 4vw, 64px); text-align: right; top: auto; bottom: 6%; }
+/* ---------- sections: one red extruded title per section, a pencil note in the margin ---------- */
+.sec { display: grid; grid-template-columns: 1fr; align-items: end; gap: 10px 22px; padding: 0 var(--gutter); margin: clamp(72px, 10vw, 140px) 0 clamp(26px, 3.4vw, 44px); }
+.pop { margin: 0; font: 400 clamp(40px, 6.6vw, 96px)/.95 var(--display); letter-spacing: -.01em; text-transform: uppercase; color: var(--accent);
+  -webkit-text-stroke: 1px var(--ext); paint-order: stroke fill;
+  text-shadow: -1px 1px var(--ext), -2px 2px var(--ext), -3px 3px var(--ext), -4px 4px var(--ext), -5px 5px var(--ext), -6px 6px var(--ext), -9px 10px 6px rgba(42,31,27,.12); }
+.sec .aside { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; color: var(--muted); }
+.sec .aside em { font: 400 clamp(20px, 1.9vw, 25px)/1.2 var(--script); font-style: normal; color: var(--deep); rotate: -2deg; }
 
-.lede { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
-.panel { display: grid; grid-template-columns: auto 1fr; gap: 18px 22px; align-items: center; width: min(100%, 520px); padding: 22px 26px; background: var(--red); color: var(--paper); text-decoration: none; }
-.panel h2 { margin: 0; font: 700 clamp(30px, 3.2vw, 44px)/.95 var(--display); }
-.panel h2 em { display: block; padding-left: .9em; font: 400 1.5em/1 var(--script); color: #ffe3a3; }
-.panel p { grid-column: 1 / -1; margin: 0; font: 600 13px/1.55 var(--text); letter-spacing: .05em; text-transform: uppercase; max-width: 52ch; }
-.panel .gilt { width: clamp(92px, 9vw, 128px); }
-.intro { margin: 0 clamp(200px, 23vw, 330px) 0 0; padding: 0 0 30px; max-width: 30ch; text-align: right; font: italic 500 clamp(22px, 2vw, 28px)/1.25 var(--text); }
-
-/* gilded frames: layered gold bands, a bead molding and carved light */
-.gilt { --b: clamp(9px, 1.1vw, 15px); position: relative; display: block; padding: var(--b); background:
-    radial-gradient(120% 90% at 25% 15%, rgba(255,244,200,.85), transparent 45%),
-    conic-gradient(from 200deg, #5e3409, #f4d987, #9c6419, #fff0b6, #7a4710, #e7bd5e, #a56a1a, #5e3409);
-  box-shadow: inset 0 0 0 1px #3d2104, inset 0 2px 1px rgba(255,248,214,.9), inset 0 -3px 2px rgba(60,30,0,.7), 0 28px 50px -18px rgba(25,4,0,.7), 0 6px 14px rgba(25,4,0,.35); }
-.gilt::before { content: ""; position: absolute; inset: calc(var(--b) * .3); border: 3px dotted rgba(255,242,190,.95); border-radius: inherit; filter: drop-shadow(0 1px 0 rgba(70,35,0,.8)); pointer-events: none; }
-.gilt::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: repeating-conic-gradient(from 0deg, rgba(70,35,0,.22) 0 3deg, transparent 3deg 7deg); mix-blend-mode: multiply; pointer-events: none; }
-.gilt img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: var(--ar, 4 / 3); object-fit: cover; border-radius: inherit; box-shadow: 0 0 0 2px #3d2104, 0 0 0 4px #f1d184; }
-.oval.gilt { position: absolute; border-radius: 50%; --ar: 4 / 5; --b: clamp(12px, 1.6vw, 22px); }
-.oval img { object-position: 50% 45%; }
-.note { position: absolute; z-index: 3; margin: 0; font: 400 clamp(26px, 2.6vw, 40px)/1 var(--script); color: var(--ink); white-space: nowrap; }
-.note svg { display: block; width: 1.9em; height: auto; margin-top: .1em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
-.note.l { top: 50%; right: calc(50% + var(--ov) * .62); rotate: -6deg; }
-.note.l svg { margin-left: auto; }
-.note.r { top: 58%; left: calc(50% + var(--ov) * .62); rotate: 5deg; }
-.note.r svg { scale: -1 1; }
-
-.hang { position: absolute; z-index: 4; text-decoration: none; transition: translate .5s cubic-bezier(.2,.8,.2,1); }
-.hang:hover, .hang:focus-visible { translate: 0 -6px; outline: none; }
-.hang:focus-visible .gilt { outline: 2px solid var(--ink); outline-offset: 6px; }
-.hang .gilt { animation: sway 9s ease-in-out infinite alternate; }
-.h1 { top: clamp(-48px, -3.5vw, -24px); left: clamp(150px, 17vw, 270px); width: clamp(120px, 15vw, 210px); --tilt: -3deg; }
-.h2 { top: clamp(-36px, -2.5vw, -18px); right: clamp(-30px, -2vw, -10px); width: clamp(110px, 12vw, 170px); --tilt: 4deg; }
-.h3 { bottom: clamp(-52px, -4vw, -26px); right: clamp(-40px, -2.6vw, -14px); width: clamp(150px, 19vw, 270px); --tilt: -2deg; }
-.h2 .gilt { --ar: 4 / 5; }
-.h2 .gilt { animation-delay: -3s; }
-@keyframes sway { from { rotate: var(--tilt, 0deg); } to { rotate: calc(var(--tilt, 0deg) * -.4); } }
-.hang .gilt { rotate: var(--tilt); }
-
-/* ---------- sections ---------- */
-.sec { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 8px 20px; padding: 0 var(--gutter); margin: clamp(56px, 9vw, 120px) 0 clamp(20px, 3vw, 36px); }
-.sec .n { font: 600 14px/1 var(--text); color: var(--accent); letter-spacing: .08em; padding-bottom: .7em; }
-.sec h2 { margin: 0; font: 700 clamp(40px, 6.4vw, 92px)/.92 var(--display); letter-spacing: -.02em; }
-.sec h2 em { font: 400 1.18em/1 var(--script); color: var(--accent); padding-left: .06em; }
-.sec p { grid-column: 2; margin: 0; color: var(--muted); max-width: 44ch; }
-
+/* work log: name in poster caps, what it does, where to see it */
 .projects { list-style: none; margin: 0; padding: 0 var(--gutter); }
-.projects li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); }
+.projects li { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--line); }
 .projects li:last-child { border-bottom: 1px solid var(--line); }
-.projects h3 { margin: 0; font: 400 clamp(24px, 2.4vw, 31px)/1.1 var(--display); }
+.projects h3 { margin: 0; font: 400 clamp(19px, 1.8vw, 24px)/1.15 var(--display); text-transform: uppercase; letter-spacing: .01em; }
 .projects p { margin: 0; color: var(--muted); max-width: 62ch; }
-.projects a { font: 600 14px/1 var(--text); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; text-underline-offset: 4px; }
-.projects a:hover, .projects a:focus-visible { color: var(--accent); }
-.wins { list-style: none; margin: clamp(24px, 3vw, 40px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px clamp(16px, 2.4vw, 32px); }
-.wins li { font-size: 14px; color: var(--muted); }
-.wins b { display: block; font: 400 clamp(40px, 4.6vw, 60px)/1 var(--display); color: var(--ink); margin-bottom: 6px; }
+.projects a { justify-self: start; font: 400 15px/1 var(--text); letter-spacing: .04em; white-space: nowrap; text-decoration: none; border-bottom: 1px solid var(--pencil); padding-bottom: 4px; transition: color .2s, border-color .2s; }
+.projects a:hover, .projects a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
+.wins { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 26px clamp(16px, 2.4vw, 32px); }
+.wins li { font-size: 15px; color: var(--muted); max-width: 26ch; }
+.wins b { display: block; font: 400 clamp(44px, 4.6vw, 64px)/1 var(--display); color: var(--ink); margin-bottom: 8px; }
+
+/* the carousel sits in a drawn monitor, the same pencil line and desk beige as the intro */
+.screen { position: relative; margin: 0 var(--gutter) 96px; padding: clamp(10px, 1.2vw, 16px); background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 14px; box-shadow: inset 0 0 0 4px var(--paper), 6px 8px 0 -2px rgba(42,31,27,.08); }
+.screen::before { content: ""; position: absolute; left: 50%; top: 100%; width: 70px; height: 44px; translate: -50% 1.5px; background: var(--desk); border: 1.5px solid var(--pencil); border-top: 0; }
+.screen::after { content: ""; position: absolute; left: 50%; top: calc(100% + 44px); width: min(300px, 46%); height: 14px; translate: -50% 0; background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 8px 8px 3px 3px; }
 
 /* ---------- rooms: water-ripple carousel, a tap drops a ring that reveals the next portfolio ---------- */
-.rip { position: relative; margin: 0 var(--gutter); height: clamp(460px, 56vw, 88svh); overflow: hidden; border-radius: 10px; background: var(--ink); color: var(--paper); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
+.rip { --chin: 124px; position: relative; height: clamp(480px, 54vw, 86svh); overflow: hidden; border-radius: 6px; background: var(--desk); color: var(--ink); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
 .rip:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
 .rip:not(.on) { height: auto; cursor: auto; }
 .rip.on .rip-list { display: none; }
 .rip-list { margin: 0; padding: 28px clamp(20px, 4vw, 56px); display: grid; gap: 14px; }
-.rip-list a { font: 700 28px/1.1 var(--display); }
+.rip-list a { font: 400 26px/1.1 var(--display); }
 .rip-list p { margin: 2px 0 0; opacity: .8; }
-.rip-base, .rip-in { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block; pointer-events: none; }
+.rip-base, .rip-in { position: absolute; inset: 0 0 auto; width: 100%; height: calc(100% - var(--chin)); max-width: none; display: block; pointer-events: none; }
+.rip-base { background: var(--ink); }
 .rip-base, .rip-fade { object-fit: cover; object-position: 50% 0; }
-.rip-fade { animation: rip-fade .35s ease both; }
-.rip-shade { position: absolute; inset: auto 0 0; height: 62%; background: linear-gradient(to top, rgba(20,17,15,.97), rgba(20,17,15,.9) 42%, rgba(20,17,15,0)); pointer-events: none; }
-.rip-text { position: absolute; left: clamp(20px, 4vw, 56px); right: clamp(170px, 22vw, 300px); bottom: clamp(52px, 8vh, 84px); pointer-events: none; }
+.rip-fade { animation: rip-fade .3s cubic-bezier(.23,1,.32,1) both; }
+.rip-text { position: absolute; left: clamp(18px, 2.4vw, 32px); right: 296px; bottom: 0; height: var(--chin); display: flex; flex-direction: column; justify-content: center; pointer-events: none; }
 .rip-line { display: block; overflow: hidden; padding-bottom: .08em; }
-.rip-line > * { display: block; animation: rip-rise .9s cubic-bezier(.2,.8,.2,1) both; }
-.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 700 clamp(38px, 6vw, 88px)/1 var(--display); letter-spacing: -.02em; transition: color .2s; }
-.rip-title a::after { content: " ↗"; font: 500 .45em/1 var(--text); vertical-align: .9em; }
-.rip-title a:hover, .rip-title a:focus-visible { color: #e9b85c; outline: none; }
-.rip-cap { margin-top: 8px; font: 500 clamp(18px, 1.6vw, 22px)/1.35 var(--text); max-width: 44ch; opacity: .9; }
+.rip-line > * { display: block; animation: rip-rise .5s cubic-bezier(.23,1,.32,1) both; }
+.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 400 clamp(24px, 2.6vw, 38px)/1 var(--display); text-transform: uppercase; letter-spacing: 0; transition: color .2s; }
+.rip-title a::after { content: " ↗"; font: 400 .42em/1 var(--text); vertical-align: .9em; }
+.rip-title a:hover, .rip-title a:focus-visible { color: var(--deep); outline: none; }
+.rip-cap { margin-top: 6px; font: 400 clamp(17px, 1.4vw, 20px)/1.3 var(--script); color: var(--deep); max-width: 60ch; }
 .rip-cap > * { animation-delay: .08s; }
-.rip-nav { position: absolute; right: clamp(20px, 4vw, 56px); bottom: clamp(52px, 8vh, 84px); display: flex; align-items: center; gap: 14px; cursor: default; }
-.rip-count { font: 600 14px/1 var(--text); letter-spacing: .14em; }
-.rip-btn { appearance: none; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(243,237,227,.45); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s; }
-.rip-btn:hover, .rip-btn:focus-visible { background: var(--paper); color: var(--ink); outline: none; }
-.rip-track { position: absolute; left: clamp(20px, 4vw, 56px); right: clamp(20px, 4vw, 56px); bottom: clamp(24px, 3.5vh, 38px); height: 1px; background: rgba(243,237,227,.28); }
-.rip-fill { height: 100%; background: var(--paper); transform-origin: left; transform: scaleX(0); }
+.rip-nav { position: absolute; right: clamp(18px, 2.4vw, 32px); bottom: calc(var(--chin) / 2 - 23px); display: flex; align-items: center; gap: 14px; cursor: default; }
+.rip-pause { width: 38px; height: 38px; }
+.rip-count { font: 400 14px/1 var(--text); letter-spacing: .14em; }
+.rip-btn { position: relative; appearance: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--pencil); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .15s ease-out, color .15s ease-out, transform .12s ease-out; }
+.rip-btn::after { content: ''; position: absolute; inset: -4px; }   /* 46px+ hit area, the 38px pause too */
+.rip-btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+@media (hover: hover) { .rip-btn:hover { background: var(--ink); color: var(--paper); } }   /* no sticky ink fill after a tap */
+.rip-btn:active { transform: scale(.94); }
+.rip-track { position: absolute; left: 0; right: 0; top: calc(100% - var(--chin)); height: 2px; background: var(--line); }
+.rip-fill { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
 .rip-fill.run { animation: rip-auto 6s linear forwards; }
 .rip.paused .rip-fill { animation-play-state: paused; }
 @keyframes rip-rise { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes rip-auto { to { transform: scaleX(1); } }
 @keyframes rip-fade { from { opacity: 0; } }
 
-/* ---------- reach: footer with the portal ---------- */
-.reach { margin-top: clamp(64px, 10vw, 140px); padding: clamp(40px, 6vw, 80px) var(--gutter) 28px; background: var(--ink); color: var(--paper); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 clamp(16px, 4vw, 56px); align-items: center; }
-.reach h2 { margin: 0; font: 700 clamp(44px, 7vw, 108px)/.92 var(--display); letter-spacing: -.02em; overflow-wrap: anywhere; }
-.reach h2 a { text-decoration: none; font: 400 1.2em/1.1 var(--script); color: #e9b85c; border-bottom: 0; }
-.reach h2 a:hover, .reach h2 a:focus-visible { color: var(--paper); outline: none; }
-.reach ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 0; padding: 0; }
-.reach li a { display: inline-block; padding: 12px 18px; border: 1px solid rgba(243,237,227,.35); border-radius: 999px; text-decoration: none; font: 600 15px/1 var(--text); letter-spacing: .05em; transition: background .2s, color .2s, border-color .2s; }
-.reach li a:hover, .reach li a:focus-visible { background: var(--paper); color: var(--ink); border-color: var(--paper); outline: none; }
-.portal { position: relative; aspect-ratio: 16 / 9; -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 52%, transparent 78%); mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 52%, transparent 78%); }
-.portal video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.reach small { grid-column: 1 / -1; display: block; margin-top: clamp(32px, 5vw, 64px); font: 500 14px/1.5 var(--text); color: rgba(243,237,227,.55); letter-spacing: .05em; }
+/* ---------- crew: the footer. Mani's name in the heading red, four pencil sketches of him living on the letters ---------- */
+.crew { margin-top: clamp(48px, 7vw, 100px); padding: clamp(24px, 3vw, 40px) var(--gutter) 28px; overflow: clip; }
+.crew-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; }
+.crew h2 { margin: 0; font: 400 clamp(32px, 4.2vw, 64px)/.98 var(--display); text-transform: uppercase; text-wrap: balance; }
+.crew h2 a { display: inline-block; margin-top: .12em; rotate: -3deg; text-transform: none; text-decoration: none; font: 400 .9em/1.1 var(--script); color: var(--deep); }
+.crew h2 a:hover, .crew h2 a:focus-visible { color: var(--accent); outline: none; }
+.crew ul { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; padding: 0; }
+.crew li a { display: inline-block; padding: 8px 0; border-bottom: 1px solid var(--pencil); text-decoration: none; font: 400 16px/1 var(--text); letter-spacing: .03em; transition: color .15s ease-out, border-color .15s ease-out; }
+.crew li a:hover, .crew li a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
+.copied { flex-basis: 100%; min-height: 1.4em; margin: -12px 0 0; text-align: right; font: 400 20px/1.2 var(--script); color: var(--deep); rotate: -2deg; opacity: 0; translate: 0 3px; transition: opacity .15s ease-out, translate .15s ease-out; }
+.copied.on { opacity: 1; translate: none; transition-duration: .2s; }
+
+/* The wordmark: one inline-block per letter at Bowlby's natural metrics (line box 1.525em, cap .742em, baseline
+   .4277em above the box bottom), so a sketch can sit on a letter in em and scale with the word. */
+.crew-stage { position: relative; margin-top: clamp(40px, 6vw, 88px); display: flex; justify-content: center; padding-right: .3em;
+  font-size: min(calc((100vw - 2 * var(--gutter)) / 6.6), 190px); }
+.crew-word { position: relative; display: flex; margin: -.12em 0 -.3em; font: 400 1em/1.525 var(--display); letter-spacing: -.01em; color: var(--accent);
+  -webkit-text-stroke: 1px var(--ext); paint-order: stroke fill;
+  text-shadow: -.01em .01em var(--ext), -.02em .02em var(--ext), -.03em .03em var(--ext), -.04em .04em var(--ext), -.05em .05em var(--ext), -.06em .06em var(--ext); }
+.crew-word > span { position: relative; }
+.crew-ground { position: absolute; left: -.25em; right: -.4em; bottom: calc(.4277em - .06em); width: calc(100% + .65em); height: .1em; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2px; stroke-linecap: round; }
+.crew-ground path { vector-effect: non-scaling-stroke; }
+.crew-prop { position: absolute; z-index: 1; width: auto; pointer-events: none; }
+.crew-m { position: absolute; z-index: 1; width: max-content; font-size: inherit; bottom: .4277em; translate: -50% 0; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.crew-m img { display: block; width: auto; height: var(--h); max-width: none; transform-origin: 50% 100%; transition: translate .34s cubic-bezier(.34,1.35,.64,1), scale .12s ease-out; }
+.crew-m::after { content: ''; position: absolute; inset: -6px -10px; }   /* thin sketches still get a 24px+ target */
+.crew-m:active img { scale: .97; }                                         /* response on press, not on release */
+.crew-m.up img { translate: 0 -7%; transition: translate .15s cubic-bezier(.23,1,.32,1), scale .12s ease-out; }   /* the tap's push; it lands with a small settle */
+.crew-m:focus-visible { outline: 2px dashed var(--ink); outline-offset: 4px; border-radius: 8px; }
+.crew-say { position: absolute; z-index: 2; left: 0; top: 0; margin: 0; max-width: min(260px, 80vw); padding: 9px 14px; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 16px 16px 16px 4px;
+  font: 400 17px/1.25 var(--script); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); pointer-events: none;
+  transform-origin: 12px 100%; opacity: 0; scale: .94; filter: blur(4px); transition: opacity .16s ease-out, scale .16s ease-out, filter .16s ease-out; }
+.crew-say.on { opacity: 1; scale: 1; filter: none; transition-duration: .28s; transition-timing-function: cubic-bezier(.23,1,.32,1); }   /* materialises at the speaker */
+.crew-line { margin: clamp(20px, 3vw, 34px) 0 0; text-align: center; font: 400 clamp(19px, 1.9vw, 24px)/1.3 var(--script); color: var(--deep); }
+.crew small { display: block; margin-top: clamp(32px, 5vw, 56px); padding-top: 18px; border-top: 1.5px dashed var(--line); font: 400 14px/1.5 var(--text); color: var(--muted); letter-spacing: .05em; }
+.crew .addr { user-select: all; }
+
+/* arrival, once, when the footer scrolls in: the ground draws, letters rise left to right, then the sketches. Only with JS. */
+.crew.pre .crew-ground path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.crew.pre .crew-word > span { opacity: 0; translate: 0 .1em; }
+.crew.pre .crew-m, .crew.pre .crew-prop { opacity: 0; }
+.crew.pre .crew-m { translate: -50% 6%; }
+.crew.pre.seen .crew-ground path { stroke-dashoffset: 0; transition: stroke-dashoffset .9s cubic-bezier(.23,1,.32,1); }
+.crew.pre.seen .crew-word > span { opacity: 1; translate: none; transition: opacity .4s ease-out, translate .5s cubic-bezier(.23,1,.32,1); transition-delay: calc(120ms + var(--i) * 60ms); }
+.crew.pre.seen .crew-m, .crew.pre.seen .crew-prop { opacity: 1; translate: -50% 0; transition: opacity .4s ease-out, translate .5s cubic-bezier(.23,1,.32,1); transition-delay: calc(640ms + var(--j, 3) * 110ms); }
+.crew.pre.seen .crew-prop { translate: none; }
 
 @media (max-width: 860px) {
-  .card { min-height: 0; }
-  .side { display: none; }
-  .stage { padding-block: clamp(48px, 12vw, 80px); }   /* symmetric, so the oval stays centred on the name */
-  .title { font-size: 17.5vw; }
-  .title .b { padding-left: .4em; margin-top: calc(var(--ov) * 1.25 - .42em); }
-  .stage { --ov: 46vw; }
-  .note { display: none; }
-  .h1 { left: 96px; top: -28px; width: 30vw; }
-  .h2, .h3 { display: none; }
-  .top { padding-right: 18px; }
-  .lede { flex-direction: column; align-items: stretch; }
-  .panel { width: 100%; }
-  .intro { text-align: left; margin: 0; padding: 20px 18px 24px; }
   .projects li { grid-template-columns: 1fr; }
-  .reach { grid-template-columns: 1fr; }
-  .portal { order: -1; margin: -8px -16px 8px; }
 }
 
 @media (max-width: 600px) {
+  .crew-top { flex-direction: column; align-items: start; }
+  .copied { text-align: left; margin: 0; }
   /* phones: a tall stage shows the phone-sized screenshots; controls sit under the caption */
-  .rip { margin: 0 12px; height: min(150vw, 84svh); }
-  .rip-shade { height: 74%; }
-  .rip-text { right: 20px; bottom: 112px; }
-  .rip-nav { left: 20px; right: auto; bottom: 46px; }
+  .screen { margin: 0 12px 84px; padding: 8px; }
+  .rip { --chin: 178px; height: min(178vw, 88svh); }
+  .rip-text { right: 18px; justify-content: flex-start; padding-top: 18px; }
+  .rip-nav { left: 18px; right: auto; bottom: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hang .gilt { animation: none; }
-  .hang { transition: none; }
   .rip-line > * { animation: none; }
+  .rip-btn:active { transform: none; }
+  .copied { translate: none; }
+  .crew-m img, .crew-m.up img { translate: none; scale: none; transition: none; }
+  .crew-say, .crew-say.on { scale: none; filter: none; transition: opacity .2s; }
 }
 </style>
 </head>
 <body>
-<header class="hall">
-  <div class="card">
-    <nav class="top" aria-label="Site">
-      <a href="./" class="mark" aria-label="Manideep Reddy, home"><img src="assets/logo.png" alt="" width="360" height="361"></a>
-      <a class="cv" href="resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
-    </nav>
-
-    <div class="stage">
-      <p class="side l">Backend · Data · AI<br>Hyderabad</p>
-      <p class="side r">Engineer<br>since 2025</p>
-      <h1 class="title" aria-label="Manideep Reddy"><span class="a">Manideep</span><span class="b">Reddy</span></h1>
-      <figure class="oval gilt" style="margin:0"><img src="assets/me.jpg" alt="Portrait of Manideep Reddy in profile against a burnt-orange wall covered in handwritten notes" width="640" height="800" fetchpriority="high"></figure>
-      <p class="note l" aria-hidden="true">backend by day<svg viewBox="0 0 60 30"><path d="M4 6c14 2 30 6 46 18m0 0-9-1m9 1-2-9"/></svg></p>
-      <p class="note r" aria-hidden="true">design by night<svg viewBox="0 0 60 30"><path d="M4 6c14 2 30 6 46 18m0 0-9-1m9 1-2-9"/></svg></p>
-    </div>
-
-    <div class="lede">
-      <a class="panel" href="#design">
-        <span class="gilt" style="--ar:1"><img src="assets/g/00a.jpg" alt="" width="640" height="800" loading="lazy"></span>
-        <h2>Seven <em>rooms</em></h2>
-        <p>One engineer, seven front ends for the same story. It began with a first portfolio made in Lovable, and each one after it was drawn by hand.</p>
-      </a>
-      <p class="intro">I build backends, data pipelines and AI, and I design what people see and touch.</p>
-    </div>
-
-    <a class="hang h1" href="04-cobalt-scroll/" aria-label="Cobalt Scroll portfolio"><span class="gilt"><img src="assets/04.jpg" alt="Cobalt blue hand-lettered Welcome, from the Cobalt Scroll portfolio" width="900" height="473"></span></a>
-    <a class="hang h2" href="02-hindu-mythology/" aria-label="Hindu Mythology portfolio"><span class="gilt"><img src="assets/02.jpg" alt="A temple gopuram under a red eclipse, from the Hindu Mythology portfolio" width="900" height="473"></span></a>
-    <a class="hang h3" href="06-lost-digital-civilization/" aria-label="Route 25 driving game portfolio"><span class="gilt"><img src="assets/06.jpg" alt="Pixel-art street with the title The Portfolio, from the Route 25 driving game" width="900" height="473"></span></a>
-  </div>
-</header>
-
+<div id="intro"></div>
+<noscript><header class="nojs"><img src="assets/logo.png" alt="" width="72" height="72"><h1>Manideep Reddy</h1><p>Software engineer in Hyderabad: backends, data and AI, and the interfaces people see and touch.</p></header></noscript>
 <main>
-  <section class="work" aria-labelledby="work-h">
-    <header class="sec"><span class="n">01</span><h2 id="work-h">What I <em>build</em></h2><p>Backend, data and AI: the systems underneath.</p></header>
+  <section class="work" id="work" aria-labelledby="work-h">
+    <header class="sec"><h2 id="work-h" class="pop">What I build</h2><p class="aside">Backend, data and AI. <em>the parts nobody sees.</em></p></header>
     <ol class="projects">
     <li><h3>SignAI</h3><p>Production recruitment platform with LLM-powered candidate matching. React, Node.js, PostgreSQL, AWS.</p><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a></li>
     <li><h3>Jhanko</h3><p>REST API layer in Python and FastAPI for a geolocation marketplace, with real-time geospatial search.</p><span></span></li>
@@ -252,7 +205,8 @@ img { max-width: 100%; }
   </section>
 
   <section class="design" id="design" aria-labelledby="design-h">
-    <header class="sec"><span class="n">02</span><h2 id="design-h">How I <em>design</em></h2><p>Seven portfolios by one person, each a different front end for the same story.</p></header>
+    <header class="sec"><h2 id="design-h" class="pop">How I design</h2><p class="aside">Seven front ends for the same story. <em>seven rooms, one desk.</em></p></header>
+    <div class="screen">
     <div class="rip" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Seven portfolios">
       <ol class="rip-list">
         <li data-w="assets/c/00w.jpg" data-t="assets/c/00t.jpg" data-alt="Pixel-type headline Manideep Reddy, AI/ML Engineer Portfolio, beside an illustration of a coder in an orange chair"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">The First One</a><p>Built with Lovable. Pixel type, a yellow highlighter and the portfolio where it all started.</p></li>
@@ -264,27 +218,28 @@ img { max-width: 100%; }
         <li data-w="assets/c/06w.jpg" data-t="assets/c/06t.jpg" data-alt="Pixel-art city street under the title Manideep, The Portfolio, with Start game, Portfolio and Contact"><a href="06-lost-digital-civilization/">Route 25</a><p>A pixel city you drive through to read the portfolio.</p></li>
       </ol>
     </div>
+    </div>
   </section>
 </main>
 
-<footer class="reach" aria-labelledby="reach-h">
-  <div>
-    <h2 id="reach-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com">Say hello.</a></h2>
+<footer class="crew" aria-labelledby="crew-h">
+  <div class="crew-top">
+    <h2 id="crew-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com" data-copy="manideepreddyrekha@gmail.com" data-track="contact-email">Say hello.</a></h2>
     <ul>
-      <li><a href="mailto:manideepreddyrekha@gmail.com">Email</a></li>
-      <li><a href="https://wa.me/918686669066" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="mailto:manideepreddyrekha@gmail.com" data-copy="manideepreddyrekha@gmail.com" data-track="contact-email">Email</a></li>
+      <li><a href="https://wa.me/918686669066" target="_blank" rel="noopener" data-track="contact-whatsapp">WhatsApp</a></li>
       <li><a href="https://github.com/Manideep-Ai-ai" target="_blank" rel="noopener me">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297" target="_blank" rel="noopener me">LinkedIn</a></li>
-      <li><a href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+      <li><a href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297" target="_blank" rel="noopener me" data-track="contact-linkedin">LinkedIn</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé (PDF)</a></li>
     </ul>
+    <p class="copied" role="status" aria-live="polite"></p>
   </div>
-  <div class="portal">
-    <video muted playsinline preload="none" data-loop-from="4.8333" poster="assets/portal-poster.jpg" width="1280" height="720" aria-label="A glowing spirit rising out of a fiery portal on a dark stepped pedestal">
-      <source src="assets/portal.webm" type="video/webm">
-      <source src="assets/portal.mp4" type="video/mp4">
-    </video>
+  <div class="crew-stage">
+    <p class="crew-word"><span style="--i:0"><span aria-hidden="true">M</span><button type="button" class="crew-m" style="left:20%;--h:0.9656em;--j:0" aria-label="Mani with a sketchbook" data-says="Every good idea starts with a sketch."><img src="assets/crew/sketchbook.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:1"><span aria-hidden="true">A</span></span><span style="--i:2"><span aria-hidden="true">N</span><button type="button" class="crew-m" style="left:25%;bottom:auto;top:-0.0915em;--h:0.8132em;--j:1" aria-label="Mani on his laptop" data-says="One more idea. One more tab."><img src="assets/crew/laptop.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:3"><span aria-hidden="true">I</span><img class="crew-prop" src="assets/crew/mug.svg" alt="" style="left:0;top:0.1931em;height:0.1626em"><img class="crew-prop" src="assets/crew/books.svg" alt="" style="left:0.1271em;top:0.2541em;height:0.1016em"></span><span style="--i:4"><span aria-hidden="true">D</span><button type="button" class="crew-m" style="left:35%;--h:0.9656em;--j:2" aria-label="Mani walking with a backpack" data-says="Always curious. Always moving."><img src="assets/crew/walking.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:5"><span aria-hidden="true">E</span></span><span style="--i:6"><span aria-hidden="true">E</span><img class="crew-prop" src="assets/crew/cricket.svg" alt="" style="left:0.1525em;top:0.0660em;height:0.2897em"></span><span style="--i:7"><span aria-hidden="true">P</span><button type="button" class="crew-m" style="left:88%;--h:0.8894em;--j:3" aria-label="Mani at his drawing table" data-says="A little detail makes all the difference."><img src="assets/crew/drafting.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><svg class="crew-ground" viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 10 Q36 10.7 71 9.6 Q107 10.5 143 10.8 Q179 9.7 214 9.2 Q250 10.9 286 9.4 Q321 11.0 357 10.3 Q393 7.2 429 9.9 Q464 8.7 500 9.1 Q536 7.3 571 9.6 Q607 7.3 643 10.2 Q679 10.8 714 10.4 Q750 9.6 786 10.6 Q821 11.8 857 10.4 Q893 10.6 929 9.1 Q964 11.7 1000 10.5"/><path pathLength="1" d="M794 10l2-7M798 10l1-9M802 10l-1-6M383 10l2-7M387 10l1-9M391 10l-1-6M758 10l2-7M762 10l1-9M766 10l-1-6M347 10l2-7M351 10l1-9M355 10l-1-6M303 10l2-7M307 10l1-9M311 10l-1-6M955 10l2-7M959 10l1-9M963 10l-1-6M434 10l2-7M438 10l1-9M442 10l-1-6M691 10l2-7M695 10l1-9M699 10l-1-6M357 10l2-7M361 10l1-9M365 10l-1-6M555 10l2-7M559 10l1-9M563 10l-1-6M847 10l2-7M851 10l1-9M855 10l-1-6M629 10l2-7M633 10l1-9M637 10l-1-6M378 10l2-7M382 10l1-9M386 10l-1-6M193 10l2-7M197 10l1-9M201 10l-1-6M746 10l2-7M750 10l1-9M754 10l-1-6M941 10l2-7M945 10l1-9M949 10l-1-6"/></svg></p>
+    <p class="crew-say" role="status" aria-live="polite"></p>
   </div>
-  <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India</small>
+  <p class="crew-line">A curious mind. A work in progress.</p>
+  <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India · <span class="addr">manideepreddyrekha@gmail.com</span></small>
 </footer>
 <script>
 // Water-ripple carousel: a plain-JS port of WaterRippleCarousel (same shader and timing), no framework.
@@ -292,37 +247,39 @@ img { max-width: 100%; }
 (() => {
   const root = document.querySelector('.rip');
   if (!root) return;
-  const DUR = 1900, STRENGTH = 1;
+  const DUR = 1900, TAP_DUR = 1100, STRENGTH = 1;   // autoplay drifts; a tap answers quicker
   const slides = [...root.querySelectorAll('.rip-list li')].map(li => {
     const a = li.querySelector('a');
     return { w: li.dataset.w, t: li.dataset.t, alt: li.dataset.alt, href: a.getAttribute('href'), ext: a.target === '_blank', title: a.textContent, cap: li.querySelector('p').textContent };
   });
   const n = slides.length;
   const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const PAUSE = 'M5.5 3.5v9M10.5 3.5v9', PLAY = 'M5 3.2v9.6L12.5 8z';
   const arrow = d => `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="1.4"/></svg>`;
   root.classList.add('on');
-  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-shade" aria-hidden="true"></div><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div><div class="rip-track" aria-hidden="true"><div class="rip-fill"></div></div>`);
+  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn rip-pause" aria-label="Pause slideshow" aria-pressed="false">${arrow(PAUSE)}</button><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div><div class="rip-track" aria-hidden="true"><div class="rip-fill"></div></div>`);
   const $ = s => root.querySelector(s);
   const base = $('.rip-base'), canvas = $('.rip-in'), text = $('.rip-text'), count = $('.rip-count'), fill = $('.rip-fill');
-  const [prev, next] = root.querySelectorAll('.rip-btn');
+  const [pause, prev, next] = root.querySelectorAll('.rip-btn');
 
   const wrap = i => ((i % n) + n) % n;
   const pad = k => String(k).padStart(2, '0');
-  const src = i => (root.clientWidth < root.clientHeight ? slides[i].t : slides[i].w);   // tall stage, phone screenshot
+  const src = i => (base.clientWidth < base.clientHeight ? slides[i].t : slides[i].w);   // tall stage, phone screenshot
   const load = url => new Promise((res, rej) => { const im = new Image(); im.onload = () => im.decode().catch(() => {}).then(() => res(im)); im.onerror = rej; im.src = url; });
-  let index = 0, busy = false, seq = 0, seen = false, mode = '';
+  let index = 0, busy = false, seq = 0, seen = false, mode = '', stopped = still.matches;   // reduced motion: no autoplay
 
   const line = (cls, el) => { const l = document.createElement('span'); l.className = 'rip-line ' + cls; l.append(el); return l; };
   const show = i => {
     const s = slides[i], a = document.createElement('a'), c = document.createElement('span');
     a.href = s.href; a.textContent = s.title;
+    a.dataset.track = 'portfolio-' + s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     if (s.ext) { a.target = '_blank'; a.rel = 'noopener'; }
     c.textContent = s.cap;
     text.replaceChildren(line('rip-title', a), line('rip-cap', c));
     count.textContent = pad(i + 1) + ' / ' + pad(n);
   };
   const setBase = i => { mode = src(i); base.src = mode; base.alt = slides[i].alt; };
-  const restart = () => { fill.classList.remove('run'); void fill.offsetWidth; if (!busy) fill.classList.add('run'); };
+  const restart = () => { fill.classList.remove('run'); void fill.offsetWidth; if (!busy && !stopped) fill.classList.add('run'); };
   const sync = () => root.classList.toggle('paused', !seen || document.hidden || root.matches(':hover, :focus-within'));
 
   // WebGL: one context, two textures, reused for every ripple. Anything missing falls back to a fade.
@@ -365,7 +322,7 @@ img { max-width: 100%; }
     setTimeout(res, 600);
     base.after(im);
   });
-  const ripple = (from, to, x, y, w, h) => {
+  const ripple = (from, to, x, y, w, h, dur) => {
     if (still.matches || !initGL()) return fadeTo(to);
     return Promise.all([load(from), load(to)]).then(([a, b]) => new Promise(res => {
       [a, b].forEach((im, i) => { gl.activeTexture(gl.TEXTURE0 + i); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im); });
@@ -378,7 +335,7 @@ img { max-width: 100%; }
       const far = Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) / h + 0.18;   // the ring ends past every corner
       const t0 = performance.now();
       const frame = now => {
-        const t = Math.min(1, (now - t0) / DUR);
+        const t = Math.min(1, (now - t0) / dur);
         gl.uniform1f(U.r, Math.pow(t, 0.85) * far);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
         canvas.hidden = false;
@@ -388,11 +345,13 @@ img { max-width: 100%; }
     }));
   };
 
-  const go = (dir, px, py) => {
-    if (busy || n < 2) return;
+  let queued = 0;
+  const go = (dir, px, py, auto) => {
+    if (n < 2) return;
+    if (busy) { if (!auto) queued = dir; return; }   // a press mid-ripple runs next instead of being dropped
     busy = true;
     fill.classList.remove('run');
-    const w = root.clientWidth, h = root.clientHeight, to = wrap(index + dir), r = (++seq * 0.618) % 1;
+    const w = base.clientWidth, h = base.clientHeight, to = wrap(index + dir), r = (++seq * 0.618) % 1;
     const x = px ?? w * (dir >= 0 ? 0.62 + r * 0.25 : 0.13 + r * 0.25), y = py ?? h * (0.3 + r * 0.4);
     show(to);
     const done = async () => {
@@ -402,52 +361,132 @@ img { max-width: 100%; }
       canvas.hidden = true;
       root.querySelectorAll('.rip-fade').forEach(im => im.remove());
       busy = false;
+      if (queued) { const d = queued; queued = 0; return go(d); }
       restart();
       load(src(wrap(to + 1))).catch(() => {});   // warm the next one so a tap starts at once
     };
-    ripple(src(index), src(to), x, y, w, h).then(done, done);
+    ripple(src(index), src(to), x, y, w, h, auto ? DUR : TAP_DUR).then(done, done);
   };
 
+  // Swipe: the pointer is captured so a swipe that leaves the stage still lands; under 10px is a tap. A flick counts
+  // by where it was heading, not only how far it went: release distance plus velocity projected forward (decay .99/ms).
   let down = null;
-  root.addEventListener('pointerdown', e => { down = e.target.closest('a, .rip-nav') ? null : { x: e.clientX, y: e.clientY }; });
+  root.addEventListener('pointerdown', e => {
+    if (e.target.closest('a, .rip-nav')) { down = null; return; }
+    down = { x: e.clientX, y: e.clientY, lx: e.clientX, lt: e.timeStamp, vx: 0 };
+    try { root.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  root.addEventListener('pointermove', e => {
+    if (!down) return;
+    const dt = e.timeStamp - down.lt;
+    if (dt > 0) { down.vx = down.vx * 0.4 + ((e.clientX - down.lx) / dt) * 0.6; down.lx = e.clientX; down.lt = e.timeStamp; }
+  });
+  root.addEventListener('pointercancel', () => { down = null; });
   root.addEventListener('pointerup', e => {
     const s = down; down = null;
     if (!s) return;
     const dx = e.clientX - s.x, dy = e.clientY - s.y, b = root.getBoundingClientRect();
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
-    else if (Math.abs(dx) < 8 && Math.abs(dy) < 8) go(1, e.clientX - b.left, e.clientY - b.top);
+    const vx = e.timeStamp - s.lt > 80 ? 0 : s.vx;   // held still before letting go: no flick
+    const reach = dx + vx * 99;                      // px/ms × .99/(1-.99)
+    if (Math.hypot(dx, dy) < 10) e.clientY < base.getBoundingClientRect().bottom ? go(1, e.clientX - b.left, e.clientY - b.top) : go(1);
+    else if (Math.abs(dx) > Math.abs(dy) && Math.abs(reach) > 60) go(reach < 0 ? 1 : -1);
   });
   root.addEventListener('keydown', e => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
     e.preventDefault();
     go(e.key === 'ArrowRight' ? 1 : -1);
   });
+  // WCAG 2.2.2: autoplay longer than 5 s needs a pause control that works on touch, not just hover.
+  const setStopped = v => {
+    stopped = v;
+    pause.setAttribute('aria-pressed', String(v));
+    pause.setAttribute('aria-label', v ? 'Play slideshow' : 'Pause slideshow');
+    pause.querySelector('path').setAttribute('d', v ? PLAY : PAUSE);
+    restart();
+  };
+  pause.addEventListener('click', () => setStopped(!stopped));
   prev.addEventListener('click', () => go(-1));
   next.addEventListener('click', () => go(1));
-  fill.addEventListener('animationend', () => go(1));
+  fill.addEventListener('animationend', () => go(1, undefined, undefined, true));
   ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(t => root.addEventListener(t, () => setTimeout(sync)));
   document.addEventListener('visibilitychange', sync);
   new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }).observe(root);
   new ResizeObserver(() => { if (!busy && src(index) !== mode) setBase(index); }).observe(root);
 
-  show(0); setBase(0); sync(); restart();
+  show(0); setBase(0); sync(); setStopped(stopped);
   load(src(1)).catch(() => {});
 })();
 </script>
 <script>
 (() => {
-  // ponytail: no autoplay attribute, so reduced-motion viewers only ever see the poster.
-  const video = document.querySelector('.portal video');
+  const foot = document.querySelector('.crew'), say = foot.querySelector('.crew-say'), stage = foot.querySelector('.crew-stage');
   const still = matchMedia('(prefers-reduced-motion: reduce)');
-  let inView = false;
-  const sync = () => {
-    if (inView && !still.matches) video.play().catch(() => {});
-    else video.pause();
+  // The name arrives each time the visitor comes down to it: when most of the word is on screen and the sketches have
+  // loaded. Once it has fully scrolled away it resets (no transition on the way out, so it's never seen undoing itself).
+  // Without JS, or with reduced motion, everything is simply there.
+  if (!still.matches) {
+    foot.classList.add('pre');
+    const word = foot.querySelector('.crew-word');
+    const art = Promise.all([...foot.querySelectorAll('.crew-m img')].map(im => { im.loading = 'eager'; return im.decode().catch(() => {}); }));
+    let token = 0;
+    new IntersectionObserver(([e]) => {
+      const t = ++token;
+      if (e.intersectionRatio >= 0.6) art.then(() => { if (t === token) foot.classList.add('seen'); });
+      else if (!e.isIntersecting) { foot.classList.remove('seen'); say.classList.remove('on'); }
+    }, { threshold: [0, 0.6] }).observe(word);
+  }
+  // A tap: the sketch hops (it lands with a small settle; the push came from the tap) and a bubble materialises at
+  // its head. Tapping another moves the bubble there; it fades on its own. All CSS transitions, so every step can be cut short.
+  let who = null, hide = 0, drop = 0;
+  const place = btn => {
+    const s = stage.getBoundingClientRect(), r = btn.getBoundingClientRect();
+    say.style.left = '0px';
+    const w = say.offsetWidth, x = Math.min(Math.max(r.left - s.left + r.width * 0.5 - 14, 0), s.width - w);
+    say.style.left = x + 'px';
+    say.style.top = (r.top - s.top - say.offsetHeight - 10) + 'px';
   };
-  // The summoning plays once, then the clip loops from where the spirit has fully risen.
-  video.addEventListener('ended', () => { video.currentTime = +video.dataset.loopFrom; sync(); });
-  new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0.35 }).observe(video);
-  still.addEventListener('change', sync);
+  foot.addEventListener('click', e => {
+    const btn = e.target.closest('.crew-m');
+    if (!btn) return;
+    if (who !== btn) say.classList.remove('on');
+    who = btn;
+    say.textContent = btn.dataset.says;
+    place(btn);
+    void say.offsetWidth;                       // start from the hidden state so the bubble grows out of this speaker
+    say.classList.add('on');
+    btn.classList.add('up');
+    clearTimeout(drop); drop = setTimeout(() => btn.classList.remove('up'), 150);
+    clearTimeout(hide); hide = setTimeout(() => { say.classList.remove('on'); who = null; }, 3200);
+  });
+  addEventListener('resize', () => { if (who) place(who); });
+})();
+</script>
+<script>
+// GoatCounter events for the success metric: résumé / email / WhatsApp / LinkedIn clicks (contact-*), portfolio opens
+// (portfolio-*) and visitors who get past the intro (reached-work). Delegated, so links React renders count too.
+(() => {
+  const track = (path, title, tries = 0) => {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title: title || path, event: true });
+    else if (tries < 20) setTimeout(() => track(path, title, tries + 1), 500);   // count.js loads async
+  };
+  const note = document.querySelector('.copied');
+  let hide = 0;
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-track], [data-copy]');
+    if (!a) return;
+    if (a.dataset.track) track(a.dataset.track, a.textContent.trim());
+    // Email also copies the address: mailto: often opens nothing on a work laptop. The link still opens it.
+    if (a.dataset.copy && navigator.clipboard) navigator.clipboard.writeText(a.dataset.copy).then(() => {
+      note.textContent = 'copied — paste it anywhere.';
+      note.classList.add('on');
+      clearTimeout(hide);
+      hide = setTimeout(() => note.classList.remove('on'), 2000);
+    }, () => {});
+  });
+  const work = document.getElementById('work');
+  if (work) new IntersectionObserver((entries, io) => {
+    if (entries[0].isIntersecting) { track('reached-work', 'Reached What I build'); io.disconnect(); }
+  }).observe(work);
 })();
 </script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -1,0 +1,17 @@
+Use case: illustration-story. Production 2D cutout character rig asset atlas, transparent PNG, 4 columns by 3 rows of 12 regular identical square cells with generous transparent gutters. EXACTLY one isolated anatomical part per cell. No assembled figures. Match the reference MANI Indian adult man: wavy sculptural swept black hair, full black beard and moustache, warm medium-brown skin, almond dark eyes, broad nose, heavy eyebrows. Warm grey rolled-sleeve overshirt with ivory tee and red lanyard, charcoal trousers, offwhite sneakers. Same beautiful dry colored pencil textures and dark brown pressure varied contour, mature editorial style, natural adult proportions. No background, no paper rectangles, no text, no glows, no shadows. All detached parts fully inside their individual cells.
+
+Part order MUST be exact reading order.
+Row 1 cell1: HEAD and SHORT NECK ONLY, front-three-quarter facing viewer with friendly smile, no shoulders or clothes.
+Row1 cell2: HEAD and SHORT NECK ONLY, right-facing pure side profile, same hair/beard/nose.
+Row1 cell3: HEAD and SHORT NECK ONLY, rear-three-quarter facing upper right, no face except slight nose edge.
+Row1 cell4: TORSO ONLY from neckline to shirt hem, no head and NO ARMS, warm grey overshirt open over ivory tee, small red ID lanyard. Upright, facing front-three-quarter slightly right, rounded shoulder ends and filled silhouette designed to overlap arm attachments. No hips.
+Row2 cell1: PELVIS/HIPS ONLY, charcoal trouser waist and crotch, no thighs, short trapezoid with two rounded attachment stubs at bottom.
+Row2 cell2: ONE UPPER ARM ONLY, warm grey rolled-up sleeve, from round shoulder at top to elbow at bottom, hanging straight vertical.
+Row2 cell3: ONE BARE FOREARM AND RELAXED HAND, elbow at top and fingers at bottom, straight vertical, warm brown skin, palm loosely curled, natural five fingers.
+Row2 cell4: ONE BARE FOREARM AND OPEN WAVING HAND, elbow at BOTTOM, wrist higher, palm at TOP facing viewer, all five fingers natural and clear, straight forearm. This is raised wave texture.
+Row3 cell1: ONE THIGH ONLY from hip at top to knee bottom, charcoal trousers, vertical and straight, rounded ends for overlapping joints.
+Row3 cell2: ONE LOWER LEG ONLY from knee top to ankle bottom, charcoal straight trouser with small cuff, vertical and straight, no foot.
+Row3 cell3: ONE OFFWHITE SNEAKER FOOT ONLY, side-three-quarter view pointing RIGHT, low profile classic canvas shoe, ankle opening visible, no leg.
+Row3 cell4: ONE HAND ONLY with fingers gently curling around an invisible vertical screen edge, seen from front slightly side, thumb to right, brown skin. No screen border.
+
+Parts should be useful for skeletal animation. Extend hidden ends under neighboring parts with matching solid pigment, no exposed white holes at joints. Avoid cast shadows. Texture faithful to the reference, clean alpha outside part shapes.
