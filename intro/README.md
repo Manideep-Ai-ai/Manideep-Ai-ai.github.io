@@ -28,5 +28,8 @@ put its `source/public` here as `public/` to run the asset tests or the processi
 - Walk/turn mesh: triangle clips overlap slightly, removing the hairline banding.
 - Landing: the site's logo, a Résumé link, and links to What I build / Seven portfolios / GitHub;
   the invisible white scribble removed.
+- Trimmed to what runs: the earlier rig/sprite intro (`Portfolio`, `RigReview`, `components/ui`, `motion/`), its
+  tests, the standalone script and the `motion` package are gone, and the CSS only keeps rules the current intro
+  uses (intro.css 28 KB → 14 KB). All of it is in git history.
 - Resizing (a phone's address bar) no longer pulls the visitor back into the intro once they've scrolled past it;
   arriving on a `#link` doesn't jump to the top.

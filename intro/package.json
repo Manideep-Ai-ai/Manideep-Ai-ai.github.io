@@ -6,13 +6,11 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
-    "test": "node --experimental-strip-types --test tests/anatomy.test.mjs tests/intro-motion.test.mjs tests/poses.test.mjs tests/rebuild-v5.test.mjs tests/v5-assets.test.mjs",
-    "standalone": "node scripts/make-standalone.mjs",
+    "test": "node --experimental-strip-types --test tests/poses.test.mjs tests/rebuild-v5.test.mjs tests/v5-assets.test.mjs",
     "poses": "node scripts/process-poses.mjs",
     "poses:v5": "node scripts/process-v5.mjs"
   },
   "dependencies": {
-    "motion": "^14.14.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

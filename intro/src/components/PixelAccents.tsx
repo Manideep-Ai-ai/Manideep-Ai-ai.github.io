@@ -4,5 +4,5 @@ const sprites:Record<string,string[]>={"computer": ["/assets/pixels/computer-0.w
 const props=[{kind:'computer',label:'Build things.',name:'retro computer'},{kind:'books',label:'Stay curious.',name:'stack of books'},{kind:'plant',label:'Keep growing.',name:'potted plant'}];
 export default function PixelAccents(){
  const [angles,setAngles]=useState([2,2,2]);
- return <div className="pixel-accents">{props.map((p,i)=><figure className={`pixel-prop pixel-${p.kind}`} key={p.kind}><button type="button" aria-label={`Rotate ${p.name}`} title="Click to turn" onClick={()=>setAngles(a=>a.map((n,j)=>j===i?(n+2)%16:n))}><img src={sprites[p.kind][angles[i]]} width="100" height="100" alt="" draggable="false"/></button><figcaption>{p.label}</figcaption></figure>)}</div>;
+ return <div className="pixel-accents">{props.map((p,i)=><figure className={`pixel-prop pixel-${p.kind}`} key={p.kind}><button type="button" aria-label={`Rotate ${p.name}`} onClick={()=>setAngles(a=>a.map((n,j)=>j===i?(n+2)%16:n))}><img src={sprites[p.kind][angles[i]]} width="100" height="100" alt="" draggable="false"/></button><figcaption>{p.label}</figcaption></figure>)}</div>;
 }
