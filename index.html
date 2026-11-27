@@ -52,6 +52,7 @@
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--text); overflow-x: clip; }
+main > section { overflow-x: clip; }   /* margin art may hang over the edge without making a phone scroll sideways (clip keeps sticky working) */
 a { color: inherit; }
 img { max-width: 100%; }
 ::selection { background: var(--accent); color: var(--paper); }
@@ -72,44 +73,41 @@ img { max-width: 100%; }
 
 
 /* the carousel sits in a drawn monitor, the same pencil line and desk beige as the intro */
-.screen { position: relative; margin: 0 var(--gutter) 96px; padding: clamp(10px, 1.2vw, 16px); background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 14px; box-shadow: inset 0 0 0 4px var(--paper), 6px 8px 0 -2px rgba(42,31,27,.08); }
-.screen::before { content: ""; position: absolute; left: 50%; top: 100%; width: 70px; height: 44px; translate: -50% 1.5px; background: var(--desk); border: 1.5px solid var(--pencil); border-top: 0; }
-.screen::after { content: ""; position: absolute; left: 50%; top: calc(100% + 44px); width: min(300px, 46%); height: 14px; translate: -50% 0; background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 8px 8px 3px 3px; }
-
-/* ---------- rooms: water-ripple carousel, a tap drops a ring that reveals the next portfolio ---------- */
-.rip { --chin: 124px; position: relative; height: clamp(480px, 54vw, 86svh); overflow: hidden; border-radius: 6px; background: var(--desk); color: var(--ink); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
-.rip:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
-.rip:not(.on) { height: auto; cursor: auto; }
+/* ---------- rooms: water-ripple carousel. Every 4 s, or on a tap, a ring of water reveals the next portfolio ---------- */
+.screen { margin: 0 var(--gutter) clamp(72px, 9vw, 120px); }
+/* the stage keeps the screenshots' 16:10 shape, so a big screen shows the whole page, not a strip of it */
+.rip { --chin: 0px; position: relative; height: max(420px, min(calc((100vw - 2 * var(--gutter)) * .625), 86svh)); overflow: hidden; border-radius: 22px; background: var(--ink); color: var(--ink);
+  border: 1.5px solid var(--pencil); box-shadow: 8px 10px 0 -2px rgba(42,31,27,.10); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; isolation: isolate; }
+.rip:focus-visible { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--ink); }
+.rip:not(.on) { height: auto; cursor: auto; background: var(--paper); }
+.rip.on::after { content: ""; position: absolute; inset: auto 0 0; height: 45%; z-index: 1; pointer-events: none; background: linear-gradient(transparent, rgba(34,28,26,.32)); }
 .rip.on .rip-list { display: none; }
 .rip-list { margin: 0; padding: 28px clamp(20px, 4vw, 56px); display: grid; gap: 14px; }
 .rip-list a { font: 400 26px/1.1 var(--display); }
 .rip-list p { margin: 2px 0 0; opacity: .8; }
-.rip-base, .rip-in { position: absolute; inset: 0 0 auto; width: 100%; height: calc(100% - var(--chin)); max-width: none; display: block; pointer-events: none; }
-.rip-base { background: var(--ink); }
+/* the screenshots carry a pale capture margin; overscan it so each page runs edge to edge */
+.rip-base, .rip-in { position: absolute; inset: -1.8% -2.2%; width: 104.4%; height: 103.6%; max-width: none; display: block; pointer-events: none; }
 .rip-base, .rip-fade { object-fit: cover; object-position: 50% 0; }
 .rip-fade { animation: rip-fade .3s cubic-bezier(.23,1,.32,1) both; }
-.rip-text { position: absolute; left: clamp(18px, 2.4vw, 32px); right: 296px; bottom: 0; height: var(--chin); display: flex; flex-direction: column; justify-content: center; pointer-events: none; }
+/* caption: a paper card floating on the page it names */
+.rip-text { position: absolute; z-index: 2; left: clamp(12px, 2vw, 28px); bottom: clamp(12px, 2vw, 28px); max-width: min(560px, 58%); padding: clamp(14px, 1.6vw, 22px) clamp(16px, 2vw, 26px);
+  background: color-mix(in srgb, #fffdf8 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1.5px solid var(--pencil); border-radius: 18px;
+  box-shadow: 5px 6px 0 -1px rgba(42,31,27,.22); pointer-events: none; }
 .rip-line { display: block; overflow: hidden; padding-bottom: .08em; }
 .rip-line > * { display: block; animation: rip-rise .5s cubic-bezier(.23,1,.32,1) both; }
-.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 400 clamp(24px, 2.6vw, 38px)/1 var(--display); text-transform: uppercase; letter-spacing: 0; transition: color .2s; }
+.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 400 clamp(24px, 2.6vw, 40px)/1 var(--display); text-transform: uppercase; letter-spacing: 0; transition: color .2s; }
 .rip-title a::after { content: " ↗"; font: 400 .42em/1 var(--text); vertical-align: .9em; }
 .rip-title a:hover, .rip-title a:focus-visible { color: var(--deep); outline: none; }
-.rip-cap { margin-top: 6px; font: 400 clamp(17px, 1.4vw, 20px)/1.3 var(--script); color: var(--deep); max-width: 60ch; }
+.rip-cap { margin-top: 6px; font: 400 clamp(17px, 1.4vw, 21px)/1.3 var(--script); color: var(--deep); }
 .rip-cap > * { animation-delay: .08s; }
-.rip-nav { position: absolute; right: clamp(18px, 2.4vw, 32px); bottom: calc(var(--chin) / 2 - 23px); display: flex; align-items: center; gap: 14px; cursor: default; }
-.rip-pause { width: 38px; height: 38px; }
-.rip-count { font: 400 14px/1 var(--text); letter-spacing: .14em; }
-.rip-btn { position: relative; appearance: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--pencil); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .15s ease-out, color .15s ease-out, transform .12s ease-out; }
-.rip-btn::after { content: ''; position: absolute; inset: -4px; }   /* 46px+ hit area, the 38px pause too */
+.rip-nav { position: absolute; z-index: 2; right: clamp(12px, 2vw, 28px); bottom: clamp(12px, 2vw, 28px); display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; cursor: default;
+  background: color-mix(in srgb, #fffdf8 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1.5px solid var(--pencil); border-radius: 99px; box-shadow: 4px 5px 0 -1px rgba(42,31,27,.22); }
+.rip-count { font: 400 14px/1 var(--text); letter-spacing: .14em; margin-right: 4px; }
+.rip-btn { position: relative; appearance: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--pencil); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .15s ease-out, color .15s ease-out, transform .12s ease-out; }
 .rip-btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
 @media (hover: hover) { .rip-btn:hover { background: var(--ink); color: var(--paper); } }   /* no sticky ink fill after a tap */
 .rip-btn:active { transform: scale(.94); }
-.rip-track { position: absolute; left: 0; right: 0; top: calc(100% - var(--chin)); height: 2px; background: var(--line); }
-.rip-fill { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
-.rip-fill.run { animation: rip-auto 6s linear forwards; }
-.rip.paused .rip-fill { animation-play-state: paused; }
 @keyframes rip-rise { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes rip-auto { to { transform: scaleX(1); } }
 @keyframes rip-fade { from { opacity: 0; } }
 
 /* ---------- crew: the footer. Mani's name in the heading red, four pencil sketches of him living on the letters ---------- */
@@ -162,11 +160,12 @@ img { max-width: 100%; }
 @media (max-width: 600px) {
   .crew-top { flex-direction: column; align-items: start; }
   .copied { text-align: left; margin: 0; }
-  /* phones: a tall stage shows the phone-sized screenshots; controls sit under the caption */
-  .screen { margin: 0 12px 84px; padding: 8px; }
-  .rip { --chin: 178px; height: min(178vw, 88svh); }
-  .rip-text { right: 18px; justify-content: flex-start; padding-top: 18px; }
-  .rip-nav { left: 18px; right: auto; bottom: 16px; }
+  /* phones: a tall stage for the phone screenshots; the caption card floats above the controls */
+  .screen { margin: 0 12px 84px; }
+  .rip { height: min(calc((100vw - 24px) * 1.5), 84svh); border-radius: 18px; }
+  .rip-base, .rip-in { inset: -2% -4%; width: 108%; height: 104%; }   /* the phone shots have a wider capture margin */
+  .rip-text { left: 10px; right: 10px; bottom: 72px; max-width: none; padding: 14px 16px; }
+  .rip-nav { left: 10px; right: auto; bottom: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -608,20 +607,19 @@ img { max-width: 100%; }
 (() => {
   const root = document.querySelector('.rip');
   if (!root) return;
-  const DUR = 1900, TAP_DUR = 1100, STRENGTH = 1;   // autoplay drifts; a tap answers quicker
+  const DUR = 1400, TAP_DUR = 1000, STRENGTH = 1.25, EVERY = 4000;   // a new room every 4 s; a tap answers at once
   const slides = [...root.querySelectorAll('.rip-list li')].map(li => {
     const a = li.querySelector('a');
     return { w: li.dataset.w, t: li.dataset.t, alt: li.dataset.alt, href: a.getAttribute('href'), ext: a.target === '_blank', title: a.textContent, cap: li.querySelector('p').textContent };
   });
   const n = slides.length;
   const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const PAUSE = 'M5.5 3.5v9M10.5 3.5v9', PLAY = 'M5 3.2v9.6L12.5 8z';
   const arrow = d => `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="1.4"/></svg>`;
   root.classList.add('on');
-  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn rip-pause" aria-label="Pause slideshow" aria-pressed="false">${arrow(PAUSE)}</button><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div><div class="rip-track" aria-hidden="true"><div class="rip-fill"></div></div>`);
+  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div>`);
   const $ = s => root.querySelector(s);
-  const base = $('.rip-base'), canvas = $('.rip-in'), text = $('.rip-text'), count = $('.rip-count'), fill = $('.rip-fill');
-  const [pause, prev, next] = root.querySelectorAll('.rip-btn');
+  const base = $('.rip-base'), canvas = $('.rip-in'), text = $('.rip-text'), count = $('.rip-count');
+  const [prev, next] = root.querySelectorAll('.rip-btn');
 
   const wrap = i => ((i % n) + n) % n;
   const pad = k => String(k).padStart(2, '0');
@@ -640,8 +638,11 @@ img { max-width: 100%; }
     count.textContent = pad(i + 1) + ' / ' + pad(n);
   };
   const setBase = i => { mode = src(i); base.src = mode; base.alt = slides[i].alt; };
-  const restart = () => { fill.classList.remove('run'); void fill.offsetWidth; if (!busy && !stopped) fill.classList.add('run'); };
-  const sync = () => root.classList.toggle('paused', !seen || document.hidden || root.matches(':hover, :focus-within'));
+  // autoplay: a timer, held while the carousel is off screen, the tab is hidden, or a mouse or keyboard is on it
+  let timer = 0;
+  const held = () => !seen || document.hidden || root.matches(':hover, :focus-within');
+  const restart = () => { clearTimeout(timer); if (!busy && !stopped && !held()) timer = setTimeout(() => go(1, undefined, undefined, true), EVERY - DUR); };
+  const sync = restart;
 
   // WebGL: one context, two textures, reused for every ripple. Anything missing falls back to a fade.
   let gl, U;
@@ -711,7 +712,7 @@ img { max-width: 100%; }
     if (n < 2) return;
     if (busy) { if (!auto) queued = dir; return; }   // a press mid-ripple runs next instead of being dropped
     busy = true;
-    fill.classList.remove('run');
+    clearTimeout(timer);
     const w = base.clientWidth, h = base.clientHeight, to = wrap(index + dir), r = (++seq * 0.618) % 1;
     const x = px ?? w * (dir >= 0 ? 0.62 + r * 0.25 : 0.13 + r * 0.25), y = py ?? h * (0.3 + r * 0.4);
     show(to);
@@ -757,24 +758,14 @@ img { max-width: 100%; }
     e.preventDefault();
     go(e.key === 'ArrowRight' ? 1 : -1);
   });
-  // WCAG 2.2.2: autoplay longer than 5 s needs a pause control that works on touch, not just hover.
-  const setStopped = v => {
-    stopped = v;
-    pause.setAttribute('aria-pressed', String(v));
-    pause.setAttribute('aria-label', v ? 'Play slideshow' : 'Pause slideshow');
-    pause.querySelector('path').setAttribute('d', v ? PLAY : PAUSE);
-    restart();
-  };
-  pause.addEventListener('click', () => setStopped(!stopped));
   prev.addEventListener('click', () => go(-1));
   next.addEventListener('click', () => go(1));
-  fill.addEventListener('animationend', () => go(1, undefined, undefined, true));
   ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(t => root.addEventListener(t, () => setTimeout(sync)));
   document.addEventListener('visibilitychange', sync);
   new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }).observe(root);
   new ResizeObserver(() => { if (!busy && src(index) !== mode) setBase(index); }).observe(root);
 
-  show(0); setBase(0); sync(); setStopped(stopped);
+  show(0); setBase(0); sync();
   load(src(1)).catch(() => {});
 })();
 </script>
