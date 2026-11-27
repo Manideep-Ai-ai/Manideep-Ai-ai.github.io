@@ -21,6 +21,7 @@
   }), { threshold: 0.25 });
   const watch = el => { prime(el); still ? el.classList.add('in') : io.observe(el); };
   document.querySelectorAll('.draw').forEach(watch);
+  document.querySelectorAll('.pop-in').forEach(el => (still ? el.classList.add('in') : io.observe(el)));
 
   // ---------- a pencil underline under each red section title ----------
   document.querySelectorAll('.sec .pop').forEach(h => {
@@ -73,6 +74,8 @@
   const user = live.dataset.user, KEY = 'gh-desk:' + user, TTL = 30 * 60 * 1000;
   const list = live.querySelector('.repos'), last = live.querySelector('.last');
   const COLORS = { Python: '#3572A5', JavaScript: '#f1e05a', TypeScript: '#3178c6', HTML: '#e34c26', CSS: '#563d7c', 'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Java: '#b07219', Go: '#00ADD8', Rust: '#dea584', Dart: '#00B4AB', Kotlin: '#A97BFF', 'C++': '#f34b7d', C: '#555555' };
+  // the package icon from the Framer kit, inline so it takes the text colour
+  const BOX = '<svg class="box" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path transform="translate(2 3)" d="M1.2 4C.54 4 0 3.46 0 2.8V1.2C0 .54.54 0 1.2 0h17.6c.66 0 1.2.54 1.2 1.2v1.6c0 .66-.54 1.2-1.2 1.2Z"/><path transform="translate(3 8.5)" d="M0 0h18v11.5c0 .83-.67 1.5-1.5 1.5h-15C.67 13 0 12.33 0 11.5ZM6 3v2h6V3Z"/></svg>';
   const ago = iso => {
     const s = (Date.now() - new Date(iso)) / 1000, u = [[31536000, 'year'], [2592000, 'month'], [604800, 'week'], [86400, 'day'], [3600, 'hour'], [60, 'minute']];
     for (const [n, w] of u) if (s >= n) { const k = Math.floor(s / n); return `${k} ${w}${k > 1 ? 's' : ''} ago`; }
@@ -84,6 +87,7 @@
     const own = repos.filter(r => !r.fork && !r.archived).sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
     list.replaceChildren(...own.slice(0, 6).map(r => {
       const li = el('li', 'repo'), a = el('a', null, r.name.replace(/[-_]/g, ' ')), time = el('time', null, ago(r.pushed_at));
+      a.insertAdjacentHTML('afterbegin', BOX);
       a.href = r.html_url; a.target = '_blank'; a.rel = 'noopener';
       time.dateTime = r.pushed_at;
       li.append(a, time);

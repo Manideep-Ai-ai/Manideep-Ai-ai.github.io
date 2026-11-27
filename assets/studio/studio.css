@@ -169,3 +169,12 @@ html:not(.js-studio) .sa-block { opacity: 1; }
   .js-studio .hero { position: relative; opacity: 1; }
   .steam, .power, .clock-hands, .cat-tail, .zzz, .studio-hint::after { animation: none; }
 }
+
+/* the multiplayer cursor (Framer kit) drifting over the landing, labelled for whoever is reading */
+.you { position: absolute; z-index: 2; left: 22%; top: 18%; display: flex; align-items: flex-start; gap: 2px; pointer-events: none; animation: drift 7s ease-in-out infinite; }
+.you svg { width: 22px; height: auto; overflow: visible; }
+.you b { margin-top: 18px; padding: 5px 11px 6px; border-radius: 999px; background: #7c5cff; color: #fff; font: 600 13px/1 var(--text); letter-spacing: .02em; }
+@keyframes drift { 0%, 100% { translate: 0 0; } 30% { translate: 26px -8px; } 60% { translate: 10px 14px; } }
+.replay .ico { width: 16px; height: 16px; margin-right: 6px; vertical-align: -3px; }
+@media (max-width: 760px) { .you { left: 8%; top: 22%; } }
+@media (prefers-reduced-motion: reduce) { .you { animation: none; } }

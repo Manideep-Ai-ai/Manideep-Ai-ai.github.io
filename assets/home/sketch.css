@@ -31,7 +31,7 @@
 .card .sk .f { fill: color-mix(in srgb, var(--c) 30%, var(--paper)); }
 
 /* a hand-drawn underline under every red section title */
-.pop-wrap { position: relative; display: inline-block; justify-self: start; width: fit-content; }
+.pop-wrap { position: relative; display: inline-block; justify-self: start; width: fit-content; max-width: 100%; }
 .pop-line { position: absolute; left: -2%; bottom: -.28em; width: 104%; height: .32em; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; }
 
 /* ---------- top bar: appears once the intro is behind you ---------- */
@@ -143,4 +143,37 @@ main section[id], footer[id] { scroll-margin-top: 76px; }
   .js-sketch .sk :is(.f, .fr, .fp, .fi) { fill-opacity: 1; transition: none !important; }
   .card, .bar { transition: none; }
   .pulse i::after, .repo.skel span { animation: none; }
+}
+
+/* ---------- vector characters (from the Framer kit) on a colour blob beside each section title ---------- */
+.sec { position: relative; }
+.sec-art { position: absolute; right: var(--gutter); bottom: -8px; width: clamp(120px, 14vw, 200px); margin: 0; pointer-events: none; }
+.sec-art img { position: relative; display: block; width: 100%; height: auto; }
+.sec-art .blob { position: absolute; left: -14%; top: 4%; width: 128%; height: auto; overflow: visible; }
+.sec-art .blob path { fill: var(--cw); stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.art-mustard { --cw: #fcebc6; } .art-cobalt { --cw: #dbe5fb; } .art-sage { --cw: #dcedd9; } .art-coral { --cw: #fbe0d8; }
+.art-cobalt .blob { rotate: 140deg; } .art-sage .blob { rotate: 70deg; } .art-coral .blob { rotate: -50deg; }
+.art-sage { width: clamp(96px, 10vw, 150px); }
+.sec-art .arrow { position: absolute; width: 64%; left: -50%; top: 78%; rotate: 120deg; scale: 1 -1; }
+.js-sketch .pop-in img { opacity: 0; translate: 0 14px; }
+.js-sketch .pop-in .blob { scale: .6; opacity: 0; }
+.js-sketch .pop-in.in img { opacity: 1; translate: none; transition: opacity .5s ease-out .25s, translate .6s cubic-bezier(.34,1.4,.64,1) .25s; }
+.js-sketch .pop-in.in .blob { scale: 1; opacity: 1; transition: scale .6s cubic-bezier(.34,1.4,.64,1), opacity .3s; }
+.js-sketch .pop-in.in .arrow { transition-delay: .6s; }
+.crew-top { position: relative; }
+.crew-art { position: relative; right: auto; bottom: auto; order: 1; width: clamp(120px, 11vw, 170px); margin: 0 auto; }
+.crew-top h2 { order: 0; } .crew-top ul { order: 2; } .crew-top .copied { order: 3; }
+.crew small .globe { width: 26px; height: 26px; vertical-align: -8px; margin-right: 10px; }
+.repo a .box { display: inline-block; width: .8em; height: .8em; margin-right: .4em; vertical-align: -.05em; }
+@media (max-width: 860px) {
+  header.sec:has(.sec-art) { padding-right: calc(var(--gutter) + 110px); }
+  .sec-art { width: 104px; bottom: auto; top: 0; }
+  .art-sage { width: 80px; }
+  .sec-art .arrow { display: none; }
+}
+@media (max-width: 600px) {
+  .crew-art { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-sketch .pop-in img, .js-sketch .pop-in .blob { opacity: 1; translate: none; scale: none; transition: none; }
 }
