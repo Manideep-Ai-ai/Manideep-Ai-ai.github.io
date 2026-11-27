@@ -24,6 +24,7 @@
 <link rel="preload" as="font" type="font/woff" href="assets/fonts/kalam.woff" crossorigin>
 <link rel="preload" as="font" type="font/woff" href="assets/fonts/barlow.woff" crossorigin>
 <link rel="stylesheet" href="assets/intro/intro.css">
+<link rel="stylesheet" href="assets/home/sketch.css">
 <script type="module" src="assets/intro/intro.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -65,14 +66,7 @@ img { max-width: 100%; }
 .sec .aside { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; color: var(--muted); }
 .sec .aside em { font: 400 clamp(20px, 1.9vw, 25px)/1.2 var(--script); font-style: normal; color: var(--deep); rotate: -2deg; }
 
-/* work log: name in poster caps, what it does, where to see it */
-.projects { list-style: none; margin: 0; padding: 0 var(--gutter); }
-.projects li { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--line); }
-.projects li:last-child { border-bottom: 1px solid var(--line); }
-.projects h3 { margin: 0; font: 400 clamp(19px, 1.8vw, 24px)/1.15 var(--display); text-transform: uppercase; letter-spacing: .01em; }
-.projects p { margin: 0; color: var(--muted); max-width: 62ch; }
-.projects a { justify-self: start; font: 400 15px/1 var(--text); letter-spacing: .04em; white-space: nowrap; text-decoration: none; border-bottom: 1px solid var(--pencil); padding-bottom: 4px; transition: color .2s, border-color .2s; }
-.projects a:hover, .projects a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
+/* stats under the project cards */
 .wins { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 26px clamp(16px, 2.4vw, 32px); }
 .wins li { font-size: 15px; color: var(--muted); max-width: 26ch; }
 .wins b { display: block; font: 400 clamp(44px, 4.6vw, 64px)/1 var(--display); color: var(--ink); margin-bottom: 8px; }
@@ -165,10 +159,6 @@ img { max-width: 100%; }
 .crew.pre.seen .crew-m, .crew.pre.seen .crew-prop { opacity: 1; translate: -50% 0; transition: opacity .4s ease-out, translate .5s cubic-bezier(.23,1,.32,1); transition-delay: calc(640ms + var(--j, 3) * 110ms); }
 .crew.pre.seen .crew-prop { translate: none; }
 
-@media (max-width: 860px) {
-  .projects li { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 600px) {
   .crew-top { flex-direction: column; align-items: start; }
   .copied { text-align: left; margin: 0; }
@@ -190,18 +180,156 @@ img { max-width: 100%; }
 </head>
 <body>
 <div id="intro"></div>
+<header class="bar" aria-label="Site">
+  <a href="#work" aria-label="Manideep Reddy, back to the top of the work"><img src="assets/logo.png" alt="" width="34" height="34"></a>
+  <nav aria-label="Sections"><a href="#work">Work</a><a href="#live">Live</a><a href="#design">Portfolios</a><a href="#contact">Contact</a></nav>
+  <a class="cv" href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé ↗</a>
+</header>
 <noscript><header class="nojs"><img src="assets/logo.png" alt="" width="72" height="72"><h1>Manideep Reddy</h1><p>Software engineer in Hyderabad: backends, data and AI, and the interfaces people see and touch.</p></header></noscript>
 <main>
   <section class="work" id="work" aria-labelledby="work-h">
     <header class="sec"><h2 id="work-h" class="pop">What I build</h2><p class="aside">Backend, data and AI. <em>the parts nobody sees.</em></p></header>
-    <ol class="projects">
-    <li><h3>SignAI</h3><p>Production recruitment platform with LLM-powered candidate matching. React, Node.js, PostgreSQL, AWS.</p><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a></li>
-    <li><h3>Jhanko</h3><p>REST API layer in Python and FastAPI for a geolocation marketplace, with real-time geospatial search.</p><span></span></li>
-    <li><h3>Artemis Job Agent</h3><p>Open-source AI agent that finds matching jobs, finds the hiring contact and drafts the email.</p><span></span></li>
-    <li><h3>Speech Emotion Recognition</h3><p>CNN and LSTM model that reads emotion and gender from short audio clips. TensorFlow, FastAPI.</p><span></span></li>
-    <li><h3>Rosso Corsa</h3><p>Racing-red desktop theme for Omarchy Linux.</p><a href="https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme" target="_blank" rel="noopener">GitHub ↗</a></li>
+    <ol class="cards">
+      <li class="card lead draw">
+        <div class="card-art" aria-hidden="true">
+          <svg class="sk" viewBox="0 0 420 280">
+            <path class="f" d="M64 62 L188 46 L206 236 L82 252 Z"/>
+            <path class="fp" d="M98 34 H232 V232 H98 Z"/>
+            <circle cx="128" cy="72" r="15"/>
+            <path d="M120 78 q8 7 16 0"/>
+            <path d="M154 64 H212 M154 78 H196"/>
+            <path class="thin" d="M114 112 H214 M114 128 H200 M114 144 H210 M114 160 H170 M114 184 H206 M114 200 H186"/>
+            <path class="r" d="M114 112 H214"/>
+            <circle class="r fp" cx="262" cy="168" r="40"/>
+            <path class="r" d="M246 168 l12 12 l24 -27"/>
+            <path class="r" d="M291 197 L328 234" style="stroke-width:6"/>
+            <path class="fr" d="M224 98 q4 13 17 17 q-13 4 -17 17 q-4 -13 -17 -17 q13 -4 17 -17z"/>
+            <path d="M318 98 A46 46 0 0 1 410 98"/>
+            <path class="thin" d="M322 98 h8 M364 52 v8 M402 98 h-8 M334 66 l6 6 M394 66 l-6 6"/>
+            <path class="r" d="M364 98 L394 70"/>
+            <circle class="fr" cx="364" cy="98" r="4"/>
+            <path class="dash" d="M244 52 C276 30 312 40 330 62"/>
+            <path d="M360 140 l10 -10 M380 152 h14 M356 120 l4 -14"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-num"></span>
+          <h3>SignAI</h3>
+          <p>Production recruitment platform with LLM-powered candidate matching. It reads résumés, scores them against the role and puts the best people first.</p>
+          <ul class="chips"><li>React</li><li>Node.js</li><li>PostgreSQL</li><li>AWS</li><li>LLMs</li></ul>
+          <div class="card-foot"><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a><em>live, in production</em></div>
+        </div>
+      </li>
+      <li class="card draw">
+        <div class="card-art" aria-hidden="true">
+          <svg class="sk" viewBox="0 0 320 200">
+            <path class="fp" d="M30 40 L110 24 L190 40 L290 24 L290 170 L190 186 L110 170 L30 186 Z"/>
+            <path class="thin" d="M110 24 V170 M190 40 V186"/>
+            <path class="dash" d="M40 146 C90 112 120 154 170 122 S250 72 282 92"/>
+            <ellipse class="r dash" cx="216" cy="108" rx="34" ry="11"/>
+            <ellipse class="r thin" cx="216" cy="108" rx="60" ry="20"/>
+            <path class="fr" d="M200 72 c0 -22 32 -22 32 0 c0 16 -16 36 -16 36 c0 0 -16 -20 -16 -36z"/>
+            <circle class="fp" cx="216" cy="72" r="5"/>
+            <circle class="fr" cx="76" cy="84" r="4"/><circle class="fr" cx="142" cy="150" r="4"/><circle class="fr" cx="262" cy="148" r="4"/>
+            <path d="M62 52 l-10 18 h12 l-10 18"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-num"></span>
+          <h3>Jhanko</h3>
+          <p>REST API layer for a geolocation marketplace, with real-time geospatial search: what's near you, right now.</p>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>Geospatial</li></ul>
+          <div class="card-foot"><em>client work, private repo</em></div>
+        </div>
+      </li>
+      <li class="card draw">
+        <div class="card-art" aria-hidden="true">
+          <svg class="sk" viewBox="0 0 320 200">
+            <path class="dash" d="M70 74 C108 26 150 34 188 72"/>
+            <path class="fp" d="M36 84 H160 V170 H36 Z"/>
+            <path d="M36 84 L98 132 L160 84"/>
+            <path class="thin" d="M36 170 L84 124 M160 170 L112 124"/>
+            <path class="fp" d="M188 72 L292 38 L242 124 L222 96 Z"/>
+            <path d="M292 38 L222 96 L226 120 L242 124"/>
+            <circle cx="268" cy="160" r="24"/><circle class="r" cx="268" cy="160" r="13"/><circle class="fr" cx="268" cy="160" r="4"/>
+            <path class="fr" d="M196 136 q3 10 13 13 q-10 3 -13 13 q-3 -10 -13 -13 q10 -3 13 -13z"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-num"></span>
+          <h3>Artemis Job Agent</h3>
+          <p>Open-source AI agent that finds matching jobs, tracks down the hiring contact and drafts the email for you.</p>
+          <ul class="chips"><li>AI agents</li><li>LLMs</li><li>Automation</li></ul>
+          <div class="card-foot"><a href="https://github.com/Manideep-Ai-ai" target="_blank" rel="noopener">GitHub ↗</a><em>open source</em></div>
+        </div>
+      </li>
+      <li class="card draw">
+        <div class="card-art" aria-hidden="true">
+          <svg class="sk" viewBox="0 0 320 200">
+            <path d="M28 100 v0 M40 86 v28 M52 70 v60 M64 90 v20 M76 56 v88 M88 80 v40 M100 64 v72 M112 92 v16 M124 74 v52 M136 84 v32 M148 96 v8"/>
+            <path class="r" d="M76 56 v88 M100 64 v72"/>
+            <path d="M166 100 h26 m-9 -7 l9 7 l-9 7"/>
+            <circle class="fp" cx="250" cy="100" r="50"/>
+            <circle cx="232" cy="88" r="4"/><circle cx="268" cy="88" r="4"/>
+            <path class="r" d="M228 114 q22 20 44 0"/>
+            <path d="M224 72 q8 -6 16 -2 M276 72 q-8 -6 -16 -2"/>
+            <path class="thin" d="M296 40 l8 -8 M306 58 h12 M290 28 l2 -12"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-num"></span>
+          <h3>Speech Emotion Recognition</h3>
+          <p>A CNN and LSTM model that hears emotion and gender in short audio clips, served behind a small API.</p>
+          <ul class="chips"><li>TensorFlow</li><li>CNN + LSTM</li><li>FastAPI</li></ul>
+          <div class="card-foot"><em>research project</em></div>
+        </div>
+      </li>
+      <li class="card draw">
+        <div class="card-art" aria-hidden="true">
+          <svg class="sk" viewBox="0 0 320 200">
+            <path class="fp" d="M40 26 H280 V164 H40 Z"/>
+            <path class="fi" d="M54 40 H266 V150 H54 Z"/>
+            <circle class="fr" cx="66" cy="50" r="3"/><circle cx="78" cy="50" r="3" style="stroke:var(--paper)"/><circle cx="90" cy="50" r="3" style="stroke:var(--paper)"/>
+            <path class="r" d="M96 146 L176 44" style="stroke-width:7"/>
+            <path class="r" d="M122 146 L202 44" style="stroke-width:3"/>
+            <path d="M206 120 h40 v22 h-40 z M216 120 v22 M226 120 v22 M236 120 v22 M206 131 h40" style="stroke:var(--paper)" class="thin"/>
+            <path d="M70 72 l8 6 l-8 6 M84 86 h14" style="stroke:var(--paper)"/>
+            <path d="M144 164 l-8 22 h48 l-8 -22 M116 190 h88"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-num"></span>
+          <h3>Rosso Corsa</h3>
+          <p>A racing-red desktop theme for Omarchy Linux. Same red as this page, on a whole desktop.</p>
+          <ul class="chips"><li>Linux</li><li>Omarchy</li><li>Theming</li></ul>
+          <div class="card-foot"><a href="https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme" target="_blank" rel="noopener">GitHub ↗</a><em>open source</em></div>
+        </div>
+      </li>
     </ol>
     <ul class="wins"><li><b>40%</b>faster dashboards, from PostgreSQL indexing</li><li><b>50%</b>quicker candidate screening with AI résumé parsing</li><li><b>30%</b>faster API responses in a geolocation marketplace</li><li><b>100%</b>of deployments automated with GitHub Actions</li></ul>
+  </section>
+
+  <section class="github" id="live" aria-labelledby="live-h">
+    <header class="sec"><h2 id="live-h" class="pop">Live from GitHub</h2><p class="aside">Updated every time I push. <em>straight off the desk.</em></p></header>
+    <div class="live" data-user="Manideep-Ai-ai">
+      <div class="notebook">
+        <ol class="repos" aria-live="polite" aria-busy="true">
+          <li class="repo skel" aria-hidden="true"><span></span><span></span></li>
+          <li class="repo skel" aria-hidden="true"><span></span><span></span></li>
+          <li class="repo skel" aria-hidden="true"><span></span><span></span></li>
+          <li class="repo skel" aria-hidden="true"><span></span><span></span></li>
+        </ol>
+      </div>
+      <div class="desk-card">
+        <p class="pulse"><i aria-hidden="true"></i><span class="last">Checking the commit log…</span></p>
+        <dl class="counts">
+          <div><dt>Public repos</dt><dd class="n-repos">—</dd></div>
+          <div><dt>Stars earned</dt><dd class="n-stars">—</dd></div>
+        </dl>
+        <div class="langs draw"><h3>what I write in, by repo</h3><svg class="sk lang-svg" viewBox="0 0 320 150" role="img" aria-label="Languages used across public repositories"></svg></div>
+        <p class="live-note">Pulled live from the GitHub API. <a href="https://github.com/Manideep-Ai-ai" target="_blank" rel="noopener">See everything on GitHub ↗</a></p>
+      </div>
+    </div>
   </section>
 
   <section class="design" id="design" aria-labelledby="design-h">
@@ -222,7 +350,7 @@ img { max-width: 100%; }
   </section>
 </main>
 
-<footer class="crew" aria-labelledby="crew-h">
+<footer class="crew" id="contact" aria-labelledby="crew-h">
   <div class="crew-top">
     <h2 id="crew-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com" data-copy="manideepreddyrekha@gmail.com" data-track="contact-email">Say hello.</a></h2>
     <ul>
@@ -489,6 +617,7 @@ img { max-width: 100%; }
   }).observe(work);
 })();
 </script>
+<script src="assets/home/sketch.js" defer></script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

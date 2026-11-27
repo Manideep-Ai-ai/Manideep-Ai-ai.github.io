@@ -1,0 +1,131 @@
+/* Line-art layer for the hub: vector drawings in the same pencil + red ink as the intro.
+   Every stroke inside .sk draws itself in when its block scrolls into view (sketch.js sets pathLength, the .ln class and a staggered delay). */
+
+/* ---------- shared: drawn strokes ---------- */
+.sk { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke: var(--pencil); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sk .r { stroke: var(--accent); }
+.sk .f { fill: var(--desk); }
+.sk .fr { fill: var(--accent); stroke: var(--ext); }
+.sk .fp { fill: var(--paper); }
+.sk .fi { fill: var(--ink); }
+.sk .thin { stroke-width: 1; }
+.sk .dash { stroke-dasharray: 4 5; }
+.js-sketch .sk .ln { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js-sketch .sk :is(.f, .fr, .fp, .fi) { fill-opacity: 0; }
+/* sketch.js writes each shape's transition-delay ("Nms, N+500ms"): the line draws, then its fill washes in */
+.js-sketch .in .sk .ln { stroke-dashoffset: 0; transition-property: stroke-dashoffset, fill-opacity; transition-duration: .9s, .5s; transition-timing-function: cubic-bezier(.65,0,.35,1), ease-out; }
+.js-sketch .in .sk :is(.f, .fr, .fp, .fi) { fill-opacity: 1; }
+
+/* a hand-drawn underline under every red section title */
+.pop-wrap { position: relative; display: inline-block; justify-self: start; width: fit-content; }
+.pop-line { position: absolute; left: -2%; bottom: -.28em; width: 104%; height: .32em; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; }
+
+/* ---------- top bar: appears once the intro is behind you ---------- */
+main section[id], footer[id] { scroll-margin-top: 76px; }
+.bar { position: fixed; z-index: 50; top: 12px; left: 50%; translate: -50% -140%; display: flex; align-items: center; gap: clamp(10px, 2vw, 26px); padding: 7px 10px 7px 8px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid var(--pencil); border-radius: 999px; box-shadow: 3px 4px 0 -1px rgba(42,31,27,.12);
+  transition: translate .45s cubic-bezier(.23,1,.32,1); max-width: calc(100vw - 24px); }
+.bar.on { translate: -50% 0; }
+.bar img { display: block; width: 34px; height: 34px; }
+.bar nav { display: flex; gap: clamp(4px, 1.4vw, 18px); overflow-x: auto; scrollbar-width: none; }
+.bar nav::-webkit-scrollbar { display: none; }
+.bar a { position: relative; text-decoration: none; white-space: nowrap; font: 400 14px/1 var(--text); letter-spacing: .04em; padding: 8px 6px; }
+.bar nav a::after { content: ''; position: absolute; left: 6px; right: 6px; bottom: 3px; height: 2px; background: var(--accent); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform .25s cubic-bezier(.23,1,.32,1); }
+.bar nav a:hover::after, .bar nav a:focus-visible::after, .bar nav a[aria-current="true"]::after { transform: scaleX(1); }
+.bar nav a:focus-visible { outline: none; }
+.bar .cv { background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px 14px; }
+.bar .cv:hover, .bar .cv:focus-visible { background: var(--accent); outline: none; }
+
+/* ---------- What I build: sketch cards ---------- */
+.cards { list-style: none; margin: 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); counter-reset: card; }
+.card { position: relative; display: grid; grid-template-rows: auto 1fr; background: var(--paper); border: 1.5px solid var(--pencil);
+  border-radius: 16px 20px 14px 18px / 18px 14px 20px 16px; box-shadow: 6px 8px 0 -2px rgba(42,31,27,.08);
+  transition: translate .3s cubic-bezier(.23,1,.32,1), rotate .3s cubic-bezier(.23,1,.32,1), box-shadow .3s; }
+.card:nth-child(even) { rotate: .25deg; }
+.card:nth-child(odd) { rotate: -.2deg; }
+@media (hover: hover) {
+  .card:hover { translate: 0 -4px; rotate: 0deg; box-shadow: 10px 14px 0 -2px rgba(42,31,27,.10); }
+  .card:hover .sk .r { stroke-width: 2.2; }
+}
+.card-art { position: relative; margin: 10px 10px 0; padding: clamp(14px, 2vw, 26px); background: var(--desk); border-radius: 10px 12px 9px 11px;
+  background-image: radial-gradient(rgba(81,71,63,.16) 1px, transparent 1.2px); background-size: 14px 14px; }
+.card-art .sk { max-height: 190px; }
+.card-body { padding: 18px clamp(18px, 2vw, 26px) 22px; display: flex; flex-direction: column; gap: 10px; }
+.card-num { font: 400 20px/1 var(--script); color: var(--deep); rotate: -3deg; width: fit-content; }
+.card-num::before { counter-increment: card; content: "no. " counter(card, decimal-leading-zero); }
+.card h3 { margin: 0; font: 400 clamp(22px, 2.1vw, 30px)/1.05 var(--display); text-transform: uppercase; }
+.card p { margin: 0; color: var(--muted); max-width: 52ch; }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; }
+.chips li { font: 400 13px/1 var(--text); letter-spacing: .04em; padding: 6px 10px; border: 1px solid var(--pencil); border-radius: 999px 900px 999px 950px; }
+.card-foot { margin-top: auto; padding-top: 8px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.card-foot a { font: 400 15px/1 var(--text); letter-spacing: .04em; text-decoration: none; border-bottom: 1.5px solid var(--pencil); padding-bottom: 4px; transition: color .2s, border-color .2s; }
+.card-foot a:hover, .card-foot a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
+.card-foot em { font: 400 17px/1.2 var(--script); font-style: normal; color: var(--muted); }
+/* the headline project spans the row: drawing on the left, story on the right */
+.card.lead { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-rows: none; }
+.card.lead .card-art { margin: 10px 0 10px 10px; display: grid; place-items: center; }
+.card.lead .card-art .sk { max-height: 280px; }
+.card.lead .card-body { padding: clamp(22px, 3vw, 40px); justify-content: center; }
+.card.lead h3 { font-size: clamp(32px, 3.6vw, 52px); }
+
+/* stats: the number gets a pencil ring when it lands */
+.wins b { position: relative; width: fit-content; }
+.wins b svg { position: absolute; left: -14%; top: -18%; width: 128%; height: 136%; overflow: visible; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+
+/* ---------- Live from GitHub ---------- */
+.live { padding: 0 var(--gutter); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(18px, 2.4vw, 32px); align-items: start; }
+.notebook { position: relative; margin: 0; padding: 22px clamp(18px, 2.4vw, 32px) 22px clamp(44px, 5vw, 64px); background: var(--paper); border: 1.5px solid var(--pencil); border-radius: 14px 18px 12px 16px;
+  background-image: linear-gradient(to right, transparent calc(clamp(30px, 3.6vw, 46px) - 1px), rgba(230,51,45,.35) calc(clamp(30px, 3.6vw, 46px) - 1px), rgba(230,51,45,.35) clamp(30px, 3.6vw, 46px), transparent clamp(30px, 3.6vw, 46px));
+  box-shadow: 6px 8px 0 -2px rgba(42,31,27,.08); }
+.notebook ol { list-style: none; margin: 0; padding: 0; }
+.repo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 18px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+.repo:last-child { border-bottom: 0; }
+.repo a { font: 400 clamp(17px, 1.5vw, 21px)/1.15 var(--display); text-transform: uppercase; text-decoration: none; overflow-wrap: anywhere; transition: color .2s; }
+.repo a:hover, .repo a:focus-visible { color: var(--deep); outline: none; }
+.repo time { font: 400 16px/1.2 var(--script); color: var(--deep); white-space: nowrap; rotate: -2deg; }
+.repo p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 15px; }
+.repo .meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--pencil); }
+.repo .lang::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 7px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--c, var(--line)); vertical-align: 0; }
+.repo.skel span { display: block; height: 12px; border-radius: 6px; background: var(--line); opacity: .6; animation: skel 1.2s ease-in-out infinite alternate; }
+.repo.skel span:first-child { width: 46%; height: 18px; }
+.repo.skel span:last-child { grid-column: 1 / -1; width: 80%; }
+@keyframes skel { to { opacity: .25; } }
+
+.desk-card { display: grid; gap: clamp(18px, 2vw, 26px); }
+.pulse { display: flex; align-items: center; gap: 12px; font: 400 clamp(19px, 1.7vw, 23px)/1.25 var(--script); color: var(--ink); }
+.pulse i { position: relative; flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 1.5px solid var(--ext); }
+.pulse i::after { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid var(--accent); animation: ping 1.8s cubic-bezier(.23,1,.32,1) infinite; }
+@keyframes ping { from { scale: .5; opacity: 1; } to { scale: 1.6; opacity: 0; } }
+.counts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; }
+.counts div { padding: 14px 16px; border: 1.5px solid var(--pencil); border-radius: 12px 14px 10px 13px; background: var(--desk); }
+.counts dt { font-size: 14px; color: var(--muted); }
+.counts dd { margin: 4px 0 0; font: 400 clamp(32px, 3vw, 44px)/1 var(--display); }
+.langs h3 { margin: 0 0 10px; font: 400 18px/1.2 var(--script); color: var(--deep); }
+.langs .sk { stroke-width: 1.4; }
+.langs text { font: 400 13px var(--text); fill: var(--ink); stroke: none; letter-spacing: .03em; }
+.live [hidden] { display: none; }
+.live-note { margin: 0; font-size: 14px; color: var(--muted); }
+.live-note a { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .cards, .live { grid-template-columns: 1fr; }
+  .card.lead { grid-template-columns: 1fr; }
+  .card.lead .card-art { margin: 10px 10px 0; }
+}
+@media (max-width: 600px) {
+  .bar { top: 8px; gap: 6px; }
+  .bar a { font-size: 13px; padding: 8px 4px; }
+  .bar .cv { padding: 8px 10px; }
+  .bar img { width: 30px; height: 30px; }
+}
+@media (max-width: 420px) {
+  .bar > a:first-child { display: none; }
+  .bar { padding-left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-sketch .sk .ln { stroke-dashoffset: 0 !important; transition: none !important; }
+  .js-sketch .sk :is(.f, .fr, .fp, .fi) { fill-opacity: 1; transition: none !important; }
+  .card, .bar { transition: none; }
+  .pulse i::after, .repo.skel span { animation: none; }
+}
