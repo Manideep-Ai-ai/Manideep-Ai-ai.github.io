@@ -49,7 +49,7 @@
     const h = ease(0.86, 0.95, p), done = p > 0.97;
     hero.style.opacity = h.toFixed(3);
     hero.style.pointerEvents = done ? 'auto' : 'none';
-    if (open !== done) { open = done; hero.inert = !done; hero.setAttribute('aria-hidden', String(!done)); world.style.visibility = done ? 'hidden' : 'visible'; }
+    if (open !== done) { open = done; hero.inert = !done; hero.classList.toggle('open', done); hero.setAttribute('aria-hidden', String(!done)); world.style.visibility = done ? 'hidden' : 'visible'; }
     ui.style.opacity = (1 - ease(0.8, 0.86, p)).toFixed(3);
     ui.style.visibility = p > 0.9 ? 'hidden' : 'visible';
 
@@ -75,6 +75,16 @@
   ui.querySelector('.skip').addEventListener('click', () => jump(1));
   hero.querySelector('.replay').addEventListener('click', () => { jump(0); p = 0; replayDraw(); });
   addEventListener('resize', () => { vw = innerWidth; vh = innerHeight; });
+
+  // the meadow sun keeps an eye on the visitor's pointer (mouse only, not with reduced motion)
+  const eyes = hero.querySelector('.sun-eyes');
+  if (eyes && matchMedia('(hover: hover) and (pointer: fine)').matches && !reduced.matches) {
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width * 2 - 1, ny = (e.clientY - r.top) / r.height * 2 - 1;
+      eyes.style.transform = `translate(${(nx * 7).toFixed(1)}px, ${(ny * 4).toFixed(1)}px)`;
+    });
+    hero.addEventListener('pointerleave', () => { eyes.style.transform = ''; });
+  }
 
   if (!location.hash) { history.scrollRestoration = 'manual'; scrollTo(0, 0); }
   else finishDraw();
