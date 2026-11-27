@@ -1,0 +1,129 @@
+/* Orbit carousel: the seven portfolios as round windows on a wide orbit. Scroll pins the stage and swings
+   one room out over the top while the next swings in; the two-weight title wipes, the card cross-fades and a
+   pastel band behind takes the room's colour. Plain CSS, laid out on a 960 x 520 canvas scaled to fit. */
+.orb-track { position: relative; margin: 0 0 clamp(40px, 6vw, 80px); }
+.orb { --s: 1; --tint: #f5d26a; position: relative; overflow: hidden; height: clamp(560px, 82svh, 760px); background: #f8f6f1; color: var(--ink);
+  container-type: inline-size; outline: none; -webkit-tap-highlight-color: transparent; isolation: isolate; }
+.orb-track.pinned .orb { position: sticky; top: 0; height: 100svh; }
+.orb:focus-visible { box-shadow: inset 0 0 0 2px var(--ink); }
+.orb::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* no JS: a plain list */
+.orb:not(.on) { height: auto; }
+.orb.on .orb-list { display: none; }
+.orb-list { margin: 0; padding: 28px var(--gutter); display: grid; gap: 14px; }
+.orb-list a { font: 400 26px/1.1 var(--display); }
+.orb-list p { margin: 2px 0 0; opacity: .8; }
+
+/* the site's floating bar covers the top ~84px, so the canvas centres in what's left below it */
+.orb-canvas { position: absolute; left: 50%; top: calc(50% + 34px); width: 960px; height: 520px; transform: translate(-50%, -50%) scale(var(--s)); }
+.orb-arc { position: absolute; left: 0; top: 0; width: 960px; height: 520px; overflow: visible; pointer-events: none; }
+.orb-arc path { fill: var(--tint); opacity: .42; transition: fill 1.1s ease-in-out; }
+.orb-btn { appearance: none; border: 0; background: none; color: inherit; font: inherit; padding: 0; margin: 0; cursor: pointer; }
+.orb-btn:focus-visible, .orb a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 10px; }
+
+/* top right: where you are */
+.orb-top { position: absolute; left: 760px; top: 48px; width: 185px; display: flex; align-items: center; gap: 10px; font: 400 12px/1 var(--text); letter-spacing: .16em; }
+.orb-top i { flex: 1; height: 1.5px; background: var(--line); position: relative; overflow: hidden; }
+.orb-top i::after { content: ""; position: absolute; inset: 0; background: var(--coral, #d24b3e); transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+
+/* side pager */
+.orb-pager { position: absolute; left: 66px; top: 150px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.orb-dot { width: 14px; height: 10px; display: grid; place-items: center; transition: height .45s cubic-bezier(.3,.7,.2,1); }
+.orb-dot i { display: block; width: 3px; height: 3px; border-radius: 3px; background: var(--ink); opacity: .4; transition: height .45s cubic-bezier(.3,.7,.2,1), opacity .3s; }
+.orb-dot[aria-current] { height: 26px; }
+.orb-dot[aria-current] i { height: 22px; opacity: .9; }
+
+/* the round windows, hung on an orbit whose pivot sits far above the canvas */
+.orb-plates { position: absolute; left: 130px; top: 82px; width: 245px; height: 245px; touch-action: pan-y; }
+.orb-plate { position: absolute; inset: 0; transform-origin: 69% -217%; visibility: hidden; will-change: transform; }
+.orb-plate.on, .orb-plate.out { visibility: visible; }
+.orb-plate a { display: block; width: 100%; height: 100%; border-radius: 50%; }
+.orb-plate figure { margin: 0; width: 100%; height: 100%; border-radius: 50%; padding: 11px; background: #fffdf8;
+  border: 1.5px solid var(--pencil); box-shadow: 0 18px 26px -10px rgba(42,31,27,.32), 0 3px 6px rgba(42,31,27,.12); }
+.orb-plate img { display: block; width: 100%; height: 100%; max-width: none; border-radius: 50%; object-fit: cover; object-position: 50% 14%;
+  outline: 1.5px solid var(--pencil); outline-offset: -1px; user-select: none; -webkit-user-drag: none; }
+.orb-plate a:hover img { filter: saturate(1.15); }
+
+/* title: a light line over a heavy one */
+.orb-head { position: absolute; left: 395px; top: 92px; width: 320px; height: 160px; }
+.orb-hd { position: absolute; inset: 0; visibility: hidden; }
+.orb-hd.on, .orb-hd.out { visibility: visible; }
+.orb-eye { margin: 0 0 4px 2px; font: 400 13px/1.2 var(--script); color: var(--deep); }
+.orb-hd h3 { margin: 0; font: inherit; }
+.orb-t1, .orb-t2 { display: block; width: fit-content; white-space: nowrap; line-height: 1; text-transform: uppercase; margin-top: 6px; }
+.orb-t1 { font-family: var(--text); font-weight: 400; letter-spacing: .02em; }
+.orb-t2 { font-family: var(--display); letter-spacing: -.01em; }
+
+.orb-acts { position: absolute; left: 398px; top: 284px; display: flex; gap: 40px; font: 400 14px/1 var(--text); }
+.orb-acts > * { display: flex; align-items: center; gap: 9px; padding: 4px 0; text-decoration: none; }
+.orb-acts svg { width: 13px; height: 13px; fill: currentColor; transition: transform .2s; }
+.orb-acts > *:hover { color: var(--coral, #d24b3e); }
+.orb-acts > *:hover svg { transform: translateX(2px); }
+
+/* the card */
+.orb-card { position: absolute; left: 730px; top: 112px; width: 220px; padding: 18px 20px 20px; border-radius: 20px; border: 1.5px solid var(--pencil);
+  background: color-mix(in oklab, #fffdf8 82%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 5px 6px 0 -1px rgba(42,31,27,.1); }
+.orb-tabs { display: flex; justify-content: space-between; padding: 0 6px 0 14px; margin-bottom: 16px; font: 400 12.5px/1 var(--text); }
+.orb-tab { color: var(--muted); padding: 3px 0; border-bottom: 1.5px solid transparent; }
+.orb-tab[aria-selected="true"] { color: var(--ink); border-color: var(--coral, #d24b3e); }
+.orb-bodies { display: grid; }
+.orb-body { grid-area: 1 / 1; visibility: hidden; }
+.orb-body.on, .orb-body.out { visibility: visible; }
+.orb-badge { position: relative; width: 58px; height: 62px; margin: 0 0 12px 4px; border-radius: 10px; border: 1.5px solid var(--pencil); }
+.orb-badge b { position: absolute; left: 6px; top: 5px; font: 400 32px/1 var(--display); }
+.orb-badge svg { position: absolute; right: 7px; bottom: 7px; width: 12px; height: 12px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.orb-name { margin: 0; font: 400 19px/1.1 var(--display); text-transform: uppercase; }
+.orb-kit { margin: 4px 0 10px; font: 400 11px/1.2 var(--text); color: var(--muted); letter-spacing: .02em; overflow-wrap: anywhere; }
+.orb-desc { margin: 0; min-height: 70px; font: 400 13.5px/1.38 var(--text); }
+.orb-chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; padding: 0; list-style: none; min-height: 70px; align-content: flex-start; }
+.orb-chips[hidden], .orb-desc[hidden] { display: none; }
+.orb-chips li { font: 400 11.5px/1 var(--text); padding: 5px 9px; border-radius: 99px; border: 1px solid var(--line); background: #fff; }
+.orb-go { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; height: 36px; padding: 0 14px 0 16px; border-radius: 99px;
+  background: var(--coral, #d24b3e); color: #fff; font: 400 13px/1 var(--text); text-decoration: none; transition: background .2s; }
+.orb-go:hover { background: var(--coral-deep, #b93f33); }
+.orb-go svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s; }
+.orb-go:hover svg { transform: rotate(-45deg); }
+
+/* thumbnail strip */
+.orb-strip { position: absolute; left: 120px; top: 368px; width: 560px; height: 124px; display: flex; align-items: center; }
+.orb-arrow { width: 36px; height: 36px; display: grid; place-items: center; flex: none; border-radius: 50%; transition: background .15s, color .15s; }
+.orb-arrow svg { width: 11px; height: 14px; fill: currentColor; }
+@media (hover: hover) { .orb-arrow:hover { background: var(--ink); color: #f8f6f1; } }
+.orb-win { position: relative; width: 472px; height: 124px; overflow: hidden; flex: none; margin: 0 2px;
+  -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.orb-row { position: absolute; left: 0; top: 0; display: flex; transition: transform .6s cubic-bezier(.65,0,.35,1); }
+.orb-th { width: 118px; height: 124px; display: flex; justify-content: center; padding-top: 3px; }
+.orb-th .orb-btn { width: 86px; height: 118px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 7px; padding-top: 9px; transition: background .45s, box-shadow .45s; }
+.orb-th .orb-btn[aria-current] { background: #fffdf8; box-shadow: 0 0 0 1.5px var(--pencil), 3px 4px 0 -1px rgba(42,31,27,.1); }
+.orb-th img { width: 56px; height: 56px; max-width: none; border-radius: 50%; object-fit: cover; object-position: 50% 14%;
+  border: 3px solid #fffdf8; outline: 1.2px solid var(--pencil); box-shadow: 0 4px 6px rgba(42,31,27,.18); transition: transform .45s; }
+.orb-th .orb-btn[aria-current] img { transform: scale(1.06); }
+.orb-th span { font: 400 11px/1.2 var(--text); text-align: center; max-width: 80px; color: var(--pencil); }
+.orb-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* phones: one column that fits a screen; the pager, swipes and scroll replace the strip */
+@container (max-width: 639px) {
+  .orb-canvas { position: relative; left: auto; top: auto; width: 100%; height: 100%; transform: none; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 78px 16px 18px; }
+  .orb-arc { width: 200%; height: auto; left: -62%; top: -10px; }
+  .orb-top { position: relative; left: auto; top: auto; width: 150px; align-self: flex-end; margin-bottom: 4px; }
+  .orb-pager { left: 12px; top: 22%; }
+  .orb-plates { position: relative; left: auto; top: auto; flex: none; width: min(52vw, 29svh); height: min(52vw, 29svh); }
+  .orb-plate figure { padding: 8px; }
+  .orb-head { position: relative; left: auto; top: auto; width: 100%; height: 124px; margin-top: 12px; flex: none; }
+  .orb-hd { text-align: center; transform: scale(.74); transform-origin: 50% 0; }
+  .orb-hd h3 { display: flex; flex-direction: column; align-items: center; }
+  .orb-acts { position: relative; left: auto; top: auto; margin-top: 2px; gap: 28px; }
+  .orb-card { position: relative; left: auto; top: auto; width: 100%; max-width: 420px; margin-top: 12px; padding: 14px 16px 16px; }
+  .orb-tabs { margin-bottom: 10px; }
+  .orb-badge { position: absolute; right: 16px; top: 44px; margin: 0; width: 50px; height: 52px; }
+  .orb-badge b { font-size: 26px; }
+  .orb-desc, .orb-chips { min-height: 56px; }
+  .orb-go { margin-top: 10px; }
+  .orb-strip { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb-row, .orb-dot, .orb-dot i, .orb-th .orb-btn, .orb-th img, .orb-arc path, .orb-top i::after { transition: none; }
+}
