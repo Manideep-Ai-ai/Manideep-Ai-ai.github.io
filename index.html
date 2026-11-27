@@ -23,9 +23,9 @@
 <link rel="me" href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297">
 <link rel="preload" as="font" type="font/woff" href="assets/fonts/kalam.woff" crossorigin>
 <link rel="preload" as="font" type="font/woff" href="assets/fonts/barlow.woff" crossorigin>
-<link rel="stylesheet" href="assets/intro/intro.css">
+<script>document.documentElement.classList.add('js-studio')</script>
+<link rel="stylesheet" href="assets/studio/studio.css">
 <link rel="stylesheet" href="assets/home/sketch.css">
-<script type="module" src="assets/intro/intro.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Projects & Seven Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
@@ -55,8 +55,6 @@ a { color: inherit; }
 img { max-width: 100%; }
 ::selection { background: var(--accent); color: var(--paper); }
 
-.nojs { padding: 48px var(--gutter); text-align: center; }
-.nojs h1 { margin: 12px 0 8px; font: 400 clamp(44px, 8vw, 96px)/1 var(--display); color: var(--accent); }
 
 /* ---------- sections: one red extruded title per section, a pencil note in the margin ---------- */
 .sec { display: grid; grid-template-columns: 1fr; align-items: end; gap: 10px 22px; padding: 0 var(--gutter); margin: clamp(72px, 10vw, 140px) 0 clamp(26px, 3.4vw, 44px); }
@@ -179,13 +177,221 @@ img { max-width: 100%; }
 </style>
 </head>
 <body>
-<div id="intro"></div>
+<section class="studio-track" id="top" aria-label="Intro: Manideep's studio">
+  <div class="studio-stage">
+    <div class="studio-world">
+      <svg class="studio" viewBox="0 0 1280 760" role="img" aria-labelledby="studio-title studio-desc">
+        <title id="studio-title">Manideep's illustrated studio</title>
+        <desc id="studio-desc">A cosy studio draws itself in: shelves of books, a clock, plants, a hanging lamp, a desk with a lamp, a monitor, a chair, a computer tower and a sleeping cat.</desc>
+        <defs>
+          <linearGradient id="lampGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf6b" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf6b" stop-opacity="0"/></linearGradient>
+          <radialGradient id="deskGlow"><stop offset="0" stop-color="#ffd46b" stop-opacity=".7"/><stop offset="1" stop-color="#ffd46b" stop-opacity="0"/></radialGradient>
+        </defs>
+
+        <!-- room -->
+        <ellipse class="ground-shadow w w8" cx="644" cy="684" rx="475" ry="18"/>
+        <path class="wall-arch w w1" d="M328 610V250c0-108 88-196 196-196h239c108 0 196 88 196 196v360Z"/>
+        <path class="lamp-light glow" d="M613 126h118l93 420H520Z" fill="url(#lampGlow)"/>
+        <path class="tr t1 soft" pathLength="1" d="M76 676h1128"/>
+        <path class="tr t2 faint" pathLength="1" d="M151 692h250m518 0h205"/>
+
+        <!-- left artwork -->
+        <rect class="paper w w2" x="170" y="184" width="130" height="157" rx="2"/>
+        <rect class="tr t3" pathLength="1" x="170" y="184" width="130" height="157" rx="2"/>
+        <rect class="art-sky w w3" x="185" y="199" width="100" height="127"/>
+        <rect class="tr t4 fine" pathLength="1" x="185" y="199" width="100" height="127"/>
+        <path class="art-hill w w3" d="m204 294 22-28 19 16 22-39v51h-63Z"/>
+        <path class="tr t5 artwork" pathLength="1" d="m204 294 22-28 19 16 22-39m-63 51h63"/>
+        <circle class="art-sun w w3" cx="250" cy="228" r="10"/>
+        <circle class="tr t5 fine" pathLength="1" cx="250" cy="228" r="10"/>
+
+        <!-- clock -->
+        <circle class="clock-fill w w2" cx="365" cy="203" r="48"/>
+        <circle class="tr t4" pathLength="1" cx="365" cy="203" r="48"/>
+        <circle class="tr t5 fine" pathLength="1" cx="365" cy="203" r="39"/>
+        <path class="tr t6 fine" pathLength="1" d="M365 171v5m0 54v5m-32-32h5m54 0h5"/>
+        <g class="clock-hands"><path class="tr t6 fine" pathLength="1" d="M365 203l17-20m-17 20-13 14"/></g>
+        <circle class="ink-dot w w3" cx="365" cy="203" r="4"/>
+
+        <!-- right pictures -->
+        <rect class="paper w w2" x="1002" y="192" width="88" height="105"/>
+        <rect class="tr t4" pathLength="1" x="1002" y="192" width="88" height="105"/>
+        <path class="art-chart w w3" d="m1018 270 19-25 13 13 21-31v43h-53Z"/>
+        <path class="tr t5 artwork" pathLength="1" d="m1018 270 19-25 13 13 21-31m-53 43h53"/>
+        <rect class="paper w w3" x="1109" y="229" width="58" height="68"/>
+        <rect class="tr t5" pathLength="1" x="1109" y="229" width="58" height="68"/>
+        <circle class="art-dot w w3" cx="1138" cy="263" r="12"/>
+        <circle class="tr t6 fine" pathLength="1" cx="1138" cy="263" r="12"/>
+
+        <!-- hanging lamp -->
+        <path class="tr t2" pathLength="1" d="M670 46v70"/>
+        <path class="lamp-fill w w2" d="M613 145c4-36 23-54 57-54s53 18 57 54Z"/>
+        <path class="tr t3" pathLength="1" d="M613 145c4-36 23-54 57-54s53 18 57 54Z"/>
+        <path class="tr t4 fine" pathLength="1" d="M613 145h114m-70-54v-10h26v10"/>
+        <path class="bulb-hang w w3" d="M646 145c2 13 10 20 24 20s22-7 24-20Z"/>
+        <path class="tr t4" pathLength="1" d="M646 145c2 13 10 20 24 20s22-7 24-20"/>
+
+        <!-- left shelf -->
+        <path class="shelf w w3" d="M84 404h247v13H84Z"/>
+        <path class="tr t4" pathLength="1" d="M84 404h247v13H84Z"/>
+        <path class="tr t5 fine" pathLength="1" d="M111 417v17m192-17v17"/>
+        <rect class="mustard w w3" x="105" y="329" width="23" height="75"/>
+        <rect class="tr t5" pathLength="1" x="105" y="329" width="23" height="75"/>
+        <rect class="coral w w3" x="132" y="345" width="19" height="59"/>
+        <rect class="tr t5" pathLength="1" x="132" y="345" width="19" height="59"/>
+        <path class="cobalt w w3" d="m157 337 21-4 13 68-21 3Z"/>
+        <path class="tr t6" pathLength="1" d="m157 337 21-4 13 68-21 3Z"/>
+        <path class="tr t6 fine" pathLength="1" d="M111 343h11m15 15h9m17-3 17-3M110 385h12m15 1h9"/>
+        <path class="vase w w4" d="M242 362h47l-6 42h-35Z"/>
+        <path class="tr t6" pathLength="1" d="M242 362h47l-6 42h-35Z"/>
+        <path class="tr t6 botanical" pathLength="1" d="M265 361C263 340 255 322 242 307m23 54c3-22 13-42 29-58m-31 41c-11-10-20-16-29-19m34 11c10-10 20-16 31-18"/>
+        <path class="leaf w w4" d="M234 325c8-10 19-10 29 1-8 10-19 10-29-1Zm8-18c4-13 14-18 27-13-3 13-13 18-27 13Zm27 31c2-14 11-21 26-20-2 14-11 21-26 20Zm25-35c-1-12 6-20 19-22 1 12-6 20-19 22Z"/>
+        <path class="tr t6 fine" pathLength="1" d="M234 325c8-10 19-10 29 1-8 10-19 10-29-1Zm8-18c4-13 14-18 27-13-3 13-13 18-27 13Zm27 31c2-14 11-21 26-20-2 14-11 21-26 20Zm25-35c-1-12 6-20 19-22 1 12-6 20-19 22Z"/>
+
+        <!-- right shelf -->
+        <path class="shelf w w3" d="M947 368h245v13H947Z"/>
+        <path class="tr t4" pathLength="1" d="M947 368h245v13H947Z"/>
+        <path class="tr t5 fine" pathLength="1" d="M976 381v17m188-17v17"/>
+        <rect class="cobalt w w3" x="974" y="291" width="20" height="77"/>
+        <rect class="tr t5" pathLength="1" x="974" y="291" width="20" height="77"/>
+        <rect class="mustard w w3" x="999" y="309" width="22" height="59"/>
+        <rect class="tr t5" pathLength="1" x="999" y="309" width="22" height="59"/>
+        <path class="coral w w3" d="m1026 300 20-7 24 68-20 7Z"/>
+        <path class="tr t6" pathLength="1" d="m1026 300 20-7 24 68-20 7Z"/>
+        <path class="tr t6 fine" pathLength="1" d="M980 307h8m17 15h10m18-10 17-6M979 349h10m16 1h11"/>
+        <path class="small-pot w w4" d="M1100 338h50l-7 30h-36Z"/>
+        <path class="tr t6" pathLength="1" d="M1100 338h50l-7 30h-36Z"/>
+        <path class="tr t6 botanical" pathLength="1" d="M1124 338c-7-19-4-33 8-44m-8 44c4-17-3-29-15-38m17 22c13-3 20-13 22-26"/>
+
+        <!-- desk -->
+        <path class="desktop w w4" d="M274 502h705l-12 32H262Z"/>
+        <path class="tr t7" pathLength="1" d="M274 502h705l-12 32H262Z"/>
+        <path class="tr t8" pathLength="1" d="M296 534v139m646-139v139"/>
+        <path class="tr t8 fine" pathLength="1" d="m313 534 17 139m594-139-17 139M296 565h646"/>
+        <path class="tr t9 soft" pathLength="1" d="M284 673h61m549 0h66"/>
+        <path class="drawer w w5" d="M300 534h126v139H300Z"/>
+        <path class="tr t8" pathLength="1" d="M300 534h126v139H300Zm0 46h126m-126 47h126"/>
+        <path class="tr t9 fine" pathLength="1" d="M348 557h30m-30 47h30m-30 46h30"/>
+
+        <!-- desk lamp -->
+        <ellipse class="desk-glow glow" cx="452" cy="500" rx="90" ry="14" fill="url(#deskGlow)"/>
+        <ellipse class="lamp-base w w5" cx="355" cy="495" rx="43" ry="7"/>
+        <ellipse class="tr t7" pathLength="1" cx="355" cy="495" rx="43" ry="7"/>
+        <path class="lamp-arm w w5" d="m344 490 10-4 7-43-8-2Zm12-48 8 7 45-62-8-6Z"/>
+        <path class="tr t8" pathLength="1" d="m344 490 10-4 7-43-8-2Zm12-48 8 7 45-62-8-6Z"/>
+        <circle class="joint w w5" cx="357" cy="444" r="10"/>
+        <circle class="tr t8" pathLength="1" cx="357" cy="444" r="10"/>
+        <circle class="joint w w5" cx="405" cy="384" r="10"/>
+        <circle class="tr t8" pathLength="1" cx="405" cy="384" r="10"/>
+        <path class="lamp-shade w w5" d="m403 386 16-24c9-13 25-15 37-5l12 10-45 42-17-14Z"/>
+        <path class="tr t9" pathLength="1" d="m403 386 16-24c9-13 25-15 37-5l12 10-45 42-17-14Zm20 23c10 5 21 1 29-7"/>
+        <path class="bulb w w6" d="M426 400c8-6 17-8 26-4-3 10-9 16-18 19Z"/>
+        <path class="tr t9 fine" pathLength="1" d="M426 400c8-6 17-8 26-4-3 10-9 16-18 19"/>
+
+        <!-- monitor -->
+        <rect class="monitor-body w w5" x="508" y="301" width="276" height="182" rx="7"/>
+        <rect class="tr t7" pathLength="1" x="508" y="301" width="276" height="182" rx="7"/>
+        <rect class="screen-on" x="522" y="315" width="248" height="147" rx="2"/>
+        <g class="screen-art">
+          <path class="sa sa1" pathLength="1" d="M548 355h91"/>
+          <path class="sa sa2" pathLength="1" d="M548 374h164"/>
+          <path class="sa sa3" pathLength="1" d="M548 388h128"/>
+          <rect class="sa-block" x="548" y="408" width="72" height="28"/>
+          <path class="sa sa4 fine" pathLength="1" d="M639 408h73m-73 11h58m-58 11h43"/>
+        </g>
+        <rect class="screen-off w w6" x="522" y="315" width="248" height="147" rx="2"/>
+        <circle class="sleep-dot" cx="757" cy="450" r="2.5"/>
+        <rect class="tr t8 fine" pathLength="1" x="522" y="315" width="248" height="147" rx="2"/>
+        <path class="monitor-neck w w6" d="M632 483h28l5 19h-38Z"/>
+        <path class="tr t9" pathLength="1" d="M632 483h28l5 19h-38Zm-31 19h90l8 9H593Z"/>
+
+        <!-- desk objects -->
+        <path class="mug w w6" d="M812 451h42v51h-42Z"/>
+        <path class="tr t9" pathLength="1" d="M812 451h42v51h-42Zm42 10h12c15 0 15 24 0 24h-12"/>
+        <path class="tr t10 soft steam" pathLength="1" d="M825 441c-8-9 8-15 0-24m16 24c-8-9 8-15 0-24"/>
+        <path class="desk-books w w6" d="M878 477h66v11h-66Z"/>
+        <path class="desk-books2 w w6" d="M865 489h79v13h-79Z"/>
+        <path class="tr t9 fine" pathLength="1" d="M878 477h66v11h-66Zm-13 12h79v13h-79Z"/>
+
+        <!-- tower -->
+        <path class="cpu w w6" d="M456 550h82l12 9v108l-8 6h-86Z"/>
+        <path class="tr t9" pathLength="1" d="M456 673V550h82l12 9v108l-8 6Zm82-123v117l12-8"/>
+        <circle class="tr t10 fine" pathLength="1" cx="495" cy="590" r="23"/>
+        <circle class="tr t10 fine" pathLength="1" cx="495" cy="590" r="16"/>
+        <path class="tr t10 fine" pathLength="1" d="M477 634h37m-37 9h37m-37 9h37M468 673v6m62-6v6"/>
+        <circle class="power w w7" cx="522" cy="566" r="4"/>
+
+        <!-- chair -->
+        <rect class="chair-soft w w6" x="850" y="320" width="104" height="43" rx="18"/>
+        <rect class="tr t9" pathLength="1" x="850" y="320" width="104" height="43" rx="18"/>
+        <path class="tr t10 fine" pathLength="1" d="M877 363v14m50-14v14"/>
+        <path class="chair-soft w w6" d="M832 373c19-12 42-18 70-18s52 6 70 18l-8 145c-18 18-39 27-62 27s-44-9-62-27Z"/>
+        <path class="tr t9" pathLength="1" d="M832 373c19-12 42-18 70-18s52 6 70 18l-8 145c-18 18-39 27-62 27s-44-9-62-27Z"/>
+        <path class="chair-panel w w7" d="M850 389c14-8 31-12 52-12 20 0 38 4 52 12l-7 113c-13 14-28 21-45 21s-32-7-45-21Z"/>
+        <path class="tr t10 fine" pathLength="1" d="M850 389c14-8 31-12 52-12 20 0 38 4 52 12l-7 113c-13 14-28 21-45 21s-32-7-45-21Zm-1 85c15-11 33-16 53-16s38 5 53 16"/>
+        <path class="chair-seat w w7" d="M818 522c28-8 56-12 84-12s56 4 84 12l-7 47c-24 10-50 15-77 15s-53-5-77-15Z"/>
+        <path class="tr t10" pathLength="1" d="M818 522c28-8 56-12 84-12s56 4 84 12l-7 47c-24 10-50 15-77 15s-53-5-77-15Z"/>
+        <path class="chair-dark w w7" d="M779 483h71v17h-71Zm175 0h71v17h-71Z"/>
+        <path class="tr t10" pathLength="1" d="M779 483h71v17h-71m17 0 12 57m175-74h71v17h-71m54 0-12 57"/>
+        <path class="chair-dark w w7" d="M885 584h34v64h-34Zm-9 64h52l8 13h-68Z"/>
+        <path class="tr t11" pathLength="1" d="M885 584h34v64h-34Zm-9 64h52l8 13h-68Z"/>
+        <path class="tr t11" pathLength="1" d="m902 657-105 20m105-20 106 20m-106-20v48m0-35-67 28m67-28 67 28"/>
+        <g>
+          <circle class="chair-dark w w8" cx="795" cy="688" r="9"/><circle class="tr t12" pathLength="1" cx="795" cy="688" r="9"/>
+          <circle class="chair-dark w w8" cx="1009" cy="688" r="9"/><circle class="tr t12" pathLength="1" cx="1009" cy="688" r="9"/>
+          <circle class="chair-dark w w8" cx="832" cy="709" r="9"/><circle class="tr t12" pathLength="1" cx="832" cy="709" r="9"/>
+          <circle class="chair-dark w w8" cx="972" cy="709" r="9"/><circle class="tr t12" pathLength="1" cx="972" cy="709" r="9"/>
+          <circle class="chair-dark w w8" cx="902" cy="712" r="9"/><circle class="tr t12" pathLength="1" cx="902" cy="712" r="9"/>
+        </g>
+        <path class="tr t12 soft" pathLength="1" d="M646 502v20c0 18-17 22-35 22h-69"/>
+
+        <!-- the cat, asleep by the chair -->
+        <g class="cat">
+          <path class="cat-fill w w8" d="M1056 676c-8-30 16-54 52-54 32 0 52 20 52 42 0 5-1 9-3 12Z"/>
+          <path class="tr t11" pathLength="1" d="M1056 676c-8-30 16-54 52-54 32 0 52 20 52 42 0 5-1 9-3 12Z"/>
+          <path class="cat-stripe w w8" d="M1102 624c-5 9-5 18 0 26l6-1c-4-8-4-16 0-25Zm18 2c-5 9-5 17 0 25l6-1c-4-8-4-15 0-23Zm17 8c-4 8-4 15 0 22l5-2c-3-6-3-12 0-19Z"/>
+          <path class="cat-fill w w8" d="M1046 676c-8-12-6-30 6-38l-2-16 13 10c6-2 12-2 18 0l12-10-1 17c10 9 11 26 3 37Z"/>
+          <path class="tr t11" pathLength="1" d="M1046 676c-8-12-6-30 6-38l-2-16 13 10c6-2 12-2 18 0l12-10-1 17c10 9 11 26 3 37"/>
+          <path class="tr t12 fine" pathLength="1" d="M1058 655q5 4 10 0m8 0q5 4 10 0M1069 664l3 2 3-2"/>
+          <path class="cat-tail tr t12" pathLength="1" d="M1157 668c18 4 22-18 6-26"/>
+          <text class="zzz" x="1040" y="610">z<tspan dx="4" dy="-12">z</tspan><tspan dx="4" dy="-12">z</tspan></text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- what the monitor turns into: the landing, full screen -->
+    <div class="hero" inert>
+      <header class="hero-top">
+        <a href="./" class="hero-logo" aria-label="Manideep Reddy, home"><img src="assets/logo.png" alt="" width="44" height="44"></a>
+        <span>MANIDEEP REDDY</span>
+        <span class="hero-place">HYDERABAD, INDIA</span>
+        <nav aria-label="Landing"><a href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé ↗</a><button type="button" class="replay">Back to my desk ↺</button></nav>
+      </header>
+      <div class="hero-stage">
+        <p class="note n-mustard">Engineering the inside.<br><b>Designing the outside.</b></p>
+        <p class="note n-cobalt">Software engineering<br><b>× UI / UX design</b></p>
+        <h1 class="hero-word" aria-label="Portfolio"><span aria-hidden="true">PORTFOLIO</span><span class="hero-mani" role="img" aria-label="Mani sitting on the lettering"></span><span class="hero-bubble" aria-hidden="true">Made myself at home.</span></h1>
+        <p class="note n-sage">Built with logic.<br><b>Finished with feeling.</b></p>
+        <p class="note n-coral">a curious mind,<br><b>a few too many tabs.</b></p>
+      </div>
+      <footer class="hero-foot">
+        <p><span>Hey, I'm Manideep.</span> I build backends, explore AI, and design the things people see and touch.</p>
+        <nav aria-label="Sections"><a href="#work">What I build ↓</a><a href="#live">Live from GitHub ↓</a><a href="#design">Seven portfolios ↓</a></nav>
+      </footer>
+    </div>
+
+    <div class="studio-ui" aria-hidden="false">
+      <header><a class="studio-logo" href="./" aria-label="Manideep Reddy, home"><img src="assets/logo.png" alt="" width="40" height="40"></a><span>MANIDEEP'S LITTLE CORNER</span><button type="button" class="skip">Skip intro ↗</button></header>
+      <h2 class="studio-cap" aria-live="polite">Psst. This is where it all happens.</h2>
+      <footer><span class="studio-note">Drawing a place for ideas.</span><div class="studio-progress"><span></span></div><span class="studio-hint">scroll</span></footer>
+    </div>
+  </div>
+</section>
 <header class="bar" aria-label="Site">
   <a href="#work" aria-label="Manideep Reddy, back to the top of the work"><img src="assets/logo.png" alt="" width="34" height="34"></a>
   <nav aria-label="Sections"><a href="#work">Work</a><a href="#live">Live</a><a href="#design">Portfolios</a><a href="#contact">Contact</a></nav>
   <a class="cv" href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé ↗</a>
 </header>
-<noscript><header class="nojs"><img src="assets/logo.png" alt="" width="72" height="72"><h1>Manideep Reddy</h1><p>Software engineer in Hyderabad: backends, data and AI, and the interfaces people see and touch.</p></header></noscript>
 <main>
   <section class="work" id="work" aria-labelledby="work-h">
     <header class="sec"><h2 id="work-h" class="pop">What I build</h2><p class="aside">Backend, data and AI. <em>the parts nobody sees.</em></p></header>
@@ -591,7 +797,7 @@ img { max-width: 100%; }
 </script>
 <script>
 // GoatCounter events for the success metric: résumé / email / WhatsApp / LinkedIn clicks (contact-*), portfolio opens
-// (portfolio-*) and visitors who get past the intro (reached-work). Delegated, so links React renders count too.
+// (portfolio-*) and visitors who get past the intro (reached-work). Delegated, so links added later count too.
 (() => {
   const track = (path, title, tries = 0) => {
     if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title: title || path, event: true });
@@ -617,6 +823,7 @@ img { max-width: 100%; }
   }).observe(work);
 })();
 </script>
+<script src="assets/studio/studio.js" defer></script>
 <script src="assets/home/sketch.js" defer></script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

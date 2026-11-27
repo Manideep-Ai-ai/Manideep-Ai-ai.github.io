@@ -1,6 +1,0 @@
-node_modules/
-dist/
-.openai/*.tar.gz
-.DS_Store
-public
-.claude-flow/
