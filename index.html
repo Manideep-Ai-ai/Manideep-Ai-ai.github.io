@@ -71,6 +71,47 @@ img { max-width: 100%; }
 .wins b { display: block; font: 400 clamp(44px, 4.6vw, 64px)/1 var(--display); color: var(--ink); margin-bottom: 8px; }
 
 
+/* the carousel sits in a drawn monitor, the same pencil line and desk beige as the intro */
+.screen { position: relative; margin: 0 var(--gutter) 96px; padding: clamp(10px, 1.2vw, 16px); background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 14px; box-shadow: inset 0 0 0 4px var(--paper), 6px 8px 0 -2px rgba(42,31,27,.08); }
+.screen::before { content: ""; position: absolute; left: 50%; top: 100%; width: 70px; height: 44px; translate: -50% 1.5px; background: var(--desk); border: 1.5px solid var(--pencil); border-top: 0; }
+.screen::after { content: ""; position: absolute; left: 50%; top: calc(100% + 44px); width: min(300px, 46%); height: 14px; translate: -50% 0; background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 8px 8px 3px 3px; }
+
+/* ---------- rooms: water-ripple carousel, a tap drops a ring that reveals the next portfolio ---------- */
+.rip { --chin: 124px; position: relative; height: clamp(480px, 54vw, 86svh); overflow: hidden; border-radius: 6px; background: var(--desk); color: var(--ink); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
+.rip:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+.rip:not(.on) { height: auto; cursor: auto; }
+.rip.on .rip-list { display: none; }
+.rip-list { margin: 0; padding: 28px clamp(20px, 4vw, 56px); display: grid; gap: 14px; }
+.rip-list a { font: 400 26px/1.1 var(--display); }
+.rip-list p { margin: 2px 0 0; opacity: .8; }
+.rip-base, .rip-in { position: absolute; inset: 0 0 auto; width: 100%; height: calc(100% - var(--chin)); max-width: none; display: block; pointer-events: none; }
+.rip-base { background: var(--ink); }
+.rip-base, .rip-fade { object-fit: cover; object-position: 50% 0; }
+.rip-fade { animation: rip-fade .3s cubic-bezier(.23,1,.32,1) both; }
+.rip-text { position: absolute; left: clamp(18px, 2.4vw, 32px); right: 296px; bottom: 0; height: var(--chin); display: flex; flex-direction: column; justify-content: center; pointer-events: none; }
+.rip-line { display: block; overflow: hidden; padding-bottom: .08em; }
+.rip-line > * { display: block; animation: rip-rise .5s cubic-bezier(.23,1,.32,1) both; }
+.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 400 clamp(24px, 2.6vw, 38px)/1 var(--display); text-transform: uppercase; letter-spacing: 0; transition: color .2s; }
+.rip-title a::after { content: " ↗"; font: 400 .42em/1 var(--text); vertical-align: .9em; }
+.rip-title a:hover, .rip-title a:focus-visible { color: var(--deep); outline: none; }
+.rip-cap { margin-top: 6px; font: 400 clamp(17px, 1.4vw, 20px)/1.3 var(--script); color: var(--deep); max-width: 60ch; }
+.rip-cap > * { animation-delay: .08s; }
+.rip-nav { position: absolute; right: clamp(18px, 2.4vw, 32px); bottom: calc(var(--chin) / 2 - 23px); display: flex; align-items: center; gap: 14px; cursor: default; }
+.rip-pause { width: 38px; height: 38px; }
+.rip-count { font: 400 14px/1 var(--text); letter-spacing: .14em; }
+.rip-btn { position: relative; appearance: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--pencil); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .15s ease-out, color .15s ease-out, transform .12s ease-out; }
+.rip-btn::after { content: ''; position: absolute; inset: -4px; }   /* 46px+ hit area, the 38px pause too */
+.rip-btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+@media (hover: hover) { .rip-btn:hover { background: var(--ink); color: var(--paper); } }   /* no sticky ink fill after a tap */
+.rip-btn:active { transform: scale(.94); }
+.rip-track { position: absolute; left: 0; right: 0; top: calc(100% - var(--chin)); height: 2px; background: var(--line); }
+.rip-fill { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+.rip-fill.run { animation: rip-auto 6s linear forwards; }
+.rip.paused .rip-fill { animation-play-state: paused; }
+@keyframes rip-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes rip-auto { to { transform: scaleX(1); } }
+@keyframes rip-fade { from { opacity: 0; } }
+
 /* ---------- crew: the footer. Mani's name in the heading red, four pencil sketches of him living on the letters ---------- */
 .crew { margin-top: clamp(48px, 7vw, 100px); padding: clamp(24px, 3vw, 40px) var(--gutter) 28px; overflow: clip; }
 .crew-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; }
@@ -121,9 +162,16 @@ img { max-width: 100%; }
 @media (max-width: 600px) {
   .crew-top { flex-direction: column; align-items: start; }
   .copied { text-align: left; margin: 0; }
+  /* phones: a tall stage shows the phone-sized screenshots; controls sit under the caption */
+  .screen { margin: 0 12px 84px; padding: 8px; }
+  .rip { --chin: 178px; height: min(178vw, 88svh); }
+  .rip-text { right: 18px; justify-content: flex-start; padding-top: 18px; }
+  .rip-nav { left: 18px; right: auto; bottom: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .rip-line > * { animation: none; }
+  .rip-btn:active { transform: none; }
   .copied { translate: none; }
   .crew-m img, .crew-m.up img { translate: none; scale: none; transition: none; }
   .crew-say, .crew-say.on { scale: none; filter: none; transition: opacity .2s; }
@@ -247,11 +295,9 @@ img { max-width: 100%; }
         <rect class="tr t7" pathLength="1" x="508" y="301" width="276" height="182" rx="7"/>
         <rect class="screen-on" x="522" y="315" width="248" height="147" rx="2"/>
         <g class="screen-art">
-          <path class="sa sa1" pathLength="1" d="M548 355h91"/>
-          <path class="sa sa2" pathLength="1" d="M548 374h164"/>
-          <path class="sa sa3" pathLength="1" d="M548 388h128"/>
-          <rect class="sa-block" x="548" y="408" width="72" height="28"/>
-          <path class="sa sa4 fine" pathLength="1" d="M639 408h73m-73 11h58m-58 11h43"/>
+          <!-- the screen already shows the home page the camera is about to walk into -->
+          <image class="sa-wide" href="assets/studio/home-wide.webp" x="522" y="315" width="248" height="147" preserveAspectRatio="xMidYMid slice"/>
+          <image class="sa-tall" href="assets/studio/home-tall.webp" x="612.04" y="315" width="67.93" height="147" preserveAspectRatio="xMidYMid slice"/>
         </g>
         <rect class="screen-off w w6" x="522" y="315" width="248" height="147" rx="2"/>
         <circle class="sleep-dot" cx="757" cy="450" r="2.5"/>
@@ -371,8 +417,10 @@ img { max-width: 100%; }
 <main>
   <section class="work" id="work" aria-labelledby="work-h">
     <header class="sec"><h2 id="work-h" class="pop">What I build</h2><p class="aside">Backend, data and AI. <em>the parts nobody sees.</em></p><figure class="sec-art art-mustard pop-in" aria-hidden="true"><svg class="blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M44 30C70 6 128 4 158 30s40 78 22 112-62 54-104 46S8 150 6 108 18 54 44 30Z"/></svg><img src="assets/vectors/teacher.svg" alt="" width="286" height="333" loading="lazy" decoding="async"></figure></header>
+    <div class="orb-track">
+    <div class="orb" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Projects">
     <ol class="cards">
-      <li class="card lead draw">
+      <li class="card lead draw" data-thin="LLM recruiting" data-heavy="SignAI" data-accent="#f2a58f" data-c="var(--coral)" data-wash="#fbe0d8">
         <div class="card-art" aria-hidden="true">
           <svg class="sk" viewBox="0 0 420 280">
             <path class="f" d="M64 62 L188 46 L206 236 L82 252 Z"/>
@@ -402,7 +450,7 @@ img { max-width: 100%; }
           <div class="card-foot"><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a><em>live, in production</em></div>
         </div>
       </li>
-      <li class="card draw">
+      <li class="card draw" data-thin="What's near you" data-heavy="Jhanko" data-accent="#f3c675" data-c="var(--mustard)" data-wash="#fcebc6">
         <div class="card-art" aria-hidden="true">
           <svg class="sk" viewBox="0 0 320 200">
             <path class="fp" d="M30 40 L110 24 L190 40 L290 24 L290 170 L190 186 L110 170 L30 186 Z"/>
@@ -424,7 +472,7 @@ img { max-width: 100%; }
           <div class="card-foot"><em>client work, private repo</em></div>
         </div>
       </li>
-      <li class="card draw">
+      <li class="card draw" data-thin="Artemis" data-heavy="Job agent" data-accent="#a9bcf0" data-c="var(--cobalt)" data-wash="#dbe5fb">
         <div class="card-art" aria-hidden="true">
           <svg class="sk" viewBox="0 0 320 200">
             <path class="dash" d="M70 74 C108 26 150 34 188 72"/>
@@ -445,7 +493,7 @@ img { max-width: 100%; }
           <div class="card-foot"><a href="https://github.com/Manideep-Ai-ai" target="_blank" rel="noopener">GitHub ↗</a><em>open source</em></div>
         </div>
       </li>
-      <li class="card draw">
+      <li class="card draw" data-thin="Speech emotion" data-heavy="Recognition" data-accent="#a8d1af" data-c="var(--sage)" data-wash="#dcedd9">
         <div class="card-art" aria-hidden="true">
           <svg class="sk" viewBox="0 0 320 200">
             <path d="M28 100 v0 M40 86 v28 M52 70 v60 M64 90 v20 M76 56 v88 M88 80 v40 M100 64 v72 M112 92 v16 M124 74 v52 M136 84 v32 M148 96 v8"/>
@@ -466,7 +514,7 @@ img { max-width: 100%; }
           <div class="card-foot"><em>research project</em></div>
         </div>
       </li>
-      <li class="card draw">
+      <li class="card draw" data-thin="Rosso" data-heavy="Corsa" data-accent="#f0938d" data-c="var(--accent)" data-wash="#f9d6d2">
         <div class="card-art" aria-hidden="true">
           <svg class="sk" viewBox="0 0 320 200">
             <path class="fp" d="M40 26 H280 V164 H40 Z"/>
@@ -488,6 +536,8 @@ img { max-width: 100%; }
         </div>
       </li>
     </ol>
+    </div>
+    </div>
     <ul class="wins"><li><b>40%</b>faster dashboards, from PostgreSQL indexing</li><li><b>50%</b>quicker candidate screening with AI résumé parsing</li><li><b>30%</b>faster API responses in a geolocation marketplace</li><li><b>100%</b>of deployments automated with GitHub Actions</li></ul>
   </section>
 
@@ -516,16 +566,16 @@ img { max-width: 100%; }
 
   <section class="design" id="design" aria-labelledby="design-h">
     <header class="sec"><h2 id="design-h" class="pop">How I design</h2><p class="aside">Seven front ends for the same story. <em>seven rooms, one desk.</em></p><figure class="sec-art art-sage pop-in" aria-hidden="true"><svg class="blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M44 30C70 6 128 4 158 30s40 78 22 112-62 54-104 46S8 150 6 108 18 54 44 30Z"/></svg><img src="assets/vectors/phone.svg" alt="" width="86" height="106" loading="lazy" decoding="async"></figure></header>
-    <div class="orb-track">
-    <div class="orb" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Seven portfolios">
-      <ol class="orb-list">
-        <li data-img="assets/c/00t.jpg" data-alt="Pixel-type headline Manideep Reddy, AI/ML Engineer Portfolio, beside an illustration of a coder in an orange chair" data-thin="The first" data-heavy="One" data-eye="No. 01 · where it all started" data-kit="manideepreddy.lovable.app" data-accent="#f5d26a" data-moods="Pixel type|Yellow highlighter|Built with Lovable|AI/ML"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">The First One</a><p>Built with Lovable. Pixel type, a yellow highlighter and the portfolio where it all started.</p></li>
-        <li data-img="assets/c/01t.jpg" data-alt="Blue engraved-ink illustration of a woman in the clouds above a train and the name Manideep" data-thin="Blue" data-heavy="Illustrated" data-eye="No. 02 · a storybook plate" data-kit="/01-blue-illustrated" data-accent="#9fcbe8" data-moods="Engraved ink|Sky blue|Storybook|Clouds and trains"><a href="01-blue-illustrated/">Blue Illustrated</a><p>Engraved ink in sky blue, drawn like a storybook plate.</p></li>
-        <li data-img="assets/c/02t.jpg" data-alt="Carved, glyph-covered dark texture with the name Manideep in large white type" data-thin="Hindu" data-heavy="Mythology" data-eye="No. 03 · carved in stone" data-kit="/02-hindu-mythology" data-accent="#e3b47c" data-moods="Carved stone|Glyphs|Dark and gold|Slow reveal"><a href="02-hindu-mythology/">Hindu Mythology</a><p>Myth carved into dark stone, lit one line at a time.</p></li>
-        <li data-img="assets/c/03t.jpg" data-alt="A green carved door under the word Namaste, with the line Pesh karte hain" data-thin="Indian" data-heavy="GenZ" data-eye="No. 04 · knock on the green door" data-kit="/03-indian-genz" data-accent="#bcd98e" data-moods="Green door|Loud posters|Namaste|Hinglish"><a href="03-indian-genz/">Indian GenZ</a><p>Knock on the green door. Loud posters and Namaste energy inside.</p></li>
-        <li data-img="assets/c/04t.jpg" data-alt="Cobalt print of a rider on horseback across a hillside beside the word Home" data-thin="Cobalt" data-heavy="Scroll" data-eye="No. 05 · unrolls as you scroll" data-kit="/04-cobalt-scroll" data-accent="#a9bcf0" data-moods="Cobalt print|Scroll story|Rider and hills|Woodcut"><a href="04-cobalt-scroll/">Cobalt Scroll</a><p>A cobalt print that unrolls as you scroll.</p></li>
-        <li data-img="assets/c/05t.jpg" data-alt="A silver ink dragon on black above torn paper, beside the name Manideep" data-thin="Story of" data-heavy="Torn ink" data-eye="No. 06 · an ink dragon wakes" data-kit="/05-story-torn-ink" data-accent="#cfc8bc" data-moods="Torn paper|Silver ink|Dragon|Black page"><a href="05-story-torn-ink/">Torn Ink</a><p>Paper tears open and an ink dragon wakes.</p></li>
-        <li data-img="assets/c/06t.jpg" data-alt="Pixel-art city street under the title Manideep, The Portfolio, with Start game, Portfolio and Contact" data-thin="Lost digital" data-heavy="Route 25" data-eye="No. 07 · drive through a pixel city" data-kit="/06-lost-digital-civilization" data-accent="#f2a6c6" data-moods="Pixel art|Playable|Night city|Start game"><a href="06-lost-digital-civilization/">Route 25</a><p>A pixel city you drive through to read the portfolio.</p></li>
+    <div class="screen">
+    <div class="rip" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Seven portfolios">
+      <ol class="rip-list">
+        <li data-w="assets/c/00w.jpg" data-t="assets/c/00t.jpg" data-alt="Pixel-type headline Manideep Reddy, AI/ML Engineer Portfolio, beside an illustration of a coder in an orange chair"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">The First One</a><p>Built with Lovable. Pixel type, a yellow highlighter and the portfolio where it all started.</p></li>
+        <li data-w="assets/c/01w.jpg" data-t="assets/c/01t.jpg" data-alt="Blue engraved-ink illustration of a woman in the clouds above a train and the name Manideep"><a href="01-blue-illustrated/">Blue Illustrated</a><p>Engraved ink in sky blue, drawn like a storybook plate.</p></li>
+        <li data-w="assets/c/02w.jpg" data-t="assets/c/02t.jpg" data-alt="Carved, glyph-covered dark texture with the name Manideep in large white type"><a href="02-hindu-mythology/">Hindu Mythology</a><p>Myth carved into dark stone, lit one line at a time.</p></li>
+        <li data-w="assets/c/03w.jpg" data-t="assets/c/03t.jpg" data-alt="A green carved door under the word Namaste, with the line Pesh karte hain"><a href="03-indian-genz/">Indian GenZ</a><p>Knock on the green door. Loud posters and Namaste energy inside.</p></li>
+        <li data-w="assets/c/04w.jpg" data-t="assets/c/04t.jpg" data-alt="Cobalt print of a rider on horseback across a hillside beside the word Home"><a href="04-cobalt-scroll/">Cobalt Scroll</a><p>A cobalt print that unrolls as you scroll.</p></li>
+        <li data-w="assets/c/05w.jpg" data-t="assets/c/05t.jpg" data-alt="A silver ink dragon on black above torn paper, beside the name Manideep"><a href="05-story-torn-ink/">Torn Ink</a><p>Paper tears open and an ink dragon wakes.</p></li>
+        <li data-w="assets/c/06w.jpg" data-t="assets/c/06t.jpg" data-alt="Pixel-art city street under the title Manideep, The Portfolio, with Start game, Portfolio and Contact"><a href="06-lost-digital-civilization/">Route 25</a><p>A pixel city you drive through to read the portfolio.</p></li>
       </ol>
     </div>
     </div>
@@ -552,6 +602,182 @@ img { max-width: 100%; }
   <p class="crew-line">A curious mind. A work in progress.</p>
   <small><img class="globe" src="assets/vectors/globe.svg" alt="" width="28" height="28" loading="lazy">© 2026 Rekha V Manideep Reddy · Hyderabad, India, working with teams anywhere · <span class="addr">manideepreddyrekha@gmail.com</span></small>
 </footer>
+<script>
+// Water-ripple carousel: a plain-JS port of WaterRippleCarousel (same shader and timing), no framework.
+// A tap drops a ring of bending water at that point; the next portfolio appears inside it.
+(() => {
+  const root = document.querySelector('.rip');
+  if (!root) return;
+  const DUR = 1900, TAP_DUR = 1100, STRENGTH = 1;   // autoplay drifts; a tap answers quicker
+  const slides = [...root.querySelectorAll('.rip-list li')].map(li => {
+    const a = li.querySelector('a');
+    return { w: li.dataset.w, t: li.dataset.t, alt: li.dataset.alt, href: a.getAttribute('href'), ext: a.target === '_blank', title: a.textContent, cap: li.querySelector('p').textContent };
+  });
+  const n = slides.length;
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const PAUSE = 'M5.5 3.5v9M10.5 3.5v9', PLAY = 'M5 3.2v9.6L12.5 8z';
+  const arrow = d => `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="1.4"/></svg>`;
+  root.classList.add('on');
+  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn rip-pause" aria-label="Pause slideshow" aria-pressed="false">${arrow(PAUSE)}</button><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div><div class="rip-track" aria-hidden="true"><div class="rip-fill"></div></div>`);
+  const $ = s => root.querySelector(s);
+  const base = $('.rip-base'), canvas = $('.rip-in'), text = $('.rip-text'), count = $('.rip-count'), fill = $('.rip-fill');
+  const [pause, prev, next] = root.querySelectorAll('.rip-btn');
+
+  const wrap = i => ((i % n) + n) % n;
+  const pad = k => String(k).padStart(2, '0');
+  const src = i => (base.clientWidth < base.clientHeight ? slides[i].t : slides[i].w);   // tall stage, phone screenshot
+  const load = url => new Promise((res, rej) => { const im = new Image(); im.onload = () => im.decode().catch(() => {}).then(() => res(im)); im.onerror = rej; im.src = url; });
+  let index = 0, busy = false, seq = 0, seen = false, mode = '', stopped = still.matches;   // reduced motion: no autoplay
+
+  const line = (cls, el) => { const l = document.createElement('span'); l.className = 'rip-line ' + cls; l.append(el); return l; };
+  const show = i => {
+    const s = slides[i], a = document.createElement('a'), c = document.createElement('span');
+    a.href = s.href; a.textContent = s.title;
+    a.dataset.track = 'portfolio-' + s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    if (s.ext) { a.target = '_blank'; a.rel = 'noopener'; }
+    c.textContent = s.cap;
+    text.replaceChildren(line('rip-title', a), line('rip-cap', c));
+    count.textContent = pad(i + 1) + ' / ' + pad(n);
+  };
+  const setBase = i => { mode = src(i); base.src = mode; base.alt = slides[i].alt; };
+  const restart = () => { fill.classList.remove('run'); void fill.offsetWidth; if (!busy && !stopped) fill.classList.add('run'); };
+  const sync = () => root.classList.toggle('paused', !seen || document.hidden || root.matches(':hover, :focus-within'));
+
+  // WebGL: one context, two textures, reused for every ripple. Anything missing falls back to a fade.
+  let gl, U;
+  const VERT = 'attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+  const FRAG = `precision highp float;varying vec2 uv;uniform sampler2D A,B;uniform vec2 c,ca,cb;uniform float r,asp,str;
+    vec2 cov(vec2 u,vec2 s){return (u-vec2(.5,1.))*s+vec2(.5,1.);}   /* cover crop anchored to the top, like the base image */
+    void main(){vec2 q=(uv-c)*vec2(asp,1.);float d=length(q);float w=exp(-pow((d-r)*7.,2.));
+    vec2 off=normalize(q+1e-5)*sin((d-r)*70.)*.014*str*w/vec2(asp,1.);vec2 u2=clamp(uv+off,0.,1.);
+    vec3 a=texture2D(A,cov(u2,ca)).rgb;vec3 b=texture2D(B,cov(u2,cb)).rgb;float m=smoothstep(r+.03,r-.03,d);
+    gl_FragColor=vec4(mix(a,b,m)+w*.07*str,1.);}`;
+  const initGL = () => {
+    if (gl !== undefined) return gl;
+    gl = canvas.getContext('webgl', { premultipliedAlpha: false });
+    if (!gl) return (gl = null);
+    const prog = gl.createProgram();
+    [[gl.VERTEX_SHADER, VERT], [gl.FRAGMENT_SHADER, FRAG]].forEach(([type, code]) => { const sh = gl.createShader(type); gl.shaderSource(sh, code); gl.compileShader(sh); gl.attachShader(prog, sh); });
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return (gl = null);
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    U = Object.fromEntries(['A', 'B', 'c', 'ca', 'cb', 'r', 'asp', 'str'].map(k => [k, gl.getUniformLocation(prog, k)]));
+    [0, 1].forEach(i => {
+      gl.activeTexture(gl.TEXTURE0 + i);
+      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+      [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE], [gl.TEXTURE_MIN_FILTER, gl.LINEAR]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
+    });
+    gl.uniform1i(U.A, 0); gl.uniform1i(U.B, 1); gl.uniform1f(U.str, STRENGTH);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    return gl;
+  };
+  const cover = (w, h, im) => { const box = w / h, img = im.naturalWidth / im.naturalHeight; return box > img ? [1, img / box] : [box / img, 1]; };
+  const fadeTo = url => new Promise(res => {
+    const im = document.createElement('img');
+    im.className = 'rip-in rip-fade'; im.alt = ''; im.src = url;
+    im.addEventListener('animationend', res, { once: true });
+    setTimeout(res, 600);
+    base.after(im);
+  });
+  const ripple = (from, to, x, y, w, h, dur) => {
+    if (still.matches || !initGL()) return fadeTo(to);
+    return Promise.all([load(from), load(to)]).then(([a, b]) => new Promise(res => {
+      [a, b].forEach((im, i) => { gl.activeTexture(gl.TEXTURE0 + i); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im); });
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniform2f(U.c, x / w, 1 - y / h);
+      gl.uniform2fv(U.ca, cover(w, h, a)); gl.uniform2fv(U.cb, cover(w, h, b));
+      gl.uniform1f(U.asp, w / h);
+      const far = Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) / h + 0.18;   // the ring ends past every corner
+      const t0 = performance.now();
+      const frame = now => {
+        const t = Math.min(1, (now - t0) / dur);
+        gl.uniform1f(U.r, Math.pow(t, 0.85) * far);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        canvas.hidden = false;
+        t < 1 ? requestAnimationFrame(frame) : res();
+      };
+      requestAnimationFrame(frame);
+    }));
+  };
+
+  let queued = 0;
+  const go = (dir, px, py, auto) => {
+    if (n < 2) return;
+    if (busy) { if (!auto) queued = dir; return; }   // a press mid-ripple runs next instead of being dropped
+    busy = true;
+    fill.classList.remove('run');
+    const w = base.clientWidth, h = base.clientHeight, to = wrap(index + dir), r = (++seq * 0.618) % 1;
+    const x = px ?? w * (dir >= 0 ? 0.62 + r * 0.25 : 0.13 + r * 0.25), y = py ?? h * (0.3 + r * 0.4);
+    show(to);
+    const done = async () => {
+      index = to;
+      setBase(to);
+      await base.decode().catch(() => {});
+      canvas.hidden = true;
+      root.querySelectorAll('.rip-fade').forEach(im => im.remove());
+      busy = false;
+      if (queued) { const d = queued; queued = 0; return go(d); }
+      restart();
+      load(src(wrap(to + 1))).catch(() => {});   // warm the next one so a tap starts at once
+    };
+    ripple(src(index), src(to), x, y, w, h, auto ? DUR : TAP_DUR).then(done, done);
+  };
+
+  // Swipe: the pointer is captured so a swipe that leaves the stage still lands; under 10px is a tap. A flick counts
+  // by where it was heading, not only how far it went: release distance plus velocity projected forward (decay .99/ms).
+  let down = null;
+  root.addEventListener('pointerdown', e => {
+    if (e.target.closest('a, .rip-nav')) { down = null; return; }
+    down = { x: e.clientX, y: e.clientY, lx: e.clientX, lt: e.timeStamp, vx: 0 };
+    try { root.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  root.addEventListener('pointermove', e => {
+    if (!down) return;
+    const dt = e.timeStamp - down.lt;
+    if (dt > 0) { down.vx = down.vx * 0.4 + ((e.clientX - down.lx) / dt) * 0.6; down.lx = e.clientX; down.lt = e.timeStamp; }
+  });
+  root.addEventListener('pointercancel', () => { down = null; });
+  root.addEventListener('pointerup', e => {
+    const s = down; down = null;
+    if (!s) return;
+    const dx = e.clientX - s.x, dy = e.clientY - s.y, b = root.getBoundingClientRect();
+    const vx = e.timeStamp - s.lt > 80 ? 0 : s.vx;   // held still before letting go: no flick
+    const reach = dx + vx * 99;                      // px/ms × .99/(1-.99)
+    if (Math.hypot(dx, dy) < 10) e.clientY < base.getBoundingClientRect().bottom ? go(1, e.clientX - b.left, e.clientY - b.top) : go(1);
+    else if (Math.abs(dx) > Math.abs(dy) && Math.abs(reach) > 60) go(reach < 0 ? 1 : -1);
+  });
+  root.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    go(e.key === 'ArrowRight' ? 1 : -1);
+  });
+  // WCAG 2.2.2: autoplay longer than 5 s needs a pause control that works on touch, not just hover.
+  const setStopped = v => {
+    stopped = v;
+    pause.setAttribute('aria-pressed', String(v));
+    pause.setAttribute('aria-label', v ? 'Play slideshow' : 'Pause slideshow');
+    pause.querySelector('path').setAttribute('d', v ? PLAY : PAUSE);
+    restart();
+  };
+  pause.addEventListener('click', () => setStopped(!stopped));
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  fill.addEventListener('animationend', () => go(1, undefined, undefined, true));
+  ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(t => root.addEventListener(t, () => setTimeout(sync)));
+  document.addEventListener('visibilitychange', sync);
+  new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }).observe(root);
+  new ResizeObserver(() => { if (!busy && src(index) !== mode) setBase(index); }).observe(root);
+
+  show(0); setBase(0); sync(); setStopped(stopped);
+  load(src(1)).catch(() => {});
+})();
+</script>
 <script>
 (() => {
   const foot = document.querySelector('.crew'), say = foot.querySelector('.crew-say'), stage = foot.querySelector('.crew-stage');

@@ -1,21 +1,28 @@
-// Orbit carousel for the seven portfolios. Reads the plain list in .orb, builds the stage, and lets scroll drive it:
-// the stage pins and each stretch of scroll swings the next room in on a wide orbit. Arrows, thumbnails, the pager,
-// arrow keys and swipes jump too. Web Animations only, no libraries. Without JS the list stays.
+// Orbit carousel for "What I build". Reads the project cards in .orb, builds the stage, and lets scroll drive it:
+// the stage pins and each stretch of scroll swings the next project in on a wide orbit, its sketch drawing itself.
+// Arrows, thumbnails, the pager, arrow keys and swipes jump too. Web Animations only, no libraries.
+// Without JS the cards stay as they are.
 (() => {
   const root = document.querySelector('.orb'), track = root && root.closest('.orb-track');
   if (!root) return;
-  const items = [...root.querySelectorAll('.orb-list li')].map((li, i) => {
-    const a = li.querySelector('a'), d = li.dataset;
-    return { i, href: a.getAttribute('href'), ext: a.target === '_blank', name: a.textContent, desc: li.querySelector('p').textContent,
-      img: d.img, alt: d.alt, thin: d.thin, heavy: d.heavy, eye: d.eye, kit: d.kit, accent: d.accent, moods: (d.moods || '').split('|').filter(Boolean) };
+  const L = { open: 'Open it', next: 'Next project', tab: 'Stack', what: 'project', ...root.dataset };
+  const items = [...root.querySelectorAll(':scope > ol > li')].map((li, i) => {
+    const a = li.querySelector('.card-foot a'), note = li.querySelector('.card-foot em'), d = li.dataset;
+    return { i, href: a ? a.getAttribute('href') : '', ext: true, link: a ? a.textContent.replace(/\s*↗\s*$/, '') : '',
+      name: li.querySelector('h3').textContent, desc: li.querySelector('p').textContent, kit: note ? note.textContent : '',
+      art: li.querySelector('.card-art svg').outerHTML,
+      thin: d.thin, heavy: d.heavy, accent: d.accent, c: d.c, wash: d.wash, eye: `No. ${String(i + 1).padStart(2, '0')} · ${note ? note.textContent : ''}`,
+      moods: [...li.querySelectorAll('.chips li')].map(x => x.textContent) };
   });
   const n = items.length;
   if (n < 2) return;
   const still = matchMedia('(prefers-reduced-motion: reduce)');
   const pad = k => String(k).padStart(2, '0');
-  const slug = s => 'portfolio-' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const slug = s => 'project-' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const tgt = it => (it.ext ? ' target="_blank" rel="noopener"' : '');
+  const art = (it, cls) => `<div class="orb-art ${cls}" style="--c:${esc(it.c)};background:${esc(it.wash)}">${it.art}</div>`;
+  const wrapLink = (it, inner) => it.href ? `<a href="${esc(it.href)}"${tgt(it)} tabindex="-1" data-track="${slug(it.name)}">${inner}</a>` : `<div class="orb-nolink">${inner}</div>`;
 
   // ---------- geometry, measured off the reference ----------
   const OX = 299, OY = -450, OR = 650, SWING = 50, ITEM = 118, VISIBLE = 4, PER = 0.6;
@@ -42,21 +49,21 @@
   root.insertAdjacentHTML('beforeend', `<div class="orb-canvas">
     <svg class="orb-arc" viewBox="0 0 960 520" aria-hidden="true"><path/></svg>
     <div class="orb-top" aria-hidden="true"><span class="orb-n">01</span><i></i><span>${pad(n)}</span></div>
-    <div class="orb-pager" role="tablist" aria-label="Choose a portfolio">${items.map(it => `<button type="button" role="tab" class="orb-btn orb-dot" aria-label="${esc(it.name)}"><i></i></button>`).join('')}</div>
-    <div class="orb-plates">${items.map(it => `<div class="orb-plate" aria-hidden="true"><a href="${esc(it.href)}"${tgt(it)} tabindex="-1" data-track="${slug(it.name)}"><figure><img src="${esc(it.img)}" alt="${esc(it.alt)}" width="245" height="245" loading="lazy" decoding="async" draggable="false"></figure></a></div>`).join('')}</div>
+    <div class="orb-pager" role="tablist" aria-label="Choose a ${L.what}">${items.map(it => `<button type="button" role="tab" class="orb-btn orb-dot" aria-label="${esc(it.name)}"><i></i></button>`).join('')}</div>
+    <div class="orb-plates">${items.map(it => `<div class="orb-plate" aria-hidden="true">${wrapLink(it, `<figure>${art(it, '')}</figure>`)}</div>`).join('')}</div>
     <div class="orb-head" aria-live="polite">${items.map(it => `<div class="orb-hd" aria-hidden="true"><p class="orb-eye">${esc(it.eye)}</p><h3><span class="orb-t1">${esc(it.thin)}</span><span class="orb-t2">${esc(it.heavy)}</span></h3></div>`).join('')}</div>
-    <div class="orb-acts"><a class="orb-visit" href="#">${ICON.play}Walk through it</a><button type="button" class="orb-btn orb-skip">${ICON.next}Next room</button></div>
+    <div class="orb-acts"><a class="orb-visit" href="#">${ICON.play}<span>${L.open}</span></a><button type="button" class="orb-btn orb-skip">${ICON.next}${L.next}</button></div>
     <div class="orb-card">
-      <div class="orb-tabs" role="tablist" aria-label="About this portfolio"><button type="button" role="tab" class="orb-btn orb-tab" aria-selected="true">Overview</button><button type="button" role="tab" class="orb-btn orb-tab" aria-selected="false">Mood</button></div>
+      <div class="orb-tabs" role="tablist" aria-label="About this ${L.what}"><button type="button" role="tab" class="orb-btn orb-tab" aria-selected="true">Overview</button><button type="button" role="tab" class="orb-btn orb-tab" aria-selected="false">${L.tab}</button></div>
       <div class="orb-bodies">${items.map(it => `<div class="orb-body" aria-hidden="true">
         <div class="orb-badge" style="background:${esc(it.accent)}"><b>${pad(it.i + 1)}</b><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></div>
         <p class="orb-name">${esc(it.name)}</p><p class="orb-kit">${esc(it.kit)}</p>
         <p class="orb-desc">${esc(it.desc)}</p><ul class="orb-chips" hidden>${it.moods.map(m => `<li>${esc(m)}</li>`).join('')}</ul>
-        <a class="orb-go" href="${esc(it.href)}"${tgt(it)} tabindex="-1" data-track="${slug(it.name)}">Step inside${ICON.out}</a></div>`).join('')}</div>
+        ${it.href ? `<a class="orb-go" href="${esc(it.href)}"${tgt(it)} tabindex="-1" data-track="${slug(it.name)}">${esc(it.link)}${ICON.out}</a>` : `<span class="orb-go off">Private repo</span>`}</div>`).join('')}</div>
     </div>
-    <div class="orb-strip"><button type="button" class="orb-btn orb-arrow" aria-label="Previous portfolio">${ICON.l}</button>
-      <div class="orb-win"><div class="orb-row">${items.map(it => `<div class="orb-th"><button type="button" class="orb-btn"><img src="${esc(it.img)}" alt="" width="56" height="56" loading="lazy" decoding="async" draggable="false"><span>${esc(it.name)}</span></button></div>`).join('')}</div></div>
-      <button type="button" class="orb-btn orb-arrow" aria-label="Next portfolio">${ICON.r}</button></div>
+    <div class="orb-strip"><button type="button" class="orb-btn orb-arrow" aria-label="Previous ${L.what}">${ICON.l}</button>
+      <div class="orb-win"><div class="orb-row">${items.map(it => `<div class="orb-th"><button type="button" class="orb-btn">${art(it, 'in')}<span>${esc(it.name)}</span></button></div>`).join('')}</div></div>
+      <button type="button" class="orb-btn orb-arrow" aria-label="Next ${L.what}">${ICON.r}</button></div>
   </div><p class="orb-sr" aria-live="polite"></p>`);
   const $ = s => root.querySelector(s), $$ = s => [...root.querySelectorAll(s)];
   const canvas = $('.orb-canvas'), arc = $('.orb-arc path'), plates = $$('.orb-plate'), heads = $$('.orb-hd'), bodies = $$('.orb-body');
@@ -88,6 +95,13 @@
     bandRaf = requestAnimationFrame(step);
   };
 
+  // ---------- each sketch redraws when its project arrives (sketch.css draws .ln strokes inside .in) ----------
+  const sketch = (i, delay) => {
+    const a = plates[i].querySelector('.orb-art');
+    a.classList.remove('in'); void a.offsetWidth;
+    setTimeout(() => { if (index === i) a.classList.add('in'); }, delay);
+  };
+
   // ---------- the swap ----------
   let index = 0, running = [];
   const HIDE1 = 'inset(0% 0% 0% 100%)', HIDE2 = 'inset(0% 100% 0% 0%)', SHOW = 'inset(0% 0% 0% 0%)';
@@ -96,22 +110,22 @@
   const furnish = i => {
     const it = items[i];
     root.style.setProperty('--tint', it.accent);
-    visit.href = it.href; visit.dataset.track = slug(it.name);
-    it.ext ? (visit.target = '_blank', visit.rel = 'noopener') : (visit.removeAttribute('target'), visit.removeAttribute('rel'));
+    if (it.href) { visit.href = it.href; visit.target = '_blank'; visit.rel = 'noopener'; visit.dataset.track = slug(it.name); visit.removeAttribute('aria-disabled'); visit.lastChild.textContent = L.open; }
+    else { visit.removeAttribute('href'); visit.setAttribute('aria-disabled', 'true'); visit.lastChild.textContent = 'Private repo'; }
     dots.forEach((d, k) => { d.toggleAttribute('aria-current', k === i); d.setAttribute('aria-selected', String(k === i)); });
     thumbs.forEach((b, k) => b.toggleAttribute('aria-current', k === i));
-    plates.forEach((p, k) => p.querySelector('a').tabIndex = k === i ? 0 : -1);
-    bodies.forEach((b, k) => b.querySelector('.orb-go').tabIndex = k === i ? 0 : -1);
+    root.querySelectorAll('.orb-plate a, .orb-body a').forEach(a => { a.tabIndex = a.closest('.on') ? 0 : -1; });
     row.style.transform = `translateX(${-Math.max(0, Math.min(i - 1, n - VISIBLE)) * ITEM}px)`;
     counter.textContent = pad(i + 1); bar.style.setProperty('--p', (i / (n - 1)).toFixed(3));
-    sr.textContent = `Portfolio ${i + 1} of ${n}: ${it.name}`;
+    sr.textContent = `${L.what[0].toUpperCase() + L.what.slice(1)} ${i + 1} of ${n}: ${it.name}`;
   };
   const swap = (to, d) => {
     running.forEach(a => a.finish()); running = [];
     const from = index;
     if (to === from) return;
-    index = to; furnish(to);
+    index = to;
     [plates, heads, bodies].forEach(list => { setOn(list, from, false); setOn(list, to, true); });
+    furnish(to); sketch(to, still.matches ? 0 : 380);
     const rest = REST[to % REST.length];
     if (still.matches) { band.a0 = rest[0]; band.a1 = rest[1]; drawBand(); return; }
     const out = (el, kf, o) => { el.classList.add('out'); anim(el, kf, o, () => el.classList.remove('out')); };
@@ -195,5 +209,5 @@
 
   // ---------- first frame ----------
   [plates, heads, bodies].forEach(list => setOn(list, 0, true));
-  furnish(0); drawBand(); pin(); onScroll();
+  furnish(0); new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); sketch(index, 200); } }, { threshold: .3 }).observe(root); drawBand(); pin(); onScroll();
 })();

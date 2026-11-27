@@ -8,7 +8,6 @@
   const stage = track.querySelector('.studio-stage'), world = track.querySelector('.studio-world');
   const hero = track.querySelector('.hero'), ui = track.querySelector('.studio-ui');
   const cap = ui.querySelector('.studio-cap'), note = ui.querySelector('.studio-note'), bar = ui.querySelector('.studio-progress span');
-  const lines = [...world.querySelectorAll('.sa')];
   const clamp = v => Math.max(0, Math.min(1, v));
   const ease = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
 
@@ -43,11 +42,13 @@
 
     world.style.setProperty('--lamp', ease(0.1, 0.28, p).toFixed(3));
     world.style.setProperty('--screen', ease(0.3, 0.4, p).toFixed(3));
-    lines.forEach((l, i) => { l.style.strokeDashoffset = (1 - ease(0.36 + i * 0.035, 0.44 + i * 0.035, p)).toFixed(3); });
-    world.style.setProperty('--block', ease(0.46, 0.5, p).toFixed(3));
 
-    const h = ease(0.86, 0.95, p), done = p > 0.97;
-    hero.style.opacity = h.toFixed(3);
+    // The home page is on the monitor from the moment it wakes: the hero rides the camera, mapped onto the part of the
+    // screen that ends up filling the viewport, so when the zoom lands it is simply the page, nothing swapped or faded.
+    const done = p > 0.97, tx = cx - C.x * s, ty = cy - C.y * s, hw = vw, hh = vh;
+    const hk = s / end, hx = tx + (C.x - hw / (2 * end)) * s, hy = ty + (C.y - hh / (2 * end)) * s;
+    hero.style.transform = done || z >= 1 ? 'none' : `translate(${hx.toFixed(2)}px, ${hy.toFixed(2)}px) scale(${hk.toFixed(5)})`;
+    hero.style.opacity = ease(0.3, 0.4, p).toFixed(3);
     hero.style.pointerEvents = done ? 'auto' : 'none';
     if (open !== done) { open = done; hero.inert = !done; hero.classList.toggle('open', done); hero.setAttribute('aria-hidden', String(!done)); world.style.visibility = done ? 'hidden' : 'visible'; }
     ui.style.opacity = (1 - ease(0.8, 0.86, p)).toFixed(3);
