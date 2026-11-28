@@ -539,7 +539,7 @@ function update(instant){
  const clean=()=>{const now=visibleFaces();book.querySelectorAll('.face.live').forEach(f=>{if(!now.includes(f))f.classList.remove('live')})};
  instant?clean():setTimeout(clean,1000);setTimeout(prepNear,instant?0:1100);
  if(!mobile){const sh=(n,dx)=>Array.from({length:Math.min(n*2,12)},(_,k)=>`${dx*(k+1)}px ${k+1}px 0 ${k%2?'#F7F8F2':'#D6DDD1'}`).join(',')||'none';const sl=book.querySelector('.stackL'),sr=book.querySelector('.stackR');sl.style.boxShadow=sh(Math.max(cur-1,0),-1);sr.style.boxShadow=sh(Math.max(L-cur-1,0),1);sl.style.opacity=cur>0?1:0;sr.style.opacity=cur<L?1:0;book.querySelector('.boardL').style.opacity=cur>0?1:0;book.querySelector('.boardR').style.opacity=cur<L?1:0;book.querySelector('.spineband').style.opacity=cur>0&&cur<L?1:0;book.style.transform=cur===0?`translateX(${-P/2}px)`:cur===L?`translateX(${P/2}px)`:'none'}else book.style.transform='none';
- prevB.disabled=cur===0;nextB.disabled=cur===L;
+ prevB.disabled=cur===0;nextB.disabled=cur>=end();
  ind.textContent=mobile?`${Math.min(cur+1,N_PAGES)} / ${N_PAGES}`:cur===0?'Cover':cur===L?'The end':`${cur*2}–${cur*2+1} of ${N_PAGES}`;reached();
 }
 /* Each leaf is a damped spring on its angle (deg): bounce .15, ~.7s to settle (k=56, c=12.7, mass 1).
@@ -593,7 +593,9 @@ function setTarget(i,t,v=0){const L=leaves.length,l=rest(leaves[i]);
  cur=leaves.filter(x=>x.classList.contains('flipped')).length;
  spring(l,()=>{l.classList.remove('turning');l.style.zIndex=t<0?i+1:L-i;vis()});
  update(false)}
-function flip(d,v=0){const L=leaves.length;if(d>0&&cur<L)setTarget(cur,-180,v);else if(d<0&&cur>0)setTarget(cur-1,0,v);else bump(d)}   /* hard stops: never wraps first<->last */
+/* last resting place: on a phone each page is its own leaf, so turning the last one over would leave an empty book */
+const end=()=>mobile?leaves.length-1:leaves.length;
+function flip(d,v=0){if(d>0&&cur<end())setTarget(cur,-180,v);else if(d<0&&cur>0)setTarget(cur-1,0,v);else bump(d)}   /* hard stops: never wraps first<->last */
 function fit(){
  const m=innerWidth<760;if(m!==mobile){if(mobile!==null)cur=mobile?Math.ceil(cur/2):Math.min(cur*2,N_PAGES-1);mobile=m;build()}
  const bw=mobile?P:2*P,availW=stage.clientWidth-(mobile?24:48),availH=Math.max(innerHeight-170,380);
@@ -642,7 +644,7 @@ let dg=null,swiped=false;
 function grab(dx,x){const L=leaves.length;let l=[...leaves].reverse().find(x=>x._raf&&Math.abs(x._a-x._t)>8);   /* a page still in flight is caught where it is */
  leaves.forEach(x=>{if(x._raf&&x!==l){cancelAnimationFrame(x._raf);x._raf=0;x._a=x._t;x._v=0;settle(x);x._done()}});
  if(!l){const r=book.getBoundingClientRect(),right=mobile||x>r.left+r.width/2;
-  if(dx<0&&right&&cur<L)l=leaves[cur];else if(dx>0&&(mobile||!right)&&cur>0)l=leaves[cur-1]}
+  if(dx<0&&right&&cur<end())l=leaves[cur];else if(dx>0&&(mobile||!right)&&cur>0)l=leaves[cur-1]}
  if(!l)return false;rest(l);cancelAnimationFrame(l._raf);if(!l._raf)l._s=l._a;l._raf=0;
  const i=leaves.indexOf(l);l.classList.add('turning');l.style.visibility='visible';l.style.zIndex=900+L;
  [...l.children,leaves[i+1]?.children[0],leaves[i-1]?.children[1]].forEach(f=>f&&f.classList.add('live'));   /* what the drag uncovers animates in as it appears */
