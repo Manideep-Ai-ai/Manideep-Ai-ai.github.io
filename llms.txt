@@ -1,6 +1,16 @@
 # Rekha V Manideep Reddy
 
-> Software engineer in Hyderabad, India (backend, data and AI/ML) who also designs the product. Software Engineer at Delta Cubes Pvt. Ltd. since April 2025. B.Tech in Computer Science, Bharath Institute of Higher Education and Research (2025).
+> AI and full-stack engineer in Hyderabad, India (backend, data and AI/ML) who also designs the product. Software Engineer at Delta Cubes Pvt. Ltd. since April 2025. B.Tech in Computer Science, Bharath Institute of Higher Education and Research (2025).
+
+## Open to
+- Full-time AI / software engineering roles, India or remote
+- Freelance: web apps, AI features, LLM agents and automations
+
+## Selected work
+- [SignAI](https://signai.in): recruitment platform I build and maintain at Delta Cubes. LLM resume parsing plus an embedding matcher that returns ranked shortlists; becoming a multi-tenant SaaS. React, Node.js, PostgreSQL, AWS, OpenAI and Claude.
+- Lead Flow: five-stage LangGraph workflow (scrape job posts, qualify with Claude Haiku, find contacts, draft with Claude Sonnet, human approval in Telegram). n8n and Apify scrape.
+- Jhanko: Python/FastAPI REST layer for a geolocation marketplace serving mobile and web; real-time geospatial search, about 30% faster responses.
+- [Omarchy Rosso Corsa](https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme): open-source racing-red desktop theme for Omarchy Linux.
 
 ## Portfolios (same person, six styles)
 - [Blue Illustrated](https://manideepreddy.website/01-blue-illustrated/): engraved-ink portfolio with 14 case studies
