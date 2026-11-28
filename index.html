@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manideep Reddy — Software Engineer · Projects &amp; Seven Portfolios</title>
 <meta name="description" content="Rekha V Manideep Reddy, software engineer in Hyderabad (backend, data and AI/ML) who also designs the product. The projects they built, and seven portfolios that show how they design.">
 <link rel="canonical" href="https://manideepreddy.website/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#2b0e07">
+<meta name="theme-color" content="#5C7057">
 <meta name="google-site-verification" content="m2O4qw0X8zVqYNmW8pkkxi6tC5DzLjY4w1-_Ut66JIA">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -21,10 +21,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="me" href="https://github.com/Manideep-Ai-ai">
 <link rel="me" href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297">
-<link rel="preload" as="font" type="font/woff" href="assets/fonts/kalam.woff" crossorigin>
-<link rel="preload" as="font" type="font/woff" href="assets/fonts/barlow.woff" crossorigin>
-<link rel="stylesheet" href="assets/intro/intro.css">
-<script type="module" src="assets/intro/intro.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"ProfilePage","@id":"https://manideepreddy.website/#page","url":"https://manideepreddy.website/","name":"Manideep Reddy — Projects & Seven Portfolios","mainEntity":{"@id":"https://manideepreddy.website/#me"}},
@@ -39,455 +35,656 @@
   {"@type":"ListItem","position":6,"url":"https://manideepreddy.website/06-lost-digital-civilization/","name":"Route 25"}]}
 ]}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Bowlby+One&family=Bungee&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Noto+Sans+Telugu:wght@500&family=Rubik+Mono+One&family=Shrikhand&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
-:root {
-  /* Sketchbook Studio, Red Ink: the page continues the desk drawing it opens with */
-  --paper: #faf9f6; --ink: #221c1a; --muted: #766354; --line: #d9cdbc; --pencil: #51473f; --desk: #e9e1d3;
-  --accent: #e6332d; --deep: #a32723; --ext: #2a1f1b;
-  --display: Bowlby, 'Arial Black', sans-serif; --text: Barlow, Arial, sans-serif; --script: Kalam, 'Comic Sans MS', cursive;
-  --gutter: clamp(16px, 4vw, 56px);
-}
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--text); overflow-x: clip; }
-a { color: inherit; }
-img { max-width: 100%; }
-::selection { background: var(--accent); color: var(--paper); }
+/* VOICE: playful, handmade, a little loud, still a real engineer's portfolio
+   IDEA: a cut-and-paste scrapbook made on a green cutting mat, bound as a book you flip
+   PICTURE: the 3D book itself, ransom-note headings, polaroids, tape, paper props
+   COLOUR and TYPE: #5C7057 #89A482 #ACC5A6 #D1EDD3 + off-white paper and deep green ink; poster display faces, Caveat hand, DM Sans body
+   LAYOUT: book centred on a desk, toolbar under it; single-page flip under 760px */
+:root{color-scheme:light dark;--g1:#5C7057;--g2:#89A482;--g3:#ACC5A6;--g4:#D1EDD3;--paper:#F7F8F2;--ink:#1E2A1C;
+ --desk:light-dark(#ACC5A6,#1c2419);--deskInk:light-dark(#1E2A1C,#D1EDD3)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--desk);color:var(--deskInk);font:16px/1.5 'DM Sans',system-ui,sans-serif;overflow-x:clip;
+ background-image:radial-gradient(light-dark(rgba(92,112,87,.18),rgba(209,237,211,.05)) 1px,transparent 1.4px);background-size:18px 18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px max(4vw,16px) 0}
+header b{font-family:'Bowlby One';font-weight:400;font-size:18px;letter-spacing:.5px}
+header span{font-family:'Caveat';font-size:20px}
+.stage{position:relative;margin:14px auto 0;width:100%;touch-action:pan-y}
+.scaler{position:absolute;left:50%;top:16px;transform-origin:top center}
+.book{position:relative;height:620px;perspective:2600px;transition:transform .8s cubic-bezier(.6,.05,.3,1)}
+.leaf{position:absolute;top:0;width:460px;height:620px;transform-origin:left center;transform-style:preserve-3d;
+ transition:transform 1s cubic-bezier(.55,.08,.28,1)}
+.leaf.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;color:var(--ink);
+ box-shadow:0 18px 40px rgba(20,30,18,.35),0 2px 0 rgba(0,0,0,.08)}
+.back{transform:rotateY(180deg)}
+.front{border-radius:0 12px 12px 0}.back{border-radius:12px 0 0 12px}
+.front::after,.back::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:50}
+.front::after{background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.04) 6%,transparent 12%)}
+.back::after{background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,.04) 6%,transparent 12%)}
+.noise{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pg{position:absolute;inset:0;padding:30px 30px 26px;display:flex;flex-direction:column;gap:14px}
+.paper{background-color:var(--paper)}.mint{background-color:var(--g4)}.blank{background-color:#E6EEE1}
+.mat{background-color:var(--g1);color:var(--paper);
+ background-image:linear-gradient(rgba(209,237,211,.32) 1px,transparent 1px),linear-gradient(90deg,rgba(209,237,211,.32) 1px,transparent 1px);
+ background-size:23px 23px;background-position:22px 10px}
+.ruler{position:absolute;font:9px/1 'DM Sans';color:rgba(209,237,211,.7)}
+/* ransom letters */
+.ransom{display:flex;flex-wrap:wrap;gap:4px 1px;align-items:center;line-height:1;position:relative;z-index:2}
+.ltr{display:block;height:1.3em;width:auto;filter:drop-shadow(1px 3px 1.5px rgba(0,0,0,.28));opacity:0;
+ transform:translateY(-70px) rotate(calc(var(--r) - 35deg)) scale(1.6)}
+.sp{width:.4em;display:inline-block}
+.leafy .hand{background:rgba(247,248,242,.9);padding:2px 8px;border-radius:3px;width:fit-content}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* real paper scraps tucked into page corners, under everything */
+.pg{isolation:isolate}
+.corner{position:absolute;z-index:-1;pointer-events:none;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.22))}
+.fullbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
+.plate{position:relative;isolation:isolate;width:300px;display:grid;place-items:center;text-align:center;color:#1E2A1C;padding-top:4px}
+.plate img{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.brushed{position:relative;isolation:isolate;display:inline-block;padding:6px 26px 8px 22px;font-family:'Caveat';font-size:27px;color:#F3F8EE}
+.brushed img{position:absolute;inset:-6px -10px;width:calc(100% + 20px);height:calc(100% + 12px);z-index:-1}
+.live .ltr{opacity:1;transform:rotate(var(--r));transition:opacity .3s calc(var(--d)*1ms + 420ms),transform .75s cubic-bezier(.2,1,.3,1.35) calc(var(--d)*1ms + 420ms)}
+/* generic reveal */
+.a{opacity:0;transform:var(--from,translateY(22px)) rotate(var(--r,0deg))}
+.live .a{opacity:1;transform:rotate(var(--r,0deg));transition:opacity .5s ease calc(var(--d,0)*1ms + 500ms),transform .8s cubic-bezier(.2,.9,.25,1.2) calc(var(--d,0)*1ms + 500ms)}
+.fromL{--from:translateX(-70px)}.fromR{--from:translateX(70px)}.drop{--from:translateY(-50px) scale(1.25)}.pop{--from:scale(.4)}
+.tape{position:absolute;height:24px;width:86px;z-index:20;background:rgba(209,237,211,.78);
+ background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.25) 0 3px,transparent 3px 7px);
+ clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 12%,100% 24%,96% 38%,100% 52%,96% 66%,100% 80%,96% 92%,100% 100%,0 100%,4% 86%,0 72%,4% 58%,0 44%,4% 30%);
+ box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.hand{font-family:'Caveat';font-weight:700}
+.type{font-family:'Special Elite'}
+p{margin:0}
+.body{font-size:15px;line-height:1.5}
+/* photos */
+.photo{margin:0;background:#fff;padding:9px 9px 6px;box-shadow:0 8px 18px rgba(0,0,0,.2);position:relative;cursor:pointer}
+.ph{position:relative;overflow:hidden;background:var(--g2);aspect-ratio:var(--ar,1/1)}
+.ph svg,.ph img{display:block;width:100%;height:100%;object-fit:cover}
+figcaption{font:700 19px/1.1 'Caveat';text-align:center;padding-top:5px;outline:none;color:var(--ink);cursor:text}
+figcaption:focus{background:var(--g4)}
+.strip{padding:8px 12px;box-shadow:2px 3px 0 rgba(0,0,0,.12);display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:baseline}
+.strip small{font:12px 'Special Elite';opacity:.8}
+.strip span{font-weight:600;font-size:14.5px;line-height:1.3}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 13px 'DM Sans';padding:4px 9px;box-shadow:1px 2px 0 rgba(0,0,0,.14)}
+.grp{font:700 21px/1 'Caveat';margin:4px 0 6px}
+.card{padding:12px 14px;box-shadow:3px 4px 0 rgba(0,0,0,.14)}
+.card h3{margin:0 0 4px;font:400 17px/1.1 'Alfa Slab One'}
+.card p{font-size:13.5px;line-height:1.45}
+.flow{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.flow .chip{font-size:14px;padding:7px 12px}
+.arrow{font:700 20px/.9 'Caveat';color:var(--g1)}
+a{color:inherit}
+.mini{display:grid;grid-template-columns:86px 1fr;gap:12px;align-items:center}
+.mini svg{width:86px;height:64px;background:var(--paper);box-shadow:2px 3px 0 rgba(0,0,0,.12)}
+.big{font:400 26px/1 'Bowlby One';color:var(--g1)}
+.stk{position:absolute;z-index:30;filter:drop-shadow(0 4px 3px rgba(0,0,0,.28)) drop-shadow(0 1px 0 rgba(0,0,0,.08));--from:scale(.2) rotate(-40deg)}
+.stk img{display:block;width:100%;height:auto}
+/* peelable vinyl: the corner under the pointer lifts toward you, a sheen runs across the sticker's own shape,
+   and on drop it presses back down onto the page */
+.stk{transition:filter .35s ease}
+.peel{display:block;position:relative;transform:perspective(520px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg)) translateZ(var(--tz,0px)) scale(var(--ts,1));transition:transform .55s cubic-bezier(.25,1.55,.4,1)}
+.peel::after{content:"";position:absolute;inset:0;pointer-events:none;-webkit-mask:var(--m) center/100% 100% no-repeat;mask:var(--m) center/100% 100% no-repeat;
+ background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.65) 47%,rgba(255,255,255,.12) 55%,transparent 66%) 130% 0/280% 100% no-repeat;opacity:0;transition:background-position .8s ease,opacity .25s}
+.stk:hover{filter:drop-shadow(0 14px 10px rgba(0,0,0,.22)) drop-shadow(0 3px 3px rgba(0,0,0,.14))}
+.stk:hover .peel{--tz:16px}
+.stk:hover .peel::after{opacity:1;background-position:-30% 0}
+.stk.drag .peel{--tz:34px;--ts:1.08;transition-duration:.25s}
+.stk.stuck .peel{animation:stick .5s cubic-bezier(.3,1.4,.5,1)}
+@keyframes stick{0%{transform:perspective(520px) translateZ(30px) scale(1.08)}45%{transform:perspective(520px) translateZ(-4px) scale(.95)}100%{transform:perspective(520px) scale(1)}}
+.stamp{position:absolute;opacity:0;transform:scale(1.25) rotate(var(--r,0deg));filter:blur(2px)}
+.live .stamp{opacity:.92;transform:scale(1) rotate(var(--r,0deg));filter:none;transition:opacity .25s calc(var(--d)*1ms + 500ms),transform .35s cubic-bezier(.2,1.5,.4,1) calc(var(--d)*1ms + 500ms),filter .3s calc(var(--d)*1ms + 500ms)}
+/* a turning leaf is drawn as hinged strips (see bendOn), so the paper curves instead of turning as a board */
+.bend[hidden]{display:none}
+.bend{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.bstrip{position:absolute;top:0;height:100%;transform-style:preserve-3d;transform-origin:left center}
+.slice{position:absolute;top:0;left:0;width:calc(100% + 1px);height:100%;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.slice.sb{transform:rotateY(180deg)}
+.slice::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:99;background:linear-gradient(rgba(255,255,255,var(--hl,0)),rgba(255,255,255,var(--hl,0))),rgba(15,22,13,var(--sh,0))}
+.frozen{position:absolute;top:0;width:460px;height:620px;inset:auto;box-shadow:none}
+.frozen *,.frozen::before{transition:none!important;animation:none!important}
+.leaf.bent>.face{visibility:hidden}
+/* a page carried across by a turn was already seen finished (or is seen finished on the turning sheet): it lands as it is, no second reveal */
+.face.settled,.face.settled *,.face.settled *::before,.face.settled *::after{transition:none!important}
 
-.nojs { padding: 48px var(--gutter); text-align: center; }
-.nojs h1 { margin: 12px 0 8px; font: 400 clamp(44px, 8vw, 96px)/1 var(--display); color: var(--accent); }
+.live .bob img{animation:bob 2.4s ease-in-out infinite alternate}
+@keyframes bob{to{translate:0 -7px;rotate:6deg}}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(20,30,18,.35)),linear-gradient(115deg,rgba(255,240,200,.18),transparent 40%);mix-blend-mode:multiply}
+.photo.has .ph::after{background:radial-gradient(ellipse at 50% 45%,transparent 65%,rgba(20,30,18,.22))}
+/* hardcover + page block */
+.tilt{transition:transform .5s ease-out;transform-style:flat}
+.board{position:absolute;top:-12px;height:644px;width:476px;border-radius:8px;background:#3E4F3A;
+ background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px);
+ box-shadow:0 30px 60px rgba(15,22,13,.45),0 8px 16px rgba(15,22,13,.3),inset 0 0 0 2px rgba(255,255,255,.05),inset 0 -3px 0 rgba(0,0,0,.25);transition:opacity .3s}
+.boardR{left:456px;border-radius:2px 8px 8px 2px}.boardL{left:-12px;border-radius:8px 2px 2px 8px}
+.stack{position:absolute;top:0;width:460px;height:620px;background:#EEF2EA;transition:box-shadow .6s}
+.stackR{left:460px;border-radius:0 4px 4px 0}.stackL{left:0;border-radius:4px 0 0 4px}
+.spineband{position:absolute;left:451px;top:-12px;width:18px;height:644px;background:linear-gradient(90deg,#2f3c2c,#4a5d45 50%,#2f3c2c);z-index:0;border-radius:3px}
+.cvstack{position:absolute;left:0;right:0;top:150px;bottom:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cover-front{box-shadow:inset 14px 0 0 rgba(30,42,28,.55),inset 16px 0 0 rgba(209,237,211,.25),inset 0 0 0 1px rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.12)}
+.cover-front::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:49;border-radius:inherit;background:linear-gradient(130deg,rgba(255,255,255,.14),transparent 35%,transparent 70%,rgba(0,0,0,.18))}
+.leaf.turning .face::before{content:"";position:absolute;inset:0;z-index:60;pointer-events:none;background:linear-gradient(90deg,transparent 20%,rgba(255,255,255,.35) 50%,transparent 80%);background-size:300% 100%;animation:sheen 1s ease-in-out}
+@keyframes sheen{from{background-position:100% 0}to{background-position:0 0}}
+.ground{position:absolute;left:50%;bottom:-26px;width:80%;height:40px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(15,22,13,.38),transparent 70%);filter:blur(6px);z-index:-1}
 
-/* ---------- sections: one red extruded title per section, a pencil note in the margin ---------- */
-.sec { display: grid; grid-template-columns: 1fr; align-items: end; gap: 10px 22px; padding: 0 var(--gutter); margin: clamp(72px, 10vw, 140px) 0 clamp(26px, 3.4vw, 44px); }
-.pop { margin: 0; font: 400 clamp(40px, 6.6vw, 96px)/.95 var(--display); letter-spacing: -.01em; text-transform: uppercase; color: var(--accent);
-  -webkit-text-stroke: 1px var(--ext); paint-order: stroke fill;
-  text-shadow: -1px 1px var(--ext), -2px 2px var(--ext), -3px 3px var(--ext), -4px 4px var(--ext), -5px 5px var(--ext), -6px 6px var(--ext), -9px 10px 6px rgba(42,31,27,.12); }
-.sec .aside { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; color: var(--muted); }
-.sec .aside em { font: 400 clamp(20px, 1.9vw, 25px)/1.2 var(--script); font-style: normal; color: var(--deep); rotate: -2deg; }
+.live .sway{transform-origin:50% 92%;animation:sway 5s ease-in-out 1.5s infinite alternate}@keyframes sway{to{rotate:1.5deg}}
+.te{font-family:'Noto Sans Telugu',sans-serif;font-size:13px}
 
-/* work log: name in poster caps, what it does, where to see it */
-.projects { list-style: none; margin: 0; padding: 0 var(--gutter); }
-.projects li { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) auto; gap: 6px 28px; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--line); }
-.projects li:last-child { border-bottom: 1px solid var(--line); }
-.projects h3 { margin: 0; font: 400 clamp(19px, 1.8vw, 24px)/1.15 var(--display); text-transform: uppercase; letter-spacing: .01em; }
-.projects p { margin: 0; color: var(--muted); max-width: 62ch; }
-.projects a { justify-self: start; font: 400 15px/1 var(--text); letter-spacing: .04em; white-space: nowrap; text-decoration: none; border-bottom: 1px solid var(--pencil); padding-bottom: 4px; transition: color .2s, border-color .2s; }
-.projects a:hover, .projects a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
-.wins { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 26px clamp(16px, 2.4vw, 32px); }
-.wins li { font-size: 15px; color: var(--muted); max-width: 26ch; }
-.wins b { display: block; font: 400 clamp(44px, 4.6vw, 64px)/1 var(--display); color: var(--ink); margin-bottom: 8px; }
+.fr{position:absolute;z-index:5}
+.fr>img{display:block;width:100%;height:auto;position:relative;z-index:2;filter:drop-shadow(0 8px 10px rgba(20,30,18,.24));pointer-events:none}
+.fr .ft{position:absolute;z-index:3}
+.fr.behind .ft{z-index:1}
+.shot{padding:0;box-shadow:none;background:#1E2A1C;width:100%;height:100%}
+.shot .ph{aspect-ratio:auto;height:100%}
+.fact b{color:#5C7057}
+.ul{position:relative;display:inline}
+.ul svg{position:absolute;left:-2%;bottom:-5px;width:104%;height:9px;overflow:visible}
+.ul path{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120}
+.live .ul path{stroke-dashoffset:0;transition:stroke-dashoffset 1s ease calc(var(--d)*1ms)}
+.harrow{position:absolute;fill:none;stroke:#5C7057;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;z-index:7}
+.harrow path{stroke-dasharray:140;stroke-dashoffset:140}
+.live .harrow path{stroke-dashoffset:0;transition:stroke-dashoffset .8s ease calc(var(--d)*1ms)}
+.write{clip-path:inset(-20% 100% -20% 0)}
+.live .a.write{clip-path:inset(-20% -10% -20% 0);transition:opacity .2s calc(var(--d)*1ms),transform .6s calc(var(--d)*1ms),clip-path 1.5s cubic-bezier(.45,0,.55,1) calc(var(--d)*1ms)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;height:100%}
+.fstat{background:#F7F8F2;padding:8px;box-shadow:2px 3px 0 rgba(0,0,0,.12);text-align:center;display:grid;align-content:center}
+.ft .fstat b{font:400 30px/1 'Bowlby One';color:#5C7057;display:block}
+.fstat span{font-size:12px;font-weight:600;line-height:1.25;margin-top:5px}
+.tk{position:absolute;left:31%;font-size:16px;color:#1E2A1C;transform:rotate(-2deg)}
+.stk{cursor:grab;touch-action:none;user-select:none}
+.stk.drag{cursor:grabbing;z-index:90;filter:drop-shadow(0 14px 10px rgba(0,0,0,.3))}
 
-/* the carousel sits in a drawn monitor, the same pencil line and desk beige as the intro */
-.screen { position: relative; margin: 0 var(--gutter) 96px; padding: clamp(10px, 1.2vw, 16px); background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 14px; box-shadow: inset 0 0 0 4px var(--paper), 6px 8px 0 -2px rgba(42,31,27,.08); }
-.screen::before { content: ""; position: absolute; left: 50%; top: 100%; width: 70px; height: 44px; translate: -50% 1.5px; background: var(--desk); border: 1.5px solid var(--pencil); border-top: 0; }
-.screen::after { content: ""; position: absolute; left: 50%; top: calc(100% + 44px); width: min(300px, 46%); height: 14px; translate: -50% 0; background: var(--desk); border: 1.5px solid var(--pencil); border-radius: 8px 8px 3px 3px; }
+.live .swing{animation:swing 3.2s ease-in-out infinite alternate;transform-origin:50% 6%}
+@keyframes swing{from{rotate:-2.5deg}to{rotate:2.5deg}}
 
-/* ---------- rooms: water-ripple carousel, a tap drops a ring that reveals the next portfolio ---------- */
-.rip { --chin: 124px; position: relative; height: clamp(480px, 54vw, 86svh); overflow: hidden; border-radius: 6px; background: var(--desk); color: var(--ink); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: pointer; outline: none; }
-.rip:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
-.rip:not(.on) { height: auto; cursor: auto; }
-.rip.on .rip-list { display: none; }
-.rip-list { margin: 0; padding: 28px clamp(20px, 4vw, 56px); display: grid; gap: 14px; }
-.rip-list a { font: 400 26px/1.1 var(--display); }
-.rip-list p { margin: 2px 0 0; opacity: .8; }
-.rip-base, .rip-in { position: absolute; inset: 0 0 auto; width: 100%; height: calc(100% - var(--chin)); max-width: none; display: block; pointer-events: none; }
-.rip-base { background: var(--ink); }
-.rip-base, .rip-fade { object-fit: cover; object-position: 50% 0; }
-.rip-fade { animation: rip-fade .3s cubic-bezier(.23,1,.32,1) both; }
-.rip-text { position: absolute; left: clamp(18px, 2.4vw, 32px); right: 296px; bottom: 0; height: var(--chin); display: flex; flex-direction: column; justify-content: center; pointer-events: none; }
-.rip-line { display: block; overflow: hidden; padding-bottom: .08em; }
-.rip-line > * { display: block; animation: rip-rise .5s cubic-bezier(.23,1,.32,1) both; }
-.rip-title a { pointer-events: auto; width: fit-content; text-decoration: none; font: 400 clamp(24px, 2.6vw, 38px)/1 var(--display); text-transform: uppercase; letter-spacing: 0; transition: color .2s; }
-.rip-title a::after { content: " ↗"; font: 400 .42em/1 var(--text); vertical-align: .9em; }
-.rip-title a:hover, .rip-title a:focus-visible { color: var(--deep); outline: none; }
-.rip-cap { margin-top: 6px; font: 400 clamp(17px, 1.4vw, 20px)/1.3 var(--script); color: var(--deep); max-width: 60ch; }
-.rip-cap > * { animation-delay: .08s; }
-.rip-nav { position: absolute; right: clamp(18px, 2.4vw, 32px); bottom: calc(var(--chin) / 2 - 23px); display: flex; align-items: center; gap: 14px; cursor: default; }
-.rip-pause { width: 38px; height: 38px; }
-.rip-count { font: 400 14px/1 var(--text); letter-spacing: .14em; }
-.rip-btn { position: relative; appearance: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--pencil); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; transition: background .15s ease-out, color .15s ease-out, transform .12s ease-out; }
-.rip-btn::after { content: ''; position: absolute; inset: -4px; }   /* 46px+ hit area, the 38px pause too */
-.rip-btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
-@media (hover: hover) { .rip-btn:hover { background: var(--ink); color: var(--paper); } }   /* no sticky ink fill after a tap */
-.rip-btn:active { transform: scale(.94); }
-.rip-track { position: absolute; left: 0; right: 0; top: calc(100% - var(--chin)); height: 2px; background: var(--line); }
-.rip-fill { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
-.rip-fill.run { animation: rip-auto 6s linear forwards; }
-.rip.paused .rip-fill { animation-play-state: paused; }
-@keyframes rip-rise { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes rip-auto { to { transform: scaleX(1); } }
-@keyframes rip-fade { from { opacity: 0; } }
+.wave{display:flex;gap:2px;align-items:center;height:36px;margin:2px 0}
+.wave i{flex:1;background:#D1EDD3;height:25%;border-radius:2px}
+.live .wave i{animation:eq .8s ease-in-out calc(var(--i)*-.13s) infinite alternate}
+@keyframes eq{to{height:100%}}
+.ft small{opacity:.75;font-size:10.5px}
+.ft b{font-size:14px;line-height:1.15}
+.emo{font:700 17px 'Caveat'}
+.emo span{background:#89A482;color:#1E2A1C;padding:0 6px;border-radius:3px}
+.acc{font:400 22px 'Bowlby One'}.acc span{font:600 11px 'DM Sans'}
+.tv{height:100%;background:#2B3828;color:#D1EDD3;display:grid;place-content:center;text-align:center;position:relative;gap:6px}
+.tv::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 2px,transparent 2px 4px),radial-gradient(ellipse,transparent 50%,rgba(0,0,0,.5));pointer-events:none}
+.chan{font:400 28px/1 'Bowlby One';letter-spacing:1px}
+.sub{font:700 19px/1.05 'Caveat';color:#ACC5A6}
+.tv.zap{background:#ACC5A6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='1.4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.tv.zap>*{opacity:0}
+.lcd{height:100%;background:linear-gradient(160deg,#D6E6CD,#B9CFAE);color:#1E2A1C;font:12px/1.3 'Special Elite';padding:6px 7px;display:flex;flex-direction:column}
+.lcdbar{display:flex;justify-content:space-between;font-size:10px;border-bottom:1px solid rgba(30,42,28,.3);padding-bottom:2px}
+.lcdmsg{flex:1;display:flex;flex-direction:column;gap:3px;margin-top:6px;overflow:hidden}
+.lcdmsg small{font-size:9.5px;opacity:.7}.lcdmsg b{font:12px 'Special Elite'}
+.lcdmsg span{font-size:11.5px;line-height:1.3;display:inline}
+.caret{display:inline-block;width:6px;height:11px;background:#1E2A1C;animation:blink 1s steps(1) infinite;vertical-align:-1px}
+@keyframes blink{50%{opacity:0}}
+.lcdbtm{display:flex;justify-content:space-between;font-size:10px;border-top:1px solid rgba(30,42,28,.3);padding-top:2px}
+.cert{display:flex;flex-direction:column;margin-bottom:7px;line-height:1.2}
+.cert b{font-size:12.5px}.cert span{font-size:11px;opacity:.75}
 
-/* ---------- crew: the footer. Mani's name in the heading red, four pencil sketches of him living on the letters ---------- */
-.crew { margin-top: clamp(48px, 7vw, 100px); padding: clamp(24px, 3vw, 40px) var(--gutter) 28px; overflow: clip; }
-.crew-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; }
-.crew h2 { margin: 0; font: 400 clamp(32px, 4.2vw, 64px)/.98 var(--display); text-transform: uppercase; text-wrap: balance; }
-.crew h2 a { display: inline-block; margin-top: .12em; rotate: -3deg; text-transform: none; text-decoration: none; font: 400 .9em/1.1 var(--script); color: var(--deep); }
-.crew h2 a:hover, .crew h2 a:focus-visible { color: var(--accent); outline: none; }
-.crew ul { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; padding: 0; }
-.crew li a { display: inline-block; padding: 8px 0; border-bottom: 1px solid var(--pencil); text-decoration: none; font: 400 16px/1 var(--text); letter-spacing: .03em; transition: color .15s ease-out, border-color .15s ease-out; }
-.crew li a:hover, .crew li a:focus-visible { color: var(--deep); border-color: var(--deep); outline: none; }
-.copied { flex-basis: 100%; min-height: 1.4em; margin: -12px 0 0; text-align: right; font: 400 20px/1.2 var(--script); color: var(--deep); rotate: -2deg; opacity: 0; translate: 0 3px; transition: opacity .15s ease-out, translate .15s ease-out; }
-.copied.on { opacity: 1; translate: none; transition-duration: .2s; }
+.pf{display:block;text-decoration:none;color:#1E2A1C;z-index:6;transition:translate .3s,scale .3s,box-shadow .3s}
+.pf img{display:block;width:100%;height:auto}
+.pf:hover{translate:0 -6px;scale:1.03;z-index:20}
+.pfcap{display:block;font:13px 'Special Elite';padding-top:6px}
+.pf.pol{background:#fff;padding:9px 9px 8px;box-shadow:0 10px 20px rgba(0,0,0,.22)}
+.pf.pol .pfcap{font:700 21px/1 'Caveat';text-align:center;padding-top:7px}
+.pf.print{background:#fff;padding:7px;box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.pf.print::before{content:"";position:absolute;left:38%;top:-11px;width:84px;height:22px;background:rgba(209,237,211,.85);rotate:-4deg;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.pf.mount{background:#1E2A1C;padding:10px 10px 6px;box-shadow:0 10px 22px rgba(0,0,0,.3)}
+.pf.mount .pfcap{color:#D1EDD3}
+.pf.tornp{filter:drop-shadow(0 6px 8px rgba(0,0,0,.25))}
+.pf.tornp img{clip-path:polygon(0 3%,8% 0,20% 2%,33% 0,47% 3%,60% 0,74% 2%,88% 0,100% 3%,98% 20%,100% 40%,97% 60%,100% 80%,98% 97%,85% 100%,70% 97%,55% 100%,40% 97%,25% 100%,10% 97%,0 100%,2% 80%,0 60%,3% 40%,0 20%)}
+.pf.tornp .pfcap{background:#F7F8F2;display:inline-block;padding:3px 8px;margin-top:-6px;position:relative;rotate:-2deg;box-shadow:1px 2px 0 rgba(0,0,0,.12)}
+.ph3{margin:0 0 4px;font:400 18px/1.1 'Alfa Slab One'}
+.map{width:100%;height:auto;display:block;box-shadow:0 6px 14px rgba(0,0,0,.16);border:6px solid #fff}
+.map .pin{transform-box:fill-box;transform-origin:50% 100%}
 
-/* The wordmark: one inline-block per letter at Bowlby's natural metrics (line box 1.525em, cap .742em, baseline
-   .4277em above the box bottom), so a sketch can sit on a letter in em and scale with the word. */
-.crew-stage { position: relative; margin-top: clamp(40px, 6vw, 88px); display: flex; justify-content: center; padding-right: .3em;
-  font-size: min(calc((100vw - 2 * var(--gutter)) / 6.6), 190px); }
-.crew-word { position: relative; display: flex; margin: -.12em 0 -.3em; font: 400 1em/1.525 var(--display); letter-spacing: -.01em; color: var(--accent);
-  -webkit-text-stroke: 1px var(--ext); paint-order: stroke fill;
-  text-shadow: -.01em .01em var(--ext), -.02em .02em var(--ext), -.03em .03em var(--ext), -.04em .04em var(--ext), -.05em .05em var(--ext), -.06em .06em var(--ext); }
-.crew-word > span { position: relative; }
-.crew-ground { position: absolute; left: -.25em; right: -.4em; bottom: calc(.4277em - .06em); width: calc(100% + .65em); height: .1em; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2px; stroke-linecap: round; }
-.crew-ground path { vector-effect: non-scaling-stroke; }
-.crew-prop { position: absolute; z-index: 1; width: auto; pointer-events: none; }
-.crew-m { position: absolute; z-index: 1; width: max-content; font-size: inherit; bottom: .4277em; translate: -50% 0; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.crew-m img { display: block; width: auto; height: var(--h); max-width: none; transform-origin: 50% 100%; transition: translate .34s cubic-bezier(.34,1.35,.64,1), scale .12s ease-out; }
-.crew-m::after { content: ''; position: absolute; inset: -6px -10px; }   /* thin sketches still get a 24px+ target */
-.crew-m:active img { scale: .97; }                                         /* response on press, not on release */
-.crew-m.up img { translate: 0 -7%; transition: translate .15s cubic-bezier(.23,1,.32,1), scale .12s ease-out; }   /* the tap's push; it lands with a small settle */
-.crew-m:focus-visible { outline: 2px dashed var(--ink); outline-offset: 4px; border-radius: 8px; }
-.crew-say { position: absolute; z-index: 2; left: 0; top: 0; margin: 0; max-width: min(260px, 80vw); padding: 9px 14px; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 16px 16px 16px 4px;
-  font: 400 17px/1.25 var(--script); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); pointer-events: none;
-  transform-origin: 12px 100%; opacity: 0; scale: .94; filter: blur(4px); transition: opacity .16s ease-out, scale .16s ease-out, filter .16s ease-out; }
-.crew-say.on { opacity: 1; scale: 1; filter: none; transition-duration: .28s; transition-timing-function: cubic-bezier(.23,1,.32,1); }   /* materialises at the speaker */
-.crew-line { margin: clamp(20px, 3vw, 34px) 0 0; text-align: center; font: 400 clamp(19px, 1.9vw, 24px)/1.3 var(--script); color: var(--deep); }
-.crew small { display: block; margin-top: clamp(32px, 5vw, 56px); padding-top: 18px; border-top: 1.5px dashed var(--line); font: 400 14px/1.5 var(--text); color: var(--muted); letter-spacing: .05em; }
-.crew .addr { user-select: all; }
+.rc{width:178px;height:120px;background:#161616;border-radius:8px;padding:6px;box-shadow:0 10px 18px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:6px;color:#eee;font:10px/1.4 'Special Elite'}
+.rcbar{display:flex;gap:4px;align-items:center}.rcbar i{width:7px;height:7px;border-radius:50%;background:#C8102E}.rcbar span{margin-left:auto;opacity:.6}
+.rcwin{flex:1;border:1px solid #C8102E;border-radius:4px;padding:5px}.rcwin b{color:#C8102E;font-weight:400}.rcwin span{color:#ff5a6e}
+.rcdock{display:flex;gap:5px;justify-content:center}.rcdock i{width:12px;height:12px;border-radius:3px;background:#2a2a2a;border-bottom:2px solid #C8102E}
+/* toolbar */
+.bar{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px 24px}
+.bar button{font:600 15px 'DM Sans';min-height:44px;padding:0 18px;border:0;border-radius:24px;background:var(--g1);color:var(--paper);cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.bar button:disabled{opacity:.4;cursor:default}
+.bar button.ghost{background:transparent;color:var(--deskInk);box-shadow:inset 0 0 0 2px currentColor}
+.bar button:focus-visible{outline:3px solid var(--g4);outline-offset:2px}
+#ind{font:700 22px 'Caveat';min-width:110px;text-align:center}
+.live .stk.bob img{}
+.mob .board,.mob .stack,.mob .spineband{display:none}
+@media (prefers-reduced-motion:reduce){.live .sway,.live .bob img,.live .swing,.live .wave i{animation:none}.write{clip-path:none}.tilt{transition:none}.leaf,.book{transition-duration:.01s}.live .a,.live .ltr{transition:opacity .2s}}
 
-/* arrival, once, when the footer scrolls in: the ground draws, letters rise left to right, then the sketches. Only with JS. */
-.crew.pre .crew-ground path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.crew.pre .crew-word > span { opacity: 0; translate: 0 .1em; }
-.crew.pre .crew-m, .crew.pre .crew-prop { opacity: 0; }
-.crew.pre .crew-m { translate: -50% 6%; }
-.crew.pre.seen .crew-ground path { stroke-dashoffset: 0; transition: stroke-dashoffset .9s cubic-bezier(.23,1,.32,1); }
-.crew.pre.seen .crew-word > span { opacity: 1; translate: none; transition: opacity .4s ease-out, translate .5s cubic-bezier(.23,1,.32,1); transition-delay: calc(120ms + var(--i) * 60ms); }
-.crew.pre.seen .crew-m, .crew.pre.seen .crew-prop { opacity: 1; translate: -50% 0; transition: opacity .4s ease-out, translate .5s cubic-bezier(.23,1,.32,1); transition-delay: calc(640ms + var(--j, 3) * 110ms); }
-.crew.pre.seen .crew-prop { translate: none; }
-
-@media (max-width: 860px) {
-  .projects li { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 600px) {
-  .crew-top { flex-direction: column; align-items: start; }
-  .copied { text-align: left; margin: 0; }
-  /* phones: a tall stage shows the phone-sized screenshots; controls sit under the caption */
-  .screen { margin: 0 12px 84px; padding: 8px; }
-  .rip { --chin: 178px; height: min(178vw, 88svh); }
-  .rip-text { right: 18px; justify-content: flex-start; padding-top: 18px; }
-  .rip-nav { left: 18px; right: auto; bottom: 16px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rip-line > * { animation: none; }
-  .rip-btn:active { transform: none; }
-  .copied { translate: none; }
-  .crew-m img, .crew-m.up img { translate: none; scale: none; transition: none; }
-  .crew-say, .crew-say.on { scale: none; filter: none; transition: opacity .2s; }
-}
+/* ---- hub additions: chapters, entrance, page lift, contact form ---- */
+header nav{display:flex;flex-wrap:wrap;gap:0 2px;margin-right:-8px}
+header nav :is(button,a){position:relative;font:700 21px/1 'Caveat';color:inherit;background:none;border:0;padding:10px 8px;cursor:pointer;text-decoration:none}
+header nav :is(button,a)::after{content:"";position:absolute;left:8px;right:8px;bottom:5px;height:2px;border-radius:2px;background:currentColor;scale:0 1;transform-origin:left;transition:scale .25s cubic-bezier(.23,1,.32,1)}
+header nav [aria-current=true]::after{scale:1}
+@media (hover:hover){header nav :is(button,a):hover::after{scale:1}}
+header nav :is(button,a):focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:4px}
+.scaler{animation:land 1.1s cubic-bezier(.2,.9,.25,1) both}
+@keyframes land{from{opacity:0;translate:0 70px;rotate:-3deg}}
+@media (hover:hover){
+ /* a dog-ear lifts on the outer corner of the page under the cursor. 2D on purpose: tilting the leaf in 3D throws off hit-testing on its buttons */
+ body:not(.mob) .leaf:not(.turning) .face::before{content:"";position:absolute;bottom:0;width:0;height:0;z-index:60;pointer-events:none;filter:drop-shadow(-2px -2px 3px rgba(20,30,18,.25));transition:width .35s cubic-bezier(.23,1,.32,1),height .35s cubic-bezier(.23,1,.32,1)}
+ body:not(.mob) .leaf:not(.turning) .front::before{right:0;background:linear-gradient(315deg,transparent 50%,#E9EEE4 50%,#C9D4C2)}
+ body:not(.mob) .leaf:not(.turning) .back::before{left:0;filter:drop-shadow(2px -2px 3px rgba(20,30,18,.25));background:linear-gradient(45deg,transparent 50%,#E9EEE4 50%,#C9D4C2)}
+ body:not(.mob) .leaf:not(.turning) .face:hover::before{width:40px;height:40px}
+ .links .strip:hover{translate:0 -3px}}
+/* page physics: JS springs drive the angle, so no CSS transition on the leaf; shading follows --shade (sin of the angle) */
+.leaf{transition:none}
+.leaf.turning .face::before{animation:none;background-size:auto;background:linear-gradient(90deg,rgba(15,22,13,calc(var(--shade,0)*.1)),rgba(15,22,13,calc(var(--shade,0)*.45)))}
+.leaf.turning .back::before{background:linear-gradient(270deg,rgba(15,22,13,calc(var(--shade,0)*.1)),rgba(15,22,13,calc(var(--shade,0)*.45)))}
+.cast{position:absolute;top:0;left:0;width:460px;height:620px;z-index:800;pointer-events:none;opacity:0}
+.castR{background:linear-gradient(90deg,rgba(15,22,13,.5),rgba(15,22,13,.14) 28%,transparent 75%)}
+.castL{background:linear-gradient(270deg,rgba(15,22,13,.5),rgba(15,22,13,.14) 28%,transparent 75%)}
+.ghost{position:absolute;top:0;left:0;width:460px;height:620px;z-index:850;pointer-events:none;opacity:0;transform-origin:left center;background:#EEF2EA;border-radius:0 6px 6px 0;overflow:hidden}
+.ghost::after{content:"";position:absolute;inset:0;background:rgba(15,22,13,calc(var(--k)*.06))}
+.book .face{cursor:grab}.book.dragging .face{cursor:grabbing}
+.photo.fixed{cursor:default}
+.cf{padding:14px 16px 8px;display:flex;flex-direction:column;gap:7px;color:var(--ink);box-shadow:3px 4px 0 rgba(0,0,0,.14)}
+.cf label{display:flex;flex-direction:column;gap:2px;font:12px/1.2 'Special Elite'}
+.cf label i{font-style:normal;opacity:.65}
+.cf input,.cf textarea{width:100%;font:16px/1.3 'DM Sans',sans-serif;color:var(--ink);background:#fff;border:0;border-bottom:2px solid var(--g2);border-radius:3px 3px 0 0;padding:6px 8px;resize:none;transition:border-color .2s}
+.cf textarea{height:72px}
+.cf :is(input,textarea):focus{outline:none;border-color:var(--g1)}
+.cf [aria-invalid]{border-color:#A8402C;animation:nudge .3s}
+@keyframes nudge{30%{translate:-4px}70%{translate:3px}}
+.cfb{display:flex;gap:8px;margin-top:3px}
+.cfb button{flex:1;min-height:40px;font:600 14px 'DM Sans';border:0;border-radius:20px;background:var(--g1);color:var(--paper);cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.25);transition:translate .12s,box-shadow .12s}
+.cfb button.alt{background:var(--g4);color:var(--ink)}
+.cfb button:active{translate:0 2px;box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.cfb button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.cfo{min-height:20px;font:700 18px/1.1 'Caveat';color:var(--g1)}
+.cfo.err{color:#A8402C}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.links .strip{grid-template-columns:1fr;gap:0;text-decoration:none;padding:7px 10px;transition:translate .2s}
+.links .strip:first-child{grid-column:span 2}
+.links .strip span{font-size:13px;overflow-wrap:anywhere}
+.links .strip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.copied{position:absolute;margin:0;font:700 20px 'Caveat';color:var(--g1);opacity:0;rotate:-2deg;transition:opacity .2s}
+.copied.on{opacity:1}
+.nojs{max-width:640px;margin:24px auto;padding:0 16px}
+@media (prefers-reduced-motion:reduce){.scaler{animation:none}.cf [aria-invalid]{animation:none}}
 </style>
 </head>
 <body>
-<div id="intro"></div>
-<noscript><header class="nojs"><img src="assets/logo.png" alt="" width="72" height="72"><h1>Manideep Reddy</h1><p>Software engineer in Hyderabad: backends, data and AI, and the interfaces people see and touch.</p></header></noscript>
-<main>
-  <section class="work" id="work" aria-labelledby="work-h">
-    <header class="sec"><h2 id="work-h" class="pop">What I build</h2><p class="aside">Backend, data and AI. <em>the parts nobody sees.</em></p></header>
-    <ol class="projects">
-    <li><h3>SignAI</h3><p>Production recruitment platform with LLM-powered candidate matching. React, Node.js, PostgreSQL, AWS.</p><a href="https://signai.in" target="_blank" rel="noopener">signai.in ↗</a></li>
-    <li><h3>Jhanko</h3><p>REST API layer in Python and FastAPI for a geolocation marketplace, with real-time geospatial search.</p><span></span></li>
-    <li><h3>Artemis Job Agent</h3><p>Open-source AI agent that finds matching jobs, finds the hiring contact and drafts the email.</p><span></span></li>
-    <li><h3>Speech Emotion Recognition</h3><p>CNN and LSTM model that reads emotion and gender from short audio clips. TensorFlow, FastAPI.</p><span></span></li>
-    <li><h3>Rosso Corsa</h3><p>Racing-red desktop theme for Omarchy Linux.</p><a href="https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme" target="_blank" rel="noopener">GitHub ↗</a></li>
-    </ol>
-    <ul class="wins"><li><b>40%</b>faster dashboards, from PostgreSQL indexing</li><li><b>50%</b>quicker candidate screening with AI résumé parsing</li><li><b>30%</b>faster API responses in a geolocation marketplace</li><li><b>100%</b>of deployments automated with GitHub Actions</li></ul>
-  </section>
-
-  <section class="design" id="design" aria-labelledby="design-h">
-    <header class="sec"><h2 id="design-h" class="pop">How I design</h2><p class="aside">Seven front ends for the same story. <em>seven rooms, one desk.</em></p></header>
-    <div class="screen">
-    <div class="rip" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Seven portfolios">
-      <ol class="rip-list">
-        <li data-w="assets/c/00w.jpg" data-t="assets/c/00t.jpg" data-alt="Pixel-type headline Manideep Reddy, AI/ML Engineer Portfolio, beside an illustration of a coder in an orange chair"><a href="https://manideepreddy.lovable.app/" target="_blank" rel="noopener">The First One</a><p>Built with Lovable. Pixel type, a yellow highlighter and the portfolio where it all started.</p></li>
-        <li data-w="assets/c/01w.jpg" data-t="assets/c/01t.jpg" data-alt="Blue engraved-ink illustration of a woman in the clouds above a train and the name Manideep"><a href="01-blue-illustrated/">Blue Illustrated</a><p>Engraved ink in sky blue, drawn like a storybook plate.</p></li>
-        <li data-w="assets/c/02w.jpg" data-t="assets/c/02t.jpg" data-alt="Carved, glyph-covered dark texture with the name Manideep in large white type"><a href="02-hindu-mythology/">Hindu Mythology</a><p>Myth carved into dark stone, lit one line at a time.</p></li>
-        <li data-w="assets/c/03w.jpg" data-t="assets/c/03t.jpg" data-alt="A green carved door under the word Namaste, with the line Pesh karte hain"><a href="03-indian-genz/">Indian GenZ</a><p>Knock on the green door. Loud posters and Namaste energy inside.</p></li>
-        <li data-w="assets/c/04w.jpg" data-t="assets/c/04t.jpg" data-alt="Cobalt print of a rider on horseback across a hillside beside the word Home"><a href="04-cobalt-scroll/">Cobalt Scroll</a><p>A cobalt print that unrolls as you scroll.</p></li>
-        <li data-w="assets/c/05w.jpg" data-t="assets/c/05t.jpg" data-alt="A silver ink dragon on black above torn paper, beside the name Manideep"><a href="05-story-torn-ink/">Torn Ink</a><p>Paper tears open and an ink dragon wakes.</p></li>
-        <li data-w="assets/c/06w.jpg" data-t="assets/c/06t.jpg" data-alt="Pixel-art city street under the title Manideep, The Portfolio, with Start game, Portfolio and Contact"><a href="06-lost-digital-civilization/">Route 25</a><p>A pixel city you drive through to read the portfolio.</p></li>
-      </ol>
-    </div>
-    </div>
-  </section>
-</main>
-
-<footer class="crew" aria-labelledby="crew-h">
-  <div class="crew-top">
-    <h2 id="crew-h">Building something?<br><a href="mailto:manideepreddyrekha@gmail.com" data-copy="manideepreddyrekha@gmail.com" data-track="contact-email">Say hello.</a></h2>
-    <ul>
-      <li><a href="mailto:manideepreddyrekha@gmail.com" data-copy="manideepreddyrekha@gmail.com" data-track="contact-email">Email</a></li>
-      <li><a href="https://wa.me/918686669066" target="_blank" rel="noopener" data-track="contact-whatsapp">WhatsApp</a></li>
-      <li><a href="https://github.com/Manideep-Ai-ai" target="_blank" rel="noopener me">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297" target="_blank" rel="noopener me" data-track="contact-linkedin">LinkedIn</a></li>
-      <li><a href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé (PDF)</a></li>
-    </ul>
-    <p class="copied" role="status" aria-live="polite"></p>
-  </div>
-  <div class="crew-stage">
-    <p class="crew-word"><span style="--i:0"><span aria-hidden="true">M</span><button type="button" class="crew-m" style="left:20%;--h:0.9656em;--j:0" aria-label="Mani with a sketchbook" data-says="Every good idea starts with a sketch."><img src="assets/crew/sketchbook.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:1"><span aria-hidden="true">A</span></span><span style="--i:2"><span aria-hidden="true">N</span><button type="button" class="crew-m" style="left:25%;bottom:auto;top:-0.0915em;--h:0.8132em;--j:1" aria-label="Mani on his laptop" data-says="One more idea. One more tab."><img src="assets/crew/laptop.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:3"><span aria-hidden="true">I</span><img class="crew-prop" src="assets/crew/mug.svg" alt="" style="left:0;top:0.1931em;height:0.1626em"><img class="crew-prop" src="assets/crew/books.svg" alt="" style="left:0.1271em;top:0.2541em;height:0.1016em"></span><span style="--i:4"><span aria-hidden="true">D</span><button type="button" class="crew-m" style="left:35%;--h:0.9656em;--j:2" aria-label="Mani walking with a backpack" data-says="Always curious. Always moving."><img src="assets/crew/walking.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><span style="--i:5"><span aria-hidden="true">E</span></span><span style="--i:6"><span aria-hidden="true">E</span><img class="crew-prop" src="assets/crew/cricket.svg" alt="" style="left:0.1525em;top:0.0660em;height:0.2897em"></span><span style="--i:7"><span aria-hidden="true">P</span><button type="button" class="crew-m" style="left:88%;--h:0.8894em;--j:3" aria-label="Mani at his drawing table" data-says="A little detail makes all the difference."><img src="assets/crew/drafting.webp" alt="" draggable="false" loading="lazy" decoding="async"></button></span><svg class="crew-ground" viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 10 Q36 10.7 71 9.6 Q107 10.5 143 10.8 Q179 9.7 214 9.2 Q250 10.9 286 9.4 Q321 11.0 357 10.3 Q393 7.2 429 9.9 Q464 8.7 500 9.1 Q536 7.3 571 9.6 Q607 7.3 643 10.2 Q679 10.8 714 10.4 Q750 9.6 786 10.6 Q821 11.8 857 10.4 Q893 10.6 929 9.1 Q964 11.7 1000 10.5"/><path pathLength="1" d="M794 10l2-7M798 10l1-9M802 10l-1-6M383 10l2-7M387 10l1-9M391 10l-1-6M758 10l2-7M762 10l1-9M766 10l-1-6M347 10l2-7M351 10l1-9M355 10l-1-6M303 10l2-7M307 10l1-9M311 10l-1-6M955 10l2-7M959 10l1-9M963 10l-1-6M434 10l2-7M438 10l1-9M442 10l-1-6M691 10l2-7M695 10l1-9M699 10l-1-6M357 10l2-7M361 10l1-9M365 10l-1-6M555 10l2-7M559 10l1-9M563 10l-1-6M847 10l2-7M851 10l1-9M855 10l-1-6M629 10l2-7M633 10l1-9M637 10l-1-6M378 10l2-7M382 10l1-9M386 10l-1-6M193 10l2-7M197 10l1-9M201 10l-1-6M746 10l2-7M750 10l1-9M754 10l-1-6M941 10l2-7M945 10l1-9M949 10l-1-6"/></svg></p>
-    <p class="crew-say" role="status" aria-live="polite"></p>
-  </div>
-  <p class="crew-line">A curious mind. A work in progress.</p>
-  <small>© 2026 Rekha V Manideep Reddy · Hyderabad, India · <span class="addr">manideepreddyrekha@gmail.com</span></small>
-</footer>
+<header><b>MANIDEEP REDDY</b><nav aria-label="Chapters"><button type="button" data-page="1">About</button><button type="button" data-page="4">Work</button><button type="button" data-page="10">Portfolios</button><button type="button" data-page="16">Say hi</button><a href="resume.pdf" target="_blank" rel="noopener" data-track="contact-resume">Résumé</a></nav></header>
+<noscript><section class="nojs"><h1>Manideep Reddy</h1><p>Software engineer (AI/ML) in Hyderabad, at Delta Cubes. I build full-stack web apps and the AI inside them: SignAI, LangGraph lead flows, multi-agent research, speech emotion recognition.</p><p><a href="mailto:manideepreddyrekha@gmail.com">manideepreddyrekha@gmail.com</a> · <a href="https://wa.me/918686669066">WhatsApp</a> · <a href="https://github.com/Manideep-Ai-ai">GitHub</a> · <a href="https://linkedin.com/in/rekha-v-manideep-reddy-024976297">LinkedIn</a> · <a href="resume.pdf">Résumé</a></p></section></noscript>
+<div class="stage" id="stage" style="padding-top:14px"><div class="scaler" id="scaler"><div class="tilt" id="tilt"><div class="book" id="book"></div><div class="ground"></div></div></div></div>
+<div class="bar">
+ <button id="prev" aria-label="Previous page">‹ Back</button>
+ <div id="ind" aria-live="polite">Cover</div>
+ <button id="next" aria-label="Next page">Next ›</button>
+ <button id="clear" class="ghost" hidden>Reset my edits</button>
+</div>
+<input type="file" id="file" accept="image/*" hidden>
 <script>
-// Water-ripple carousel: a plain-JS port of WaterRippleCarousel (same shader and timing), no framework.
-// A tap drops a ring of bending water at that point; the next portfolio appears inside it.
-(() => {
-  const root = document.querySelector('.rip');
-  if (!root) return;
-  const DUR = 1900, TAP_DUR = 1100, STRENGTH = 1;   // autoplay drifts; a tap answers quicker
-  const slides = [...root.querySelectorAll('.rip-list li')].map(li => {
-    const a = li.querySelector('a');
-    return { w: li.dataset.w, t: li.dataset.t, alt: li.dataset.alt, href: a.getAttribute('href'), ext: a.target === '_blank', title: a.textContent, cap: li.querySelector('p').textContent };
-  });
-  const n = slides.length;
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const PAUSE = 'M5.5 3.5v9M10.5 3.5v9', PLAY = 'M5 3.2v9.6L12.5 8z';
-  const arrow = d => `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="1.4"/></svg>`;
-  root.classList.add('on');
-  root.insertAdjacentHTML('beforeend', `<img class="rip-base" alt="" draggable="false" loading="lazy"><canvas class="rip-in" hidden aria-hidden="true"></canvas><div class="rip-text" aria-live="polite"></div><div class="rip-nav"><span class="rip-count" aria-hidden="true"></span><button type="button" class="rip-btn rip-pause" aria-label="Pause slideshow" aria-pressed="false">${arrow(PAUSE)}</button><button type="button" class="rip-btn" aria-label="Previous portfolio">${arrow('M10 3 5 8l5 5')}</button><button type="button" class="rip-btn" aria-label="Next portfolio">${arrow('m6 3 5 5-5 5')}</button></div><div class="rip-track" aria-hidden="true"><div class="rip-fill"></div></div>`);
-  const $ = s => root.querySelector(s);
-  const base = $('.rip-base'), canvas = $('.rip-in'), text = $('.rip-text'), count = $('.rip-count'), fill = $('.rip-fill');
-  const [pause, prev, next] = root.querySelectorAll('.rip-btn');
+{
+const P=460,H=620;
+const PAL=[['#5C7057','#F3F8EE'],['#89A482','#1E2A1C'],['#ACC5A6','#1E2A1C'],['#D1EDD3','#3E5039'],['#F7F8F2','#1E2A1C'],['#1E2A1C','#D1EDD3']];
+const rng=s=>{let a=7;for(const c of s)a=(a*31+c.charCodeAt(0))|0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
+const torn=(r,m=3)=>{const p=[],n=7;for(let i=0;i<=n;i++)p.push(`${(i*100/n).toFixed(1)}% ${(r()*m).toFixed(1)}%`);for(let i=1;i<=n;i++)p.push(`${(100-r()*m).toFixed(1)}% ${(i*100/n).toFixed(1)}%`);for(let i=n-1;i>=0;i--)p.push(`${(i*100/n).toFixed(1)}% ${(100-r()*m).toFixed(1)}%`);for(let i=n-1;i>0;i--)p.push(`${(r()*m).toFixed(1)}% ${(i*100/n).toFixed(1)}%`);return`polygon(${p.join(',')})`};
+/* headings are built from real torn-paper letters cut out of a ransom sheet */
+const GLYPH={'!':'excl'};
+const R=(t,fs=44,start=0)=>{const r=rng(t);return`<div class="ransom" style="font-size:${fs}px" role="heading" aria-level="2"><span class="sr">${t}</span>`+[...t].map((ch,i)=>{if(ch===' ')return'<span class="sp"></span>';const rot=(r()*14-7).toFixed(1),sc=(.9+r()*.2).toFixed(2),dy=(r()*.14-.07).toFixed(2);return`<img class="ltr" src="assets/book/abc/${GLYPH[ch]||ch.toUpperCase()}.webp" alt="" aria-hidden="true" draggable="false" style="--r:${rot}deg;--d:${start+i*65};height:${(1.3*sc).toFixed(2)}em;margin-top:${dy}em">`}).join('')+'</div>'};
+const corner=(f,pos,w,extra='',d=150)=>`<img class="corner a" src="assets/book/real/${use(f)}.webp" alt="" draggable="false" style="${pos};width:${w}px;--d:${d};--from:scale(.96);${extra}">`;
+const tape=(t,l,r=-8,w=86,d=600)=>`<i class="tape a drop" style="top:${t};left:${l};--r:${r}deg;width:${w}px;--d:${d}"></i>`;
+const USED=new Set(),use=f=>{if(USED.has(f))console.warn('asset placed twice:',f);USED.add(f);return f};   /* every sticker and scrap appears once in the book */
+const stk=(f,style,d=700,extra='')=>`<div class="stk a pop ${extra}" data-id="${use(f)}" style="${style};--d:${d}"><span class="peel" style="--m:url(assets/book/${f}.webp)"><img src="assets/book/${f}.webp" alt="" draggable="false"></span></div>`;
+const tornBg=(seed,bg,m=2)=>`background:${bg};clip-path:${torn(rng(seed),m)}`;
+const photo=(key,cap,ph,style,d=150,ar='1/1')=>`<figure class="photo a pop" data-key="${key}" style="${style};--d:${d}"><div class="ph" style="--ar:${ar}">${ph}</div><figcaption contenteditable="true" spellcheck="false" data-cap="${key}">${cap}</figcaption></figure>`;
+const chips=(arr,seed)=>{const r=rng(seed);return`<div class="chips">`+arr.map((c,i)=>{const p=PAL[[0,1,2,3,4][Math.floor(r()*5)]];return`<span class="chip a pop" style="background:${p[0]};color:${p[1]};--r:${(r()*6-3).toFixed(1)}deg;--d:${200+i*45};clip-path:${torn(r,4)}">${c}</span>`}).join('')+`</div>`};
+const ruler=()=>{let s='';for(let i=0;i<20;i++)s+=`<span class="ruler" style="left:${20+i*23}px;bottom:6px">${i}</span>`;for(let i=0;i<26;i++)s+=`<span class="ruler" style="left:6px;top:${12+i*23}px">${25-i}</span>`;return s};
 
-  const wrap = i => ((i % n) + n) % n;
-  const pad = k => String(k).padStart(2, '0');
-  const src = i => (base.clientWidth < base.clientHeight ? slides[i].t : slides[i].w);   // tall stage, phone screenshot
-  const load = url => new Promise((res, rej) => { const im = new Image(); im.onload = () => im.decode().catch(() => {}).then(() => res(im)); im.onerror = rej; im.src = url; });
-  let index = 0, busy = false, seq = 0, seen = false, mode = '', stopped = still.matches;   // reduced motion: no autoplay
+/* pictures */
+const agentsSVG=`<svg viewBox="0 0 300 130" style="width:100%;height:130px">${[[50,30],[250,30],[30,100],[270,100],[150,115]].map(([x,y])=>`<line x1="150" y1="62" x2="${x}" y2="${y}" stroke="#5C7057" stroke-width="2" stroke-dasharray="5 4"/>`).join('')}<circle cx="150" cy="62" r="30" fill="#5C7057"/><text x="150" y="68" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="20" fill="#D1EDD3">report</text>${[[50,30],[250,30],[30,100],[270,100],[150,115]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="15" fill="${['#89A482','#ACC5A6','#D1EDD3','#89A482','#ACC5A6'][i]}" stroke="#1E2A1C" stroke-width="2"/><circle cx="${x-5}" cy="${y-2}" r="2" fill="#1E2A1C"/><circle cx="${x+5}" cy="${y-2}" r="2" fill="#1E2A1C"/><path d="M${x-5} ${y+5}q5 4 10 0" stroke="#1E2A1C" stroke-width="2" fill="none"/>`).join('')}</svg>`;
+const clapper=`<svg viewBox="0 0 86 64"><rect x="10" y="24" width="66" height="36" rx="3" fill="#1E2A1C"/><path d="M10 14 72 4l3 14-62 10z" fill="#1E2A1C"/>${[0,1,2,3].map(i=>`<path d="M${20+i*14} ${12.5-i*2.2}l9-1.5-6 12-9 1.5z" fill="#D1EDD3"/>`).join('')}<rect x="18" y="34" width="50" height="4" fill="#89A482"/><rect x="18" y="44" width="34" height="4" fill="#89A482"/></svg>`;
+const laptopSVG=`<svg viewBox="0 0 86 64"><rect x="16" y="10" width="54" height="36" rx="3" fill="#1E2A1C"/><rect x="20" y="14" width="46" height="28" fill="#89A482"/><path d="M8 50h70l-6 6H14z" fill="#5C7057"/><path d="M28 22l-5 6 5 6M58 22l5 6-5 6" stroke="#D1EDD3" stroke-width="2.5" fill="none"/></svg>`;
 
-  const line = (cls, el) => { const l = document.createElement('span'); l.className = 'rip-line ' + cls; l.append(el); return l; };
-  const show = i => {
-    const s = slides[i], a = document.createElement('a'), c = document.createElement('span');
-    a.href = s.href; a.textContent = s.title;
-    a.dataset.track = 'portfolio-' + s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    if (s.ext) { a.target = '_blank'; a.rel = 'noopener'; }
-    c.textContent = s.cap;
-    text.replaceChildren(line('rip-title', a), line('rip-cap', c));
-    count.textContent = pad(i + 1) + ' / ' + pad(n);
-  };
-  const setBase = i => { mode = src(i); base.src = mode; base.alt = slides[i].alt; };
-  const restart = () => { fill.classList.remove('run'); void fill.offsetWidth; if (!busy && !stopped) fill.classList.add('run'); };
-  const sync = () => root.classList.toggle('paused', !seen || document.hidden || root.matches(':hover, :focus-within'));
+const pfx=(n,url,title,style,kind,d)=>`<a class="pf a pop ${kind}" href="${url}" data-track="portfolio-${title.toLowerCase().replace(/[^a-z0-9]+/g,'-')}" target="_blank" rel="noopener" style="position:absolute;${style};--d:${d}"><img src="assets/book/${n}.webp" alt="${title} portfolio" draggable="false"><span class="pfcap">${title} ↗</span></a>`;
+/* pages */
+const fr=(img,style,inner='',innerStyle='',d=200,cls='')=>`<div class="fr a pop ${cls}" style="${style};--d:${d}">${inner&&cls.includes('behind')?`<div class="ft" style="${innerStyle}">${inner}</div>`:''}<img src="assets/book/${img}.webp" alt="" draggable="false">${inner&&!cls.includes('behind')?`<div class="ft" style="${innerStyle}">${inner}</div>`:''}</div>`;
+const shot=(key,ph)=>`<div class="photo shot" data-key="${key}"><div class="ph">${ph}</div></div>`;
+const ul=(t,c='#5C7057',d=900)=>`<span class="ul">${t}<svg viewBox="0 0 100 10" preserveAspectRatio="none" style="--d:${d}"><path pathLength="120" d="M2 6 C 20 2, 40 9, 60 5 S 90 3, 98 6" stroke="${c}"/></svg></span>`;
+const arrow=(style,d=1000,flip=false)=>`<svg class="harrow" viewBox="0 0 90 60" style="${style};--d:${d}${flip?';transform:scaleX(-1)':''}"><path pathLength="140" d="M6 8 C 30 4, 62 14, 74 46"/><path pathLength="140" d="M62 38 L75 48 L80 32"/></svg>`;
+const hn=(t,style,d=900)=>`<div class="hand write a" style="${style};--d:${d}">${t}</div>`;
+const pages=[
+/* 1 cover */ {c:'mat',h:`${ruler()}
+ <img class="corner a" src="assets/book/real/swirl-top.webp" alt="" draggable="false" style="left:0;top:0;width:100%;transform:scaleX(-1);--d:100">
+ <div class="cvstack">
+ ${R('MY',52)}
+ <div class="a fromL" style="--d:350;--r:-2deg;margin:2px 0 8px"><span class="brushed"><img src="assets/book/real/brush.webp" alt="">AI &amp; full-stack engineer</span></div>
+ ${R('PORTFOLIO',42,150)}
+ <div class="plate a pop" style="--d:900;margin-top:18px;height:146px;--r:-1.5deg"><img src="assets/book/real/label.webp" alt=""><div><span style="font:400 23px 'Alfa Slab One'">Manideep Reddy</span><br><span class="type" style="font-size:13px">Hyderabad · 2026 edition</span></div></div>
+ </div>
+ ${stk('real/pin','left:384px;top:392px;width:54px;--r:34deg',1200)}
+ <div class="type" style="position:absolute;left:0;right:0;bottom:30px;text-align:center;font-size:14px;color:#D1EDD3">manideepreddy.website</div>`},
+/* 2 hello */ {c:'paper',h:`${R('HELLO!',46)}${stk('real/thumb','right:28px;top:16px;width:62px;--r:8deg',900,'bob')}${corner('scrap-m3','left:0;bottom:0',140)}
+ <figure class="photo fixed a pop" style="position:absolute;left:30px;top:96px;width:168px;z-index:6;--r:-5deg;--d:250"><div class="ph" style="--ar:3/4"><img src="assets/book/me.webp" alt="Manideep Reddy on a green magazine-style cover titled AI Engineer" width="600" height="800" draggable="false"></div><figcaption>that's me</figcaption></figure>
+ ${hn(`I build web apps,<br>then teach them to<br>${ul('read, rank &amp; reply.')}`,'position:absolute;left:222px;top:118px;font-size:26px;line-height:1.05;color:#1E2A1C;--r:-2deg',500)}
+ ${arrow('left:206px;top:196px;width:64px;height:44px;rotate:110deg',1100)}
+ ${fr('f_clip','left:46px;top:262px;width:380px;--r:1deg',`I'm Manideep. I write the full stack, React up front and Python or Node behind it, and spend most days on the AI parts: resume parsers, matching engines, agents that take the dull work off someone's desk. Shipping at Delta Cubes since April 2025.`,'left:14%;top:33.5%;width:70%;height:46%;font:600 15.5px/22.6px Caveat;color:#2c3a29',400)}`},
+/* 3 about */ {c:'mint',h:`${R('ABOUT ME',38)}
+ ${fr('f_note','left:12px;top:84px;width:430px;--r:-1.2deg',[['based in','Hyderabad, India'],['open to','roles across India + remote'],['day job','Software Engineer (AI/ML), Delta Cubes'],['studied','B.Tech CSE, Bharath Institute, Chennai · 2025'],['side quests','freelance builds, YouTube automation, a Telugu short film']].map(([k,v],i)=>`<div class="fact"><b>${k}:</b> ${v}</div>`).join(''),'left:19.5%;top:21.4%;width:70%;height:58%;font:600 16.5px/22.4px Caveat;color:#2c3a29',300)}
+ ${corner('scrap-m6','right:0;bottom:0',150)}
+ ${stk('real/rings','left:30px;bottom:24px;width:110px;--r:-9deg',1000)}
+ ${hn(`open for<br>freelance ✓`,'position:absolute;left:180px;bottom:44px;font-size:25px;line-height:1;color:#5C7057;--r:-4deg',1250)}`},
+/* 4 skills */ {c:'paper',h:`<img src="assets/book/f_border.webp" alt="" class="a fromL" style="position:absolute;left:0;top:0;height:100%;width:auto;--d:100;--from:translateX(-40px)">
+ <div style="margin-left:96px;display:flex;flex-direction:column;gap:10px">${R('SKILLS',44)}
+ <div><div class="grp a">${ul('AI & LLMs','#89A482',500)}</div>${chips(['OpenAI API','Claude API','LangChain','LangGraph','CrewAI','MCP','RAG','ChromaDB','PyTorch','Scikit-learn','OpenCV'],'k1')}</div>
+ <div><div class="grp a">Backend</div>${chips(['Python','FastAPI','Flask','Node.js','Express','PostgreSQL','MongoDB'],'k2')}</div>
+ <div><div class="grp a">Frontend</div>${chips(['React','Next.js','TypeScript','JavaScript','Figma'],'k3')}</div>
+ <div><div class="grp a">Ship it</div>${chips(['AWS','Docker','GitHub Actions','n8n','Git'],'k4')}</div></div>
+ ${stk('real/calc','right:22px;top:18px;width:84px;--r:10deg',800,'bob')}
+ ${corner('scrap-p2','right:0;bottom:0',150)}
+ ${hn('currently learning:<br>fine-tuning, from scratch','position:absolute;left:120px;bottom:40px;font-size:21px;line-height:1.05;color:#5C7057;--r:-3deg',1200)}`},
+/* 5 work */ {c:'mint',h:`${R('WORK',48)}
+ ${fr('f_pill','left:22px;top:92px;width:330px;--r:-2deg',`<b style="font:400 16px/1.15 'Alfa Slab One'">Software Engineer (AI/ML)</b><br><span style="font-size:13.5px">Delta Cubes Pvt. Ltd., Hyderabad<br>Apr 2025 → now</span>`,'left:19%;top:28%;width:72%;height:56%;color:#1E2A1C;display:grid;align-content:center',250)}
+ ${stk('real/barcode','right:20px;top:90px;width:92px;--r:6deg',600)}
+ ${fr('f_folder','left:24px;top:250px;width:412px;--r:1deg',`<div class="fgrid">${[['50%','less manual resume screening (LLM parsing)'],['40%','faster recruiter dashboards'],['30%','lower API latency on Jhanko'],['100%','of AWS releases automated']].map(([n,t],i)=>`<div class="fstat a pop" style="--d:${700+i*130};--r:${[-2,1.5,1,-1.5][i]}deg"><b>${n}</b><span>${t}</span></div>`).join('')}</div>`,'left:5%;top:24%;width:90%;height:70%',450)}
+ ${hn('wins so far','position:absolute;left:64px;top:252px;font-size:21px;color:#F7F8F2;--r:-2deg;z-index:8',1000)}
+ ${corner('scrap-m5','right:0;bottom:0',120)}`},
+/* 6 signai */ {c:'paper',h:`${R('SIGNAI',46)}
+ ${fr('f_browser','left:20px;top:88px;width:416px;--r:-1deg',shot('signai','<img src="assets/book/signai.webp" alt="SignAI home page: Hiring, simplified." width="1000" height="556" draggable="false" style="object-position:top">'),'left:3.2%;top:19.5%;width:92%;height:73%;border-radius:10px;overflow:hidden',250)}
+ ${tape('80px','6px',-28,96,700)}
+ ${hn(`← it's live!`,'position:absolute;left:300px;top:46px;font-size:24px;color:#5C7057;--r:-4deg',900)}
+ <p class="body a" style="position:absolute;left:30px;top:378px;width:400px;--d:600">A recruitment platform I built and maintain at Delta Cubes. Recruiters drop in resumes, an LLM pulls out the details, and an embedding matcher hands back ranked shortlists. Now becoming a multi-tenant SaaS for other agencies.</p>
+ <div style="position:absolute;left:30px;top:512px;width:340px">${chips(['React','Node.js','PostgreSQL','AWS','OpenAI + Claude'],'sg')}</div>
+ <a class="hand a" href="https://signai.in" target="_blank" rel="noopener" style="position:absolute;left:30px;bottom:22px;font-size:22px;--d:1000">${ul('visit signai.in ↗','#89A482',1200)}</a>
+ ${corner('scrap-m0','right:0;bottom:0',120,'scale:1 -1')}`},
+/* 7 leadflow */ {c:'mint',h:`${R('LEAD FLOW',38)}
+ <div class="flow" style="position:absolute;left:30px;top:96px">${['Scrape job posts','Qualify with Claude Haiku','Find the right contacts','Draft with Claude Sonnet','A human approves (Telegram)','Send'].map((s,i,a)=>`<span class="chip a fromL" style="margin-left:${[0,22,44,22,0,22][i]}px;white-space:nowrap;--d:${250+i*150};--r:${i%2?1.5:-1.5}deg;background:${PAL[i%4][0]};color:${PAL[i%4][1]};clip-path:${torn(rng('f'+i),4)}">${s}</span>${i<a.length-1?`<span class="arrow a" style="margin-left:${[14,36,36,14,14][i]}px;--d:${320+i*150}">${['↘','↘','↙','↙','↘'][i]}</span>`:''}`).join('')}</div>
+ <div class="a pop" style="position:absolute;right:16px;top:96px;width:176px;--r:5deg;--d:500"><img src="assets/book/ticket.webp" alt="" style="width:100%;display:block;filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))"><span class="hand tk" style="top:37%">a job post</span><span class="hand tk" style="top:53%">your inbox</span></div>
+ <img class="stamp" src="assets/book/real/${use('leadflow')}.webp" alt="Leadflow logo" width="440" height="75" draggable="false" style="right:28px;top:250px;width:164px;height:auto;--r:-3deg;--d:900">
+ ${corner('kraft','right:0;bottom:0',112,'scale:-1 1',800)}
+ <p class="body a" style="position:absolute;left:30px;top:418px;width:400px;font-size:14.5px;--d:1100">A five-stage LangGraph workflow I built for our business development team. n8n and Apify do the scraping, and competitor staffing firms get filtered out.</p>
+ ${hn(`Nothing goes out until ${ul('a person taps approve.','#5C7057',1500)}`,'position:absolute;left:30px;bottom:26px;font-size:23px;color:#3E5039',1300)}`},
+/* 8 agents */ {c:'paper',h:`${corner('vine','right:0;top:0;height:100%',80,'',100)}${R('AGENTS',46)}
+ ${stk('real/cat','left:296px;top:12px;width:96px;--r:-6deg',700,'bob')}
+ ${stk('real/knot','right:88px;bottom:6px;width:118px;--r:-8deg',900)}
+ <div class="a pop" style="position:absolute;left:14px;top:92px;width:270px;--d:350">${agentsSVG}</div>
+ <div class="card a fromL" style="position:absolute;left:30px;top:250px;width:300px;--d:550;--r:-1.5deg;background:#D1EDD3"><h3>Multi-Agent Deep Research</h3><p>Five agents on CrewAI, LangChain and MCP that search, read and write up a cited research report in minutes.</p></div>
+ <div class="card a fromL" style="position:absolute;left:44px;top:402px;width:300px;--d:700;--r:1.2deg;background:#ACC5A6"><h3>Artemis Job Agent · open source</h3><p>Self-hosted Python agent: matches jobs, drafts recruiter outreach, sends from Gmail only after you say yes.</p></div>
+ ${hn('five agents,<br>one tidy knot','position:absolute;right:96px;top:150px;font-size:21px;line-height:1;color:#3E5039;--r:-6deg',1200)}`},
+/* 9 models */ {c:'mint',h:`${R('MODELS',46)}
+ ${fr('f_player','left:26px;top:92px;width:206px;--r:-2deg',`<small>now playing</small><b>Speech Emotion Recognition</b><div class="wave">${Array.from({length:18},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div><div class="emo">detecting: <span data-emo>calm</span></div><div class="acc">88.6%<span> val. accuracy</span></div><small>CNN-LSTM · reads emotion + gender</small>`,'left:8%;top:5%;width:84%;height:54%;color:#E8F2E2;display:flex;flex-direction:column;gap:4px;font-size:12px',300)}
+ <div style="position:absolute;left:256px;top:100px;width:176px;display:flex;flex-direction:column;gap:16px">
+  <div class="card a fromR" style="--d:600;--r:1.5deg;background:#F7F8F2"><div class="big">0.93 F1</div><h3 style="font-size:14px;margin-top:4px">Facial Recognition</h3><p style="font-size:12.5px">Infosys internship. OpenCV + deep learning, 96% match rate, 38 ms per inference.</p></div>
+  <div class="card a fromR" style="--d:780;--r:-1.5deg;background:#ACC5A6"><div class="big" style="color:#1E2A1C">97.3%</div><h3 style="font-size:14px;margin-top:4px">Crop Recommendation</h3><p style="font-size:12.5px">Scikit-learn across 22 crop classes.</p></div></div>
+ ${corner('swirl-side','left:0;bottom:0;-webkit-mask-image:linear-gradient(transparent,#000 35%);mask-image:linear-gradient(transparent,#000 35%)',104,'',900)}
+ ${stk('real/kiwi','left:150px;bottom:30px;width:84px;--r:10deg',1150)}
+ ${stk('real/headphones','left:330px;top:396px;width:86px;--r:8deg',1000,'bob')}
+ ${hn('+ a FastAPI layer<br>for Jhanko, a geo<br>marketplace','position:absolute;left:270px;bottom:28px;font-size:19px;line-height:1.05;color:#3E5039;--r:-2deg',1250)}
+`},
+/* 10 more builds */ {c:'paper',h:`${R('MORE BUILDS',34)}
+ <img class="a pop" src="assets/book/real/${use('jhanko')}.webp" alt="Jhanko logo: a map pin with a magnifier and a tick, taped onto a green card" width="468" height="520" draggable="false" style="position:absolute;left:44px;top:80px;width:172px;height:auto;filter:drop-shadow(0 6px 8px rgba(20,30,18,.25));--r:-3deg;--d:250">
+ ${hn('← find what\'s near you, fast','position:absolute;left:236px;top:100px;font-size:21px;color:#3E5039;--r:-3deg;z-index:8',900)}
+ ${hn('• geo search in real time','position:absolute;left:250px;top:150px;font-size:20px;color:#5C7057;--r:-1deg;z-index:8',1050)}
+ ${hn('• one API for phone &amp; web','position:absolute;left:250px;top:186px;font-size:20px;color:#5C7057;--r:1deg;z-index:8',1200)}
+ ${hn(`• replies ${ul('~30% faster','#89A482',1500)}`,'position:absolute;left:250px;top:222px;font-size:20px;color:#5C7057;--r:-2deg;z-index:8',1350)}
+ <div class="a fromL" style="position:absolute;left:30px;top:282px;width:400px;--d:500"><h3 class="ph3">Jhanko</h3><p class="body" style="font-size:14px">The REST API layer, in Python and FastAPI, for a geolocation marketplace serving mobile and web clients. Real-time geospatial search, and about 30% faster responses.</p></div>
+ <div class="rc a fromL" style="position:absolute;left:30px;top:410px;--r:-2deg;--d:700"><div class="rcbar"><i></i><i></i><i></i><span>omarchy</span></div><div class="rcwin"><b>~ $</b> theme set rosso-corsa<br><span>✓ applied</span></div><div class="rcdock">${'<i></i>'.repeat(5)}</div></div>
+ <div class="a fromR" style="position:absolute;left:222px;top:414px;width:208px;--d:800"><h3 class="ph3">Rosso Corsa</h3><p class="body" style="font-size:14px">A racing-red desktop theme for Omarchy Linux. Open source.</p><a class="hand" href="https://github.com/Manideep-Ai-ai/omarchy-rosso-corsa-theme" target="_blank" rel="noopener" style="font-size:20px">${ul('see it on GitHub ↗','#89A482',1300)}</a></div>
+ ${corner('grass','left:0;bottom:0',460,'',300)}`},
+/* 11 portfolios intro */ {c:'mint leafy',h:`<img class="fullbg" src="assets/book/real/leaves.webp" alt="">${R('PORTFOLIOS',34)}
+ ${hn(`seven front ends for the same story.<br>${ul('seven rooms, one desk.','#5C7057',1300)}`,'position:absolute;left:30px;top:90px;font-size:22px;line-height:1.1;color:#1E2A1C',500)}
+ ${pfx('pf0','https://manideepreddy.lovable.app/','The First One','left:52px;top:166px;width:330px;--r:-3deg','pol',400)}
+ ${hn('built with Lovable: pixel type, a yellow<br>highlighter, and where it all started','position:absolute;left:52px;top:430px;font-size:19px;line-height:1.05;color:#3E5039;--r:-1deg',1100)}
+ ${hn('each one is<br>a whole site →','position:absolute;left:170px;bottom:34px;font-size:22px;line-height:1;color:#5C7057;--r:-5deg',1400)}`},
+/* 12 gallery A */ {c:'paper',h:`${pfx('pf1','https://manideepreddy.website/01-blue-illustrated/','Blue Illustrated','left:26px;top:34px;width:262px;--r:-3deg','print',250)}
+ ${hn('engraved ink in sky blue,<br>like a storybook plate','position:absolute;left:302px;top:70px;width:136px;font-size:19px;line-height:1.05;color:#3E5039;--r:3deg',800)}
+ ${pfx('pf2','https://manideepreddy.website/02-hindu-mythology/','Hindu Mythology','left:176px;top:226px;width:256px;--r:3deg','mount',450)}
+ ${hn('myth carved into dark<br>stone, lit one line<br>at a time','position:absolute;left:24px;top:262px;width:142px;font-size:19px;line-height:1.05;color:#3E5039;--r:-3deg',1000)}
+ ${pfx('pf3','https://manideepreddy.website/03-indian-genz/','Indian GenZ','left:30px;top:414px;width:250px;--r:-2deg','tornp',650)}
+ ${hn('knock on the green<br>door. loud posters<br>inside','position:absolute;left:294px;top:440px;width:140px;font-size:19px;line-height:1.05;color:#3E5039;--r:2deg',1200)}
+ ${corner('scrap-m2','left:0;bottom:0',110)}`},
+/* 13 gallery B */ {c:'mint',h:`${pfx('pf4','https://manideepreddy.website/04-cobalt-scroll/','Cobalt Scroll','left:170px;top:30px;width:262px;--r:3deg','tornp',250)}
+ ${hn('a cobalt print that<br>unrolls as you scroll','position:absolute;left:24px;top:70px;width:140px;font-size:19px;line-height:1.05;color:#3E5039;--r:-3deg',800)}
+ ${pfx('pf5','https://manideepreddy.website/05-story-torn-ink/','Torn Ink','left:28px;top:218px;width:256px;--r:-2deg','print',450)}
+ ${hn('paper tears open<br>and an ink<br>dragon wakes','position:absolute;left:298px;top:252px;width:140px;font-size:19px;line-height:1.05;color:#3E5039;--r:3deg',1000)}
+ ${pfx('pf6','https://manideepreddy.website/06-lost-digital-civilization/','Route 25','left:186px;top:402px;width:240px;--r:2deg','pol',650)}
+ ${hn('a pixel city you<br>drive through','position:absolute;left:24px;top:420px;width:150px;font-size:19px;line-height:1.05;color:#3E5039;--r:-2deg',1200)}
+ ${hn('which room is<br>your favourite?','position:absolute;left:24px;bottom:40px;width:150px;font-size:21px;line-height:1;color:#5C7057;--r:-4deg',1450)}
+ ${corner('scrap-p1','right:0;bottom:0',120,'rotate:180deg')}`},
+/* 10 snapshots */ {c:'paper',h:`${R('SNAPSHOTS',34)}
+ ${fr('f_camera','left:24px;top:84px;width:412px;--r:-1.5deg',shot('snap1','<img src="assets/book/snap1.webp" alt="Silhouette of Manideep against a green and lime sky" width="900" height="428" draggable="false" style="object-position:46% 50%">'),'left:5%;top:27.6%;width:50.5%;height:55%;background:#1E2A1C',300,'behind')}
+ ${photo('snap2','team day','<img src="assets/book/team.webp" alt="Manideep and two teammates taking a selfie at a night cricket net, captioned Code the next future, AI by Manideep and team" width="600" height="448" draggable="false">','position:absolute;left:30px;top:372px;width:132px;--r:-4deg',650,'4/3')}
+ ${photo('snap3','somewhere green','<img src="assets/book/green.webp" alt="Poster of Manideep holding a keyboard under an arched MANIDEEP title on lime green" width="448" height="600" draggable="false">','position:absolute;left:180px;top:378px;width:120px;--r:3deg',780,'3/4')}
+ ${photo('snap4','a quiet corner','<img src="assets/book/corner.webp" alt="Illustration of Manideep in a green check shirt with sunglasses on his curls, in front of Do Not Cross tape, by studiokilimeen" width="448" height="600" draggable="false">','position:absolute;left:316px;top:366px;width:120px;--r:-3deg',900,'3/4')}
+ ${stk('real/scrap-p0','right:14px;top:14px;width:96px;--r:8deg',600)}
+ ${corner('scrap-m4','right:0;bottom:0',110,'rotate:180deg')}${tape('366px','112px',-24,60,800)}`},
+/* 11 learning */ {c:'mint',h:`${R('LEARNING',40)}
+ <div class="card a fromL" style="position:absolute;left:30px;top:96px;width:300px;--d:250;background:#5C7057;color:#F3F8EE;--r:-1deg"><h3>B.Tech, Computer Science &amp; Engineering</h3><p>Bharath Institute of Higher Education and Research, Chennai · April 2025</p></div>
+ ${stk('real/ribbon','right:14px;top:86px;width:112px;--r:4deg',500)}
+ ${fr('f_tag','left:26px;top:214px;width:210px;--r:-3deg',`<div class="hand" style="font-size:20px;margin-bottom:4px">certificates</div>${[['Minor in Gen AI & ML','IIT Patna (Intellipaat)'],['Full Stack Python','ORBIT · 2025'],['AWS Solutions Architecture Sim.','Forage'],['AI Internship','Infosys · 2024']].map(([t,s])=>`<div class="cert"><b>${t}</b><span>${s}</span></div>`).join('')}`,'left:11%;top:29%;width:78%;height:66%;color:#1E2A1C',450,'swing')}
+ 
+ <img class="a pop sway" src="assets/book/real/${use('willow')}.webp" alt="" width="480" height="464" draggable="false" style="position:absolute;left:256px;top:212px;width:188px;height:auto;filter:drop-shadow(0 6px 6px rgba(20,30,18,.22));--d:1000">
+ ${hn(`still learning:<br>${ul('fine-tuning','#5C7057',1500)} and<br>building models<br>from scratch`,'position:absolute;left:262px;top:392px;font-size:22px;line-height:1.05;color:#3E5039;--r:-2deg',1200)}`},
+/* 12 off duty */ {c:'paper',h:`${R('OFF DUTY',40)}
+ ${fr('f_tv','left:22px;top:90px;width:300px;--r:-1.5deg',`<div class="tv"><div class="chan" data-chan>AI NEWS</div><div class="sub">faceless channels,<br>automated with n8n</div></div>`,'left:5.4%;top:9%;width:69%;height:75%;border-radius:16px;overflow:hidden',300,'behind')}
+ ${stk('real/guitar','right:40px;top:96px;width:76px;--r:8deg',700)}
+ <div class="mini a fromL" style="position:absolute;left:30px;top:372px;width:300px;--d:900"><div style="transform:rotate(-4deg)">${clapper}</div><div><div style="font:400 15px/1.2 'Alfa Slab One';margin-bottom:2px">Lopali Swaram <span class="te">(లోపలి స్వరం)</span></div><p style="font-size:13px;line-height:1.4">A 10-minute Telugu short film about meditation that I'm writing.</p></div></div>
+ <div class="mini a fromL" style="position:absolute;left:30px;top:478px;width:300px;--d:1050"><div style="transform:rotate(3deg)">${laptopSVG}</div><div><div style="font:400 15px/1.2 'Alfa Slab One';margin-bottom:2px">Freelance builds</div><p style="font-size:13px;line-height:1.4">Web apps, AI features and automations for clients.</p></div></div>
+ ${corner('scrap-m1','right:0;bottom:0',140,'rotate:180deg')}`},
+/* 16 contact */ {c:'mint',h:`${R('SAY HI',46)}
+ <p class="body a" style="position:absolute;left:30px;top:94px;width:258px;font-size:14px;line-height:1.45;--d:300">Open to full-time software and AI roles in India or remote, and to freelance projects. Write it here; it leaves by email or WhatsApp.</p>
+ <form class="cf a fromL" novalidate style="position:absolute;left:24px;top:190px;width:266px;--r:-1deg;--d:450;${tornBg('cf','#F7F8F2',1.2)}">
+  <label><span>your name</span><input name="n" required maxlength="80" autocomplete="name"></label>
+  <label><span>reply to <i>(email or phone)</i></span><input name="r" maxlength="120" autocomplete="email"></label>
+  <label><span>message</span><textarea name="m" required maxlength="1500"></textarea></label>
+  <div class="cfb"><button name="via" value="mail">Email it</button><button name="via" value="wa" class="alt">WhatsApp</button></div>
+  <p class="cfo" role="status" aria-live="polite"></p>
+ </form>
+ ${fr('f_phone','right:20px;top:30px;width:140px;--r:4deg',`<div class="lcd"><div class="lcdbar"><span>▮▮▮▯</span><span data-clock>10:51</span></div><div class="lcdmsg"><small>New message</small><b>To: Manideep</b><span data-typed></span><i class="caret"></i></div><div class="lcdbtm"><span>Send</span><span>Back</span></div></div>`,'left:10.8%;top:6.5%;width:78.2%;height:34.2%;border-radius:4px;overflow:hidden',350,'behind phone')}
+ <div class="links" style="position:absolute;left:24px;top:470px;width:412px">${[['Email','manideepreddyrekha@gmail.com','mailto:manideepreddyrekha@gmail.com','contact-email'],['WhatsApp','+91 86866 69066','https://wa.me/918686669066','contact-whatsapp'],['LinkedIn','rekha-v-manideep-reddy','https://linkedin.com/in/rekha-v-manideep-reddy-024976297','contact-linkedin'],['GitHub','Manideep-Ai-ai','https://github.com/Manideep-Ai-ai','contact-github'],['Résumé','one page, PDF','resume.pdf','contact-resume']].map(([k,v,u,t],i)=>`<a class="strip a fromL" href="${u}" ${u.startsWith('mailto')?'data-copy="manideepreddyrekha@gmail.com"':'target="_blank" rel="noopener"'} data-track="${t}" style="--d:${650+i*110};--r:${i%2?1:-1}deg;${tornBg('ct'+i,PAL[[0,4,1,4,2][i]][0],3)};color:${PAL[[0,4,1,4,2][i]][1]}"><small>${k}</small><span>${v} ↗</span></a>`).join('')}</div>
+ <p class="copied" role="status" aria-live="polite" style="left:30px;top:572px"></p>`},
+/* 14 back */ {c:'mat',h:`${ruler()}
+ <div style="margin-top:132px">${R('THANK',50)}</div>${R('YOU',50,350)}
+ <p class="hand a" style="--d:900;font-size:28px;color:#D1EDD3;margin-top:10px">Let's build something useful together.</p>
+ <img class="corner a" src="assets/book/real/swirl-top.webp" alt="" draggable="false" style="left:0;top:0;width:100%;transform:scaleX(-1);--d:100">
+ <img class="stamp" src="assets/book/real/heart.webp" alt="" draggable="false" style="right:40px;bottom:60px;width:130px;--r:-8deg;--d:1150">
+ ${hn('signed,<br>with love','position:absolute;left:40px;bottom:80px;font-size:24px;line-height:1.05;color:#D1EDD3;--r:-4deg',1300)}
+ <div class="type" style="position:absolute;right:30px;bottom:28px;font-size:13px;color:#D1EDD3">© 2026 Manideep Reddy</div>`}
+];
 
-  // WebGL: one context, two textures, reused for every ripple. Anything missing falls back to a fade.
-  let gl, U;
-  const VERT = 'attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
-  const FRAG = `precision highp float;varying vec2 uv;uniform sampler2D A,B;uniform vec2 c,ca,cb;uniform float r,asp,str;
-    vec2 cov(vec2 u,vec2 s){return (u-vec2(.5,1.))*s+vec2(.5,1.);}   /* cover crop anchored to the top, like the base image */
-    void main(){vec2 q=(uv-c)*vec2(asp,1.);float d=length(q);float w=exp(-pow((d-r)*7.,2.));
-    vec2 off=normalize(q+1e-5)*sin((d-r)*70.)*.014*str*w/vec2(asp,1.);vec2 u2=clamp(uv+off,0.,1.);
-    vec3 a=texture2D(A,cov(u2,ca)).rgb;vec3 b=texture2D(B,cov(u2,cb)).rgb;float m=smoothstep(r+.03,r-.03,d);
-    gl_FragColor=vec4(mix(a,b,m)+w*.07*str,1.);}`;
-  const initGL = () => {
-    if (gl !== undefined) return gl;
-    gl = canvas.getContext('webgl', { premultipliedAlpha: false });
-    if (!gl) return (gl = null);
-    const prog = gl.createProgram();
-    [[gl.VERTEX_SHADER, VERT], [gl.FRAGMENT_SHADER, FRAG]].forEach(([type, code]) => { const sh = gl.createShader(type); gl.shaderSource(sh, code); gl.compileShader(sh); gl.attachShader(prog, sh); });
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return (gl = null);
-    gl.useProgram(prog);
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    gl.enableVertexAttribArray(0);
-    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-    U = Object.fromEntries(['A', 'B', 'c', 'ca', 'cb', 'r', 'asp', 'str'].map(k => [k, gl.getUniformLocation(prog, k)]));
-    [0, 1].forEach(i => {
-      gl.activeTexture(gl.TEXTURE0 + i);
-      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
-      [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE], [gl.TEXTURE_MIN_FILTER, gl.LINEAR]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
-    });
-    gl.uniform1i(U.A, 0); gl.uniform1i(U.B, 1); gl.uniform1f(U.str, STRENGTH);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    return gl;
-  };
-  const cover = (w, h, im) => { const box = w / h, img = im.naturalWidth / im.naturalHeight; return box > img ? [1, img / box] : [box / img, 1]; };
-  const fadeTo = url => new Promise(res => {
-    const im = document.createElement('img');
-    im.className = 'rip-in rip-fade'; im.alt = ''; im.src = url;
-    im.addEventListener('animationend', res, { once: true });
-    setTimeout(res, 600);
-    base.after(im);
-  });
-  const ripple = (from, to, x, y, w, h, dur) => {
-    if (still.matches || !initGL()) return fadeTo(to);
-    return Promise.all([load(from), load(to)]).then(([a, b]) => new Promise(res => {
-      [a, b].forEach((im, i) => { gl.activeTexture(gl.TEXTURE0 + i); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im); });
-      const dpr = Math.min(devicePixelRatio || 1, 2);
-      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(U.c, x / w, 1 - y / h);
-      gl.uniform2fv(U.ca, cover(w, h, a)); gl.uniform2fv(U.cb, cover(w, h, b));
-      gl.uniform1f(U.asp, w / h);
-      const far = Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) / h + 0.18;   // the ring ends past every corner
-      const t0 = performance.now();
-      const frame = now => {
-        const t = Math.min(1, (now - t0) / dur);
-        gl.uniform1f(U.r, Math.pow(t, 0.85) * far);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-        canvas.hidden = false;
-        t < 1 ? requestAnimationFrame(frame) : res();
-      };
-      requestAnimationFrame(frame);
-    }));
-  };
-
-  let queued = 0;
-  const go = (dir, px, py, auto) => {
-    if (n < 2) return;
-    if (busy) { if (!auto) queued = dir; return; }   // a press mid-ripple runs next instead of being dropped
-    busy = true;
-    fill.classList.remove('run');
-    const w = base.clientWidth, h = base.clientHeight, to = wrap(index + dir), r = (++seq * 0.618) % 1;
-    const x = px ?? w * (dir >= 0 ? 0.62 + r * 0.25 : 0.13 + r * 0.25), y = py ?? h * (0.3 + r * 0.4);
-    show(to);
-    const done = async () => {
-      index = to;
-      setBase(to);
-      await base.decode().catch(() => {});
-      canvas.hidden = true;
-      root.querySelectorAll('.rip-fade').forEach(im => im.remove());
-      busy = false;
-      if (queued) { const d = queued; queued = 0; return go(d); }
-      restart();
-      load(src(wrap(to + 1))).catch(() => {});   // warm the next one so a tap starts at once
-    };
-    ripple(src(index), src(to), x, y, w, h, auto ? DUR : TAP_DUR).then(done, done);
-  };
-
-  // Swipe: the pointer is captured so a swipe that leaves the stage still lands; under 10px is a tap. A flick counts
-  // by where it was heading, not only how far it went: release distance plus velocity projected forward (decay .99/ms).
-  let down = null;
-  root.addEventListener('pointerdown', e => {
-    if (e.target.closest('a, .rip-nav')) { down = null; return; }
-    down = { x: e.clientX, y: e.clientY, lx: e.clientX, lt: e.timeStamp, vx: 0 };
-    try { root.setPointerCapture(e.pointerId); } catch (_) {}
-  });
-  root.addEventListener('pointermove', e => {
-    if (!down) return;
-    const dt = e.timeStamp - down.lt;
-    if (dt > 0) { down.vx = down.vx * 0.4 + ((e.clientX - down.lx) / dt) * 0.6; down.lx = e.clientX; down.lt = e.timeStamp; }
-  });
-  root.addEventListener('pointercancel', () => { down = null; });
-  root.addEventListener('pointerup', e => {
-    const s = down; down = null;
-    if (!s) return;
-    const dx = e.clientX - s.x, dy = e.clientY - s.y, b = root.getBoundingClientRect();
-    const vx = e.timeStamp - s.lt > 80 ? 0 : s.vx;   // held still before letting go: no flick
-    const reach = dx + vx * 99;                      // px/ms × .99/(1-.99)
-    if (Math.hypot(dx, dy) < 10) e.clientY < base.getBoundingClientRect().bottom ? go(1, e.clientX - b.left, e.clientY - b.top) : go(1);
-    else if (Math.abs(dx) > Math.abs(dy) && Math.abs(reach) > 60) go(reach < 0 ? 1 : -1);
-  });
-  root.addEventListener('keydown', e => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-    e.preventDefault();
-    go(e.key === 'ArrowRight' ? 1 : -1);
-  });
-  // WCAG 2.2.2: autoplay longer than 5 s needs a pause control that works on touch, not just hover.
-  const setStopped = v => {
-    stopped = v;
-    pause.setAttribute('aria-pressed', String(v));
-    pause.setAttribute('aria-label', v ? 'Play slideshow' : 'Pause slideshow');
-    pause.querySelector('path').setAttribute('d', v ? PLAY : PAUSE);
-    restart();
-  };
-  pause.addEventListener('click', () => setStopped(!stopped));
-  prev.addEventListener('click', () => go(-1));
-  next.addEventListener('click', () => go(1));
-  fill.addEventListener('animationend', () => go(1, undefined, undefined, true));
-  ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach(t => root.addEventListener(t, () => setTimeout(sync)));
-  document.addEventListener('visibilitychange', sync);
-  new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }).observe(root);
-  new ResizeObserver(() => { if (!busy && src(index) !== mode) setBase(index); }).observe(root);
-
-  show(0); setBase(0); sync(); setStopped(stopped);
-  load(src(1)).catch(() => {});
-})();
-</script>
-<script>
-(() => {
-  const foot = document.querySelector('.crew'), say = foot.querySelector('.crew-say'), stage = foot.querySelector('.crew-stage');
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  // The name arrives each time the visitor comes down to it: when most of the word is on screen and the sketches have
-  // loaded. Once it has fully scrolled away it resets (no transition on the way out, so it's never seen undoing itself).
-  // Without JS, or with reduced motion, everything is simply there.
-  if (!still.matches) {
-    foot.classList.add('pre');
-    const word = foot.querySelector('.crew-word');
-    const art = Promise.all([...foot.querySelectorAll('.crew-m img')].map(im => { im.loading = 'eager'; return im.decode().catch(() => {}); }));
-    let token = 0;
-    new IntersectionObserver(([e]) => {
-      const t = ++token;
-      if (e.intersectionRatio >= 0.6) art.then(() => { if (t === token) foot.classList.add('seen'); });
-      else if (!e.isIntersecting) { foot.classList.remove('seen'); say.classList.remove('on'); }
-    }, { threshold: [0, 0.6] }).observe(word);
-  }
-  // A tap: the sketch hops (it lands with a small settle; the push came from the tap) and a bubble materialises at
-  // its head. Tapping another moves the bubble there; it fades on its own. All CSS transitions, so every step can be cut short.
-  let who = null, hide = 0, drop = 0;
-  const place = btn => {
-    const s = stage.getBoundingClientRect(), r = btn.getBoundingClientRect();
-    say.style.left = '0px';
-    const w = say.offsetWidth, x = Math.min(Math.max(r.left - s.left + r.width * 0.5 - 14, 0), s.width - w);
-    say.style.left = x + 'px';
-    say.style.top = (r.top - s.top - say.offsetHeight - 10) + 'px';
-  };
-  foot.addEventListener('click', e => {
-    const btn = e.target.closest('.crew-m');
-    if (!btn) return;
-    if (who !== btn) say.classList.remove('on');
-    who = btn;
-    say.textContent = btn.dataset.says;
-    place(btn);
-    void say.offsetWidth;                       // start from the hidden state so the bubble grows out of this speaker
-    say.classList.add('on');
-    btn.classList.add('up');
-    clearTimeout(drop); drop = setTimeout(() => btn.classList.remove('up'), 150);
-    clearTimeout(hide); hide = setTimeout(() => { say.classList.remove('on'); who = null; }, 3200);
-  });
-  addEventListener('resize', () => { if (who) place(who); });
-})();
-</script>
-<script>
-// GoatCounter events for the success metric: résumé / email / WhatsApp / LinkedIn clicks (contact-*), portfolio opens
-// (portfolio-*) and visitors who get past the intro (reached-work). Delegated, so links React renders count too.
-(() => {
-  const track = (path, title, tries = 0) => {
-    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title: title || path, event: true });
-    else if (tries < 20) setTimeout(() => track(path, title, tries + 1), 500);   // count.js loads async
-  };
-  const note = document.querySelector('.copied');
-  let hide = 0;
-  document.addEventListener('click', e => {
-    const a = e.target.closest('[data-track], [data-copy]');
-    if (!a) return;
-    if (a.dataset.track) track(a.dataset.track, a.textContent.trim());
-    // Email also copies the address: mailto: often opens nothing on a work laptop. The link still opens it.
-    if (a.dataset.copy && navigator.clipboard) navigator.clipboard.writeText(a.dataset.copy).then(() => {
-      note.textContent = 'copied — paste it anywhere.';
-      note.classList.add('on');
-      clearTimeout(hide);
-      hide = setTimeout(() => note.classList.remove('on'), 2000);
-    }, () => {});
-  });
-  const work = document.getElementById('work');
-  if (work) new IntersectionObserver((entries, io) => {
-    if (entries[0].isIntersecting) { track('reached-work', 'Reached What I build'); io.disconnect(); }
-  }).observe(work);
-})();
+const N_PAGES=pages.length;
+const book=document.getElementById('book'),scaler=document.getElementById('scaler'),stage=document.getElementById('stage');
+const prevB=document.getElementById('prev'),nextB=document.getElementById('next'),ind=document.getElementById('ind'),file=document.getElementById('file');
+let mobile=null,leaves=[],cur=0,timers=new Map(),scaleS=1;
+const face=(pg,cls)=>`<div class="face ${cls} ${pg?pg.c:'blank'} noise"><div class="pg">${pg?pg.h:''}</div></div>`;
+function build(){
+ book.innerHTML='<div class="board boardL"></div><div class="board boardR"></div><div class="spineband"></div><div class="stack stackL"></div><div class="stack stackR"></div><div class="cast castL"></div><div class="cast castR"></div><i class="ghost" style="--k:1"></i><i class="ghost" style="--k:2"></i><i class="ghost" style="--k:3"></i>';fx={L:book.querySelector('.castL'),R:book.querySelector('.castR'),g:[...book.querySelectorAll('.ghost')]};[fx.R,...fx.g].forEach(el=>el.style.left=(mobile?0:P)+'px');fx.L.hidden=mobile;leaves=[];document.body.classList.toggle('mob',mobile);
+ const L=mobile?N_PAGES:N_PAGES/2;
+ book.style.width=(mobile?P:2*P)+'px';
+ for(let i=0;i<L;i++){
+  const el=document.createElement('div');el.className='leaf';el.style.left=(mobile?0:P)+'px';
+  el.innerHTML=mobile?face(pages[i],'front')+face(null,'back'):face(pages[2*i],'front')+face(pages[2*i+1],'back');if(i===0)el.children[0].classList.add('cover-front');if(!mobile&&i===L-1)el.children[1].classList.add('cover-front');
+  book.appendChild(el);leaves.push(el);
+ }
+ leaves.forEach((l,i)=>{const f=i<cur;l.classList.toggle('flipped',f);l.style.zIndex=f?i+1:L-i;if(mobile&&f)l.style.visibility='hidden'});
+ loadAll();update(true);
+}
+function visibleFaces(){const v=[];if(mobile){if(leaves[cur])v.push(leaves[cur].children[0])}else{if(cur>0)v.push(leaves[cur-1].children[1]);if(cur<leaves.length)v.push(leaves[cur].children[0])}return v}
+function update(instant){
+ const L=leaves.length,v=visibleFaces();
+ v.forEach(f=>f.classList.add('live'));book.querySelectorAll('.face').forEach(f=>f.inert=!v.includes(f));setTimeout(startTyping,0);
+ const clean=()=>{const now=visibleFaces();book.querySelectorAll('.face.live').forEach(f=>{if(!now.includes(f))f.classList.remove('live')})};
+ instant?clean():setTimeout(clean,1000);setTimeout(prepNear,instant?0:1100);
+ if(!mobile){const sh=(n,dx)=>Array.from({length:Math.min(n*2,12)},(_,k)=>`${dx*(k+1)}px ${k+1}px 0 ${k%2?'#F7F8F2':'#D6DDD1'}`).join(',')||'none';const sl=book.querySelector('.stackL'),sr=book.querySelector('.stackR');sl.style.boxShadow=sh(Math.max(cur-1,0),-1);sr.style.boxShadow=sh(Math.max(L-cur-1,0),1);sl.style.opacity=cur>0?1:0;sr.style.opacity=cur<L?1:0;book.querySelector('.boardL').style.opacity=cur>0?1:0;book.querySelector('.boardR').style.opacity=cur<L?1:0;book.querySelector('.spineband').style.opacity=cur>0&&cur<L?1:0;book.style.transform=cur===0?`translateX(${-P/2}px)`:cur===L?`translateX(${P/2}px)`:'none'}else book.style.transform='none';
+ prevB.disabled=cur===0;nextB.disabled=cur===L;
+ ind.textContent=mobile?`${Math.min(cur+1,N_PAGES)} / ${N_PAGES}`:cur===0?'Cover':cur===L?'The end':`${cur*2}–${cur*2+1} of ${N_PAGES}`;reached();
+}
+/* Each leaf is a damped spring on its angle (deg): bounce .15, ~.7s to settle (k=56, c=12.7, mass 1).
+   It keeps whatever velocity it is given, so a flick turns fast and a caught page carries on from where it is. */
+const K=56,C=12.7;let fx=null;
+function rest(l){if(l._a===undefined)l._a=l._t=l.classList.contains('flipped')?-180:0;return l}
+function render(l){const a=Math.max(-180,Math.min(0,l._a)),s=Math.sin(-a*Math.PI/180),p=Math.min(1,Math.abs(a-l._s)/180),o=Math.sin(Math.PI*p);
+ l.style.transform=`rotateY(${bendAt(l,a).toFixed(2)}deg)`;l.style.setProperty('--shade',s.toFixed(3));   /* the turning page dims as it goes edge-on */
+ fx.R.style.opacity=fx.L.style.opacity=(s*.7).toFixed(3);                                     /* shadow on the page it lifts from and the one it will cover: strongest at 90° */
+ fx.g.forEach((g,k)=>{k++;g.style.transform=`rotateY(${(l._s+(a-l._s)*(1-.045*k)).toFixed(2)}deg) scaleY(${1-.02*k})`;g.style.opacity=(o*.6).toFixed(3)})}   /* sheets fanning behind it */
+/* Paper bends. While a leaf turns it is drawn as NB hinged strips, each showing a slice of a frozen copy of both faces.
+   The strips share the curvature evenly (a circular arc, so no creases); the free edge trails the spine by an amount
+   that grows with speed and is zero when the page lies flat. */
+const NB=8;let riffling=false;
+/* The strip copies for the two visible leaves are built while the browser is idle, so grabbing a page never stalls. */
+function bendOn(l){if(l._bend||rm||riffling)return;if(!l._pre)prep(l);l._pre.root.hidden=false;l.classList.add('bent');l._bend=l._pre.strips}
+function bendOff(l){if(!l._bend)return;l._pre.root.hidden=true;l.classList.remove('bent');l._bend=null}
+function unprep(l){if(l._pre&&!l._bend){l._pre.root.remove();l._pre=null}}
+function prepNear(){const near=new Set([leaves[cur],leaves[cur-1]].filter(Boolean));leaves.forEach(l=>near.has(l)||unprep(l));
+ const go=()=>near.forEach(l=>{if(!l._pre&&!rm)prep(l)});window.requestIdleCallback?requestIdleCallback(go,{timeout:800}):setTimeout(go,300)}
+function prep(l){const w=P/NB,[F,B]=l.children;
+ const snap=(f,x)=>{const c=document.createElement('div');c.className=f.className.replace(/\b(front|back)\b/g,'')+' live frozen';c.innerHTML=f.innerHTML;c.style.left=x+'px';c.inert=true;return c};
+ const root=document.createElement('div');root.className='bend';root.setAttribute('aria-hidden','true');let parent=root;const strips=[];
+ for(let i=0;i<NB;i++){const st=document.createElement('div');st.className='bstrip';st.style.width=w+'px';st.style.left=(i?w:0)+'px';
+  const a=document.createElement('div');a.className='slice';a.appendChild(snap(F,-i*w));
+  const b=document.createElement('div');b.className='slice sb';b.appendChild(snap(B,-(P-(i+1)*w)));
+  st.append(a,b);parent.appendChild(st);strips.push(st);parent=st}
+ root.hidden=true;l.appendChild(root);l._pre={root,strips}}
+function bendAt(l,a){if(!l._bend)return a;
+ const dir=Math.abs(l._v||0)>25?Math.sign(l._v):Math.sign(l._t-l._s)||-1,s=Math.sin(-a*Math.PI/180);
+ const B=-dir*s*(12+Math.min(30,Math.abs(l._v||0)*.05)),d=B/(NB-1),a0=Math.max(-180,Math.min(0,a-B/2));
+ l._bend.forEach((st,i)=>{const th=a0+i*d,e=Math.sin(-th*Math.PI/180);if(i)st.style.transform=`rotateY(${d.toFixed(2)}deg)`;
+  st.style.setProperty('--sh',(e*.38).toFixed(3));st.style.setProperty('--hl',(Math.max(0,Math.cos((th+55)*Math.PI/70))*.1*Math.min(1,Math.abs(B)/18)).toFixed(3))});
+ return a0}
+function bump(d){if(rm)return;book.animate([{translate:'0 0'},{translate:`${-d*16}px 0`},{translate:`${d*5}px 0`},{translate:'0 0'}],{duration:460,easing:'ease-out'})}   /* the book is finished: it gives a little and springs back */
+function carry(l){[...l.children].forEach(f=>f.classList.contains('face')&&f.classList.add('live','settled'))}
+function settle(l){bendOff(l);requestAnimationFrame(()=>requestAnimationFrame(()=>[...l.children].forEach(f=>f.classList.remove('settled'))));l.style.transform='';l.style.removeProperty('--shade');[fx.L,fx.R,...fx.g].forEach(el=>el.style.opacity=0)}
+function spring(l,done){l._done=done;if(l._raf)return;
+ if(rm){l._a=l._t;l._v=0;settle(l);return done()}
+ let last=performance.now();
+ const step=now=>{let dt=Math.min(.05,(now-last)/1000);last=now;
+  while(dt>1e-6){const h=Math.min(dt,1/240);dt-=h;l._v+=(-K*(l._a-l._t)-C*l._v)*h;l._a+=l._v*h}   /* semi-implicit Euler, 240Hz substeps */
+  if(Math.abs(l._a-l._t)<.6&&Math.abs(l._v)<12){l._raf=0;l._a=l._t;l._v=0;settle(l);return l._done()}
+  render(l);l._raf=requestAnimationFrame(step)};
+ l._raf=requestAnimationFrame(step)}
+function setTarget(i,t,v=0){const L=leaves.length,l=rest(leaves[i]);
+ if(!l._raf)l._s=l._a;l._t=t;l._v=v;
+ l.classList.toggle('flipped',t<0);l.classList.add('turning');l.style.visibility='visible';l.style.zIndex=900+(t<0?i:L-i);carry(l);bendOn(l);render(l);
+ cur=leaves.filter(x=>x.classList.contains('flipped')).length;
+ spring(l,()=>{l.classList.remove('turning');l.style.zIndex=t<0?i+1:L-i;if(mobile&&t<0)l.style.visibility='hidden'});
+ update(false)}
+function flip(d,v=0){const L=leaves.length;if(d>0&&cur<L)setTarget(cur,-180,v);else if(d<0&&cur>0)setTarget(cur-1,0,v);else bump(d)}   /* hard stops: never wraps first<->last */
+function fit(){
+ const m=innerWidth<760;if(m!==mobile){if(mobile!==null)cur=mobile?Math.ceil(cur/2):Math.min(cur*2,N_PAGES-1);mobile=m;build()}
+ const bw=mobile?P:2*P,availW=stage.clientWidth-(mobile?24:48),availH=Math.max(innerHeight-170,380);
+ const s=Math.min(1.1,availW/bw,availH/H);scaleS=s;
+ scaler.style.width=bw+'px';scaler.style.transform=`translateX(-50%) scale(${s})`;stage.style.height=(H*s+40)+'px';
+}
+/* photos + captions */
+const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v);syncClear();return true}catch(e){return false}},del:k=>{try{localStorage.removeItem(k);syncClear()}catch(e){}}};
+function loadAll(){
+ book.querySelectorAll('.photo').forEach(f=>{const src=store.get('mrp-photo-'+f.dataset.key);if(src)setImg(f,src)});
+ book.querySelectorAll('.stk[data-id]').forEach(el=>{const v=store.get('mrp-stk-'+el.dataset.id);if(v){const [l,t]=v.split(',');Object.assign(el.style,{left:l+'px',top:t+'px',right:'auto',bottom:'auto'})}});
+ book.querySelectorAll('[data-cap]').forEach(c=>{const t=store.get('mrp-cap-'+c.dataset.cap);if(t!==null)c.textContent=t});
+}
+function setImg(fig,src){const ph=fig.querySelector('.ph');let img=ph.querySelector('img');if(!img){ph.querySelector('svg')?.remove();img=document.createElement('img');img.alt='';ph.prepend(img)}img.src=src;fig.classList.add('has')}
+let target=null;
+file.addEventListener('change',()=>{const f=file.files[0];if(!f||!target)return;const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const m=900,sc=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext('2d').drawImage(im,0,0,c.width,c.height);const url=c.toDataURL('image/jpeg',.82);const k=target.dataset.key;leaves.forEach(unprep);setTimeout(prepNear,50);book.querySelectorAll(`.photo[data-key="${k}"]`).forEach(x=>setImg(x,url));store.set('mrp-photo-'+k,url)};im.src=fr.result};fr.readAsDataURL(f);file.value=''});
+book.addEventListener('input',e=>{leaves.forEach(unprep);const c=e.target.closest('[data-cap]');if(c)store.set('mrp-cap-'+c.dataset.cap,c.textContent)});
+book.addEventListener('keydown',e=>{if(e.target.closest('[data-cap]')){e.stopPropagation();if(e.key==='Enter'){e.preventDefault();e.target.blur()}}});
+document.getElementById('clear').addEventListener('click',()=>{['me','signai','snap1','snap2','snap3','snap4','off'].forEach(k=>{store.del('mrp-photo-'+k);store.del('mrp-cap-'+k)});book.querySelectorAll('.stk[data-id]').forEach(el=>store.del('mrp-stk-'+el.dataset.id));build()});
+/* drag stickers */
+let drag=null;
+book.addEventListener('pointerdown',e=>{const el=e.target.closest('.stk');if(!el)return;e.stopPropagation();e.preventDefault();
+ el.style.left=el.offsetLeft+'px';el.style.top=el.offsetTop+'px';el.style.right='auto';el.style.bottom='auto';
+ drag={el,x:e.clientX,y:e.clientY,l:el.offsetLeft,t:el.offsetTop,moved:false};try{el.setPointerCapture(e.pointerId)}catch(_){}el.classList.add('drag')});
+book.addEventListener('pointermove',e=>{if(!drag)return;const dx=(e.clientX-drag.x)/scaleS,dy=(e.clientY-drag.y)/scaleS;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;
+ drag.el.style.left=Math.max(-40,Math.min(P-30,drag.l+dx))+'px';drag.el.style.top=Math.max(-40,Math.min(H-30,drag.t+dy))+'px'});
+book.addEventListener('pointermove',e=>{if(drag||e.pointerType!=='mouse')return;const el=e.target.closest('.stk');if(!el)return;const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5,pe=el.firstElementChild;pe.style.setProperty('--ty',(-x*26).toFixed(1)+'deg');pe.style.setProperty('--tx',(y*26).toFixed(1)+'deg')});
+book.addEventListener('pointerout',e=>{const el=e.target.closest('.stk');if(el&&!el.contains(e.relatedTarget)){el.firstElementChild.style.removeProperty('--tx');el.firstElementChild.style.removeProperty('--ty')}});
+const endDrag=e=>{if(!drag)return;const el=drag.el;el.classList.remove('drag');el.classList.remove('stuck');void el.offsetWidth;el.classList.add('stuck');setTimeout(()=>el.classList.remove('stuck'),520);if(drag.moved){store.set('mrp-stk-'+el.dataset.id,parseInt(el.style.left)+','+parseInt(el.style.top));swiped=true;setTimeout(()=>swiped=false,50)}drag=null};
+book.addEventListener('pointerup',endDrag);book.addEventListener('pointercancel',endDrag);
+/* live page bits */
+const EMO=['calm','happy','neutral','surprised','sad','angry'],CH=[['AI NEWS','faceless channels,<br>automated with n8n'],['AI STORIES','an AI story series,<br>one episode at a time'],['SCIENCE','short explainers,<br>scripted + edited by agents']];
+let tick=0;
+setInterval(()=>{tick++;
+ book.querySelectorAll('.live [data-emo]').forEach(el=>el.textContent=EMO[tick%EMO.length]);
+ if(tick%2===0)book.querySelectorAll('.live [data-chan]').forEach(el=>{const tv=el.parentElement;tv.classList.add('zap');setTimeout(()=>{const c=CH[(tick/2)%CH.length];el.textContent=c[0];tv.querySelector('.sub').innerHTML=c[1];tv.classList.remove('zap')},220)});
+ const d=new Date();book.querySelectorAll('[data-clock]').forEach(el=>el.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'));
+},1700);
+const MSG="Hi Manideep! Saw your portfolio. Free for a quick call this week?";
+let typer=null,typing=false;
+function startTyping(){if(typing)return;clearInterval(typer);const el=book.querySelector('.live [data-typed]');if(!el)return;let i=0;el.textContent='';setTimeout(()=>{typer=setInterval(()=>{el.textContent=MSG.slice(0,++i);if(i>=MSG.length)clearInterval(typer)},70)},900)}
+/* navigation */
+/* drag to turn: past 10px and mostly sideways, the page follows the pointer (a full page-width of travel = 180°).
+   On release the angle is projected forward by its velocity (0.12 s); past 90° it turns, otherwise it falls back. */
+let dg=null,swiped=false;
+function grab(dx,x){const L=leaves.length;let l=[...leaves].reverse().find(x=>x._raf&&Math.abs(x._a-x._t)>8);   /* a page still in flight is caught where it is */
+ leaves.forEach(x=>{if(x._raf&&x!==l){cancelAnimationFrame(x._raf);x._raf=0;x._a=x._t;x._v=0;settle(x);x._done()}});
+ if(!l){const r=book.getBoundingClientRect(),right=mobile||x>r.left+r.width/2;
+  if(dx<0&&right&&cur<L)l=leaves[cur];else if(dx>0&&(mobile||!right)&&cur>0)l=leaves[cur-1]}
+ if(!l)return false;rest(l);cancelAnimationFrame(l._raf);if(!l._raf)l._s=l._a;l._raf=0;
+ const i=leaves.indexOf(l);l.classList.add('turning');l.style.visibility='visible';l.style.zIndex=900+L;
+ [...l.children,leaves[i+1]?.children[0],leaves[i-1]?.children[1]].forEach(f=>f&&f.classList.add('live'));   /* what the drag uncovers animates in as it appears */
+ carry(l);bendOn(l);Object.assign(dg,{l,i,a0:l._a});book.classList.add('dragging');return true}
+stage.addEventListener('pointerdown',e=>{swiped=false;if(e.button>0||e.target.closest('a,button,input,textarea,label,figcaption,.stk,[contenteditable]'))return;
+ dg={x:e.clientX,y:e.clientY,lt:e.timeStamp,v:0,l:null,id:e.pointerId}});
+stage.addEventListener('pointermove',e=>{if(!dg)return;const dx=e.clientX-dg.x,dy=e.clientY-dg.y;
+ if(!dg.l){if(Math.abs(dy)>10&&Math.abs(dy)>Math.abs(dx))return dg=null;if(Math.abs(dx)<10)return;if(!grab(dx,dg.x)){if(!dg.edge){dg.edge=true;try{stage.setPointerCapture(dg.id)}catch(_){}}book.style.translate=`${(Math.tanh(dx/360)*26).toFixed(1)}px 0`;return}try{stage.setPointerCapture(dg.id)}catch(_){}}
+ const a=Math.max(-180,Math.min(0,dg.a0+dx/(P*scaleS*(mobile?1:2))*180)),dt=e.timeStamp-dg.lt;
+ if(dt>0){dg.v=dg.v*.4+(a-dg.l._a)/dt*1000*.6;dg.lt=e.timeStamp}
+ dg.l._a=a;dg.l._v=dg.v;render(dg.l)});
+const release=()=>{const d=dg;dg=null;if(d&&d.edge&&!d.l){const t=book.style.translate||'0px 0';book.style.translate='';if(!rm)book.animate([{translate:t},{translate:'0 0'}],{duration:520,easing:'cubic-bezier(.3,1.6,.5,1)'});return}if(!d||!d.l)return;book.classList.remove('dragging');swiped=true;setTimeout(()=>swiped=false,60);
+ const v=performance.now()-d.lt>90?0:d.v;   /* held still before letting go: no flick */
+ setTarget(d.i,d.l._a+v*.12< -90?-180:0,v)};
+stage.addEventListener('pointerup',release);stage.addEventListener('pointercancel',release);
+book.addEventListener('click',e=>{
+ if(swiped){swiped=false;return}
+ const fig=e.target.closest('.photo:not(.fixed)');
+ if(fig&&!e.target.closest('figcaption')){target=fig;file.click();return}
+ if(e.target.closest('a,figcaption,button,form'))return;
+ const f=e.target.closest('.face');if(!f)return;
+ if(mobile){const r=f.getBoundingClientRect();flip(e.clientX-r.left<r.width*.3?-1:1)}
+ else flip(f.classList.contains('front')?1:-1);
+});
+const tilt=document.getElementById('tilt');const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!rm)stage.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||mobile)return;const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tilt.style.transform=`perspective(2200px) rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg)`});
+stage.addEventListener('pointerleave',()=>tilt.style.transform='');
+prevB.addEventListener('click',()=>flip(-1));nextB.addEventListener('click',()=>flip(1));
+addEventListener('keydown',e=>{if(e.target.isContentEditable||e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')flip(1);if(e.key==='ArrowLeft')flip(-1)});
+addEventListener('resize',fit);
+fit();
+document.fonts&&document.fonts.ready.then(()=>update(true));
+/* chapters: riffle through the leaves in between, one after another */
+const chapters=[...document.querySelectorAll('header [data-page]')];let riffle=0;
+function goto(p){const t=mobile?p:Math.ceil(p/2);clearInterval(riffle);riffling=Math.abs(t-cur)>1;const step=()=>{if(cur===t){riffling=false;return clearInterval(riffle)}flip(t>cur?1:-1)};step();if(cur!==t)riffle=setInterval(step,rm?1:110)}
+chapters.forEach(b=>b.addEventListener('click',()=>goto(+b.dataset.page)));
+[prevB,nextB].forEach(b=>b.addEventListener('click',()=>clearInterval(riffle)));
+function shown(){return mobile?[cur]:[cur*2-1,cur*2]}
+/* GoatCounter events: contact-*, portfolio-*, and how far into the book people get */
+function track(path,title,tries=0){if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path,title:title||path,event:true});else if(tries<20)setTimeout(()=>track(path,title,tries+1),500)}
+function reached(){const seen=reached.seen||(reached.seen=new Set()),now=shown();
+ [[4,'reached-work'],[10,'reached-portfolios'],[16,'reached-contact']].forEach(([p,k])=>{if(now.includes(p)&&!seen.has(k)){seen.add(k);track(k)}});
+ document.querySelectorAll('header [data-page]').forEach((b,i,all)=>{const p=+b.dataset.page,next=all[i+1]?+all[i+1].dataset.page:99;b.setAttribute('aria-current',now.some(x=>x>=p&&x<next)?'true':'false')})}
+function syncClear(){const b=document.getElementById('clear');try{b.hidden=!Object.keys(localStorage).some(k=>k.startsWith('mrp-'))}catch(e){b.hidden=true}}
+syncClear();reached();
+document.addEventListener('click',e=>{const a=e.target.closest('[data-track],[data-copy]');if(!a)return;
+ if(a.dataset.track)track(a.dataset.track,a.textContent.trim());
+ /* email also copies the address: mailto: often opens nothing on a work laptop */
+ if(a.dataset.copy&&navigator.clipboard)navigator.clipboard.writeText(a.dataset.copy).then(()=>{const n=a.closest('.pg')?.querySelector('.copied');if(!n)return;n.textContent='copied, paste it anywhere ✓';n.classList.add('on');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('on'),2200)},()=>{})});
+/* contact form: no server on GitHub Pages, so it hands a ready message to the visitor's mail app or WhatsApp */
+const ME='manideepreddyrekha@gmail.com',WA='918686669066',EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+book.addEventListener('input',e=>{const f=e.target.closest('.cf');if(!f)return;typing=true;clearInterval(typer);e.target.removeAttribute('aria-invalid');
+ const t=f.closest('.pg').querySelector('[data-typed]');if(t)t.textContent=f.elements.m.value.slice(-80)});
+book.addEventListener('submit',e=>{const f=e.target.closest('.cf');if(!f)return;e.preventDefault();
+ const el=f.elements,n=el.n.value.trim(),r=el.r.value.trim(),m=el.m.value.trim(),out=f.querySelector('.cfo'),via=e.submitter&&e.submitter.value==='wa'?'wa':'mail';
+ const bad=!n?[el.n,'who is this from?']:m.length<2?[el.m,'say a little more?']:r.includes('@')&&!EMAIL.test(r)?[el.r,'that email looks off']:null;
+ out.className='cfo';void out.offsetWidth;
+ if(bad){bad[0].setAttribute('aria-invalid','true');bad[0].focus();out.textContent=bad[1];out.classList.add('err');return}
+ const body=`${m}\n\n— ${n}${r?` (${r})`:''}`;
+ if(via==='wa')window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi Manideep! '+body)}`,'_blank','noopener');
+ else location.href=`mailto:${ME}?subject=${encodeURIComponent('Hello from '+n)}&body=${encodeURIComponent(body)}`;
+ out.textContent=via==='wa'?'ready in WhatsApp ✓':'ready in your mail app ✓';
+ const t=f.closest('.pg').querySelector('[data-typed]');if(t)t.textContent='✓ on its way to you, Manideep';
+ track('contact-form-'+(via==='wa'?'whatsapp':'email'))});
+}
 </script>
 <script data-goatcounter="https://manideep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
